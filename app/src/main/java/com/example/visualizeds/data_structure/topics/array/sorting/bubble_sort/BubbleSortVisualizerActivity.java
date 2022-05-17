@@ -1,4 +1,4 @@
-package com.example.visualizeds;
+package com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,10 +12,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.visualizeds.R;
+import com.example.visualizeds.databinding.ActivityBubbleSortVisualizerBinding;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class BubbleSortVisualizerActivity extends AppCompatActivity {
 
     private static final int DATA_NODE_MARGIN_LEFT = 16;
     private static final int DATA_NODE_MARGIN_UP = 16;
@@ -24,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int COLOR_SWAPPED = Color.RED;
     private static final int COLOR_NOT_SWAPPED = -13500;
 
+    private ActivityBubbleSortVisualizerBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityBubbleSortVisualizerBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         EditText editText = findViewById(R.id.editText);
         Button btn = findViewById(R.id.generateButton);
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout linearLayout = new LinearLayout(getApplicationContext());
         for (int i = 0; i < arr.size(); i++) {
             //Initializing the data node view
-            View dataNode = getLayoutInflater().inflate(R.layout.data_node_layout, null, false);
+            View dataNode = getLayoutInflater().inflate(R.layout.item_data_structure_node, null, false);
             params.setMargins(DATA_NODE_MARGIN_LEFT, DATA_NODE_MARGIN_UP, DATA_NODE_MARGIN_RIGHT, DATA_NODE_MARGIN_DOWN);
             dataNode.setLayoutParams(params);
 

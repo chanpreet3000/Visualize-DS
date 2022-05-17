@@ -3,9 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/black_green_gradient.xml" value="0.1735" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ds_item_background.xml" value="0.1735" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ic_arrow_upward_24.xml" value="0.1735" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/outline_btn.xml" value="0.1735" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/solid_btn.xml" value="0.1735" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/font/mavenpro.xml" value="0.27487179487179486" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/font/ubuntu_bold_family.xml" value="0.27487179487179486" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_array_topic.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_bubble_sort_theory.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_bubble_sort_visualizer.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure.xml" value="0.2" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_topic.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_topic_algorithm.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structures.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_linear_search_theory.xml" value="0.264" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_menu.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_searching.xml" value="0.2359375" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_temp_main.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/data_node_layout.xml" value="0.264" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/data_structure_item.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/data_structure_node.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/data_structure_topic_algorithm.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/ds_item.xml" value="0.264" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/ds_item_layout.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_node.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_topic_algorithm.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/temp_item.xml" value="0.25" />
       </map>
     </option>
   </component>

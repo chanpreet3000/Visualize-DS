@@ -14,7 +14,19 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".data_structure.topics.array.sorting.bubble_sort.BubbleSortTheoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.activity.DataStructureTopicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.activity.DataStructureTopicAlgorithmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.activity.DataStructureActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
