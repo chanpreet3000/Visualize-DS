@@ -20,7 +20,8 @@
             android:paddingHorizontal="16dp"
             android:text="Title : "
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout

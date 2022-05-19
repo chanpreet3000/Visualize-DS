@@ -34,37 +34,37 @@ public class BubbleSortVisualizerActivity extends AppCompatActivity {
         binding = ActivityBubbleSortVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        EditText editText = findViewById(R.id.editText);
-        Button btn = findViewById(R.id.generateButton);
-        LinearLayout holder = findViewById(R.id.holder);
-
-        btn.setOnClickListener(v -> {
-            List<Integer> arr = stringToArray(editText.getText().toString().trim());
-            for (int i = 0; i < arr.size() - 1; i++) {
-                for (int j = 0; j < arr.size() - i - 1; j++) {
-                    //Title Text
-                    TextView textView = new TextView(getApplicationContext());
-                    textView.setText("Step " + (i * arr.size() + j + 1) + " : ");
-                    holder.addView(textView);
-
-                    TextView swappedTV = new TextView(getApplicationContext());
-                    View view;
-                    //Swapping conditions
-                    if (arr.get(j) > arr.get(j + 1)) {
-                        int temp = arr.get(j);
-                        arr.set(j, arr.get(j + 1));
-                        arr.set(j + 1, temp);
-                        swappedTV.setText("Swapped " + (j + 1) + " & " + (j + 2) + " elements.");
-                        view = generateArrayView(arr, j, j + 1, COLOR_SWAPPED);
-                    } else {
-                        swappedTV.setText("No swapping necessary.");
-                        view = generateArrayView(arr, j, j + 1, COLOR_NOT_SWAPPED);
-                    }
-                    holder.addView(swappedTV);
-                    holder.addView(view);
-                }
-            }
-        });
+//        EditText editText = findViewById(R.id.editText);
+//        Button btn = findViewById(R.id.generateButton);
+//        LinearLayout holder = findViewById(R.id.holder);
+//
+//        btn.setOnClickListener(v -> {
+//            List<Integer> arr = stringToArray(editText.getText().toString().trim());
+//            for (int i = 0; i < arr.size() - 1; i++) {
+//                for (int j = 0; j < arr.size() - i - 1; j++) {
+//                    //Title Text
+//                    TextView textView = new TextView(getApplicationContext());
+//                    textView.setText("Step " + (i * arr.size() + j + 1) + " : ");
+//                    holder.addView(textView);
+//
+//                    TextView swappedTV = new TextView(getApplicationContext());
+//                    View view;
+//                    //Swapping conditions
+//                    if (arr.get(j) > arr.get(j + 1)) {
+//                        int temp = arr.get(j);
+//                        arr.set(j, arr.get(j + 1));
+//                        arr.set(j + 1, temp);
+//                        swappedTV.setText("Swapped " + (j + 1) + " & " + (j + 2) + " elements.");
+//                        view = generateArrayView(arr, j, j + 1, COLOR_SWAPPED);
+//                    } else {
+//                        swappedTV.setText("No swapping necessary.");
+//                        view = generateArrayView(arr, j, j + 1, COLOR_NOT_SWAPPED);
+//                    }
+//                    holder.addView(swappedTV);
+//                    holder.addView(view);
+//                }
+//            }
+//        });
     }
 
 

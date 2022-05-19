@@ -6,11 +6,11 @@ public class DataStructureAlgorithmContent implements Serializable {
     private final String theory;
     private final String algorithm;
     private final String code;
-    private final Integer worstCase;
-    private final Integer averageCase;
-    private final Integer bestCase;
+    private final String worstCase;
+    private final String averageCase;
+    private final String bestCase;
 
-    public DataStructureAlgorithmContent(String theory, String algorithm, String code, Integer worstCase, Integer averageCase, Integer bestCase) {
+    public DataStructureAlgorithmContent(String theory, String algorithm, String code, String worstCase, String averageCase, String bestCase) {
         this.theory = theory;
         this.algorithm = algorithm;
         this.code = code;
@@ -31,15 +31,15 @@ public class DataStructureAlgorithmContent implements Serializable {
         return code;
     }
 
-    public Integer getWorstCase() {
+    public String getWorstCase() {
         return worstCase;
     }
 
-    public Integer getAverageCase() {
+    public String getAverageCase() {
         return averageCase;
     }
 
-    public Integer getBestCase() {
+    public String getBestCase() {
         return bestCase;
     }
 }

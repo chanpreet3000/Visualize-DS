@@ -44,20 +44,13 @@ public class DataStructureAlgorithmTheoryActivity extends AppCompatActivity {
                 return;
             }
             Intent intent = new Intent(getApplicationContext(), dataStructureAlgorithm.getVisualizeClass());
+            intent.putExtra("data", dataStructureAlgorithm);
             startActivity(intent);
             finish();
         });
     }
 
-    Spanned formatTimeComplexity(Integer power) {
-        String s;
-        if (power == 0) {
-            s = "O(1)";
-        } else if (power == 1) {
-            s = "O(N)";
-        } else {
-            s = "O(" + "N" + "<sup>" + String.valueOf(power) + "</sup>" + ")";
-        }
-        return Html.fromHtml(s);
+    Spanned formatTimeComplexity(String s) {
+        return Html.fromHtml(String.format("O(%s)", s));
     }
 }

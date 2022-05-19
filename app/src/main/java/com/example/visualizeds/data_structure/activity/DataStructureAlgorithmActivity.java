@@ -52,6 +52,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
                 return;
             }
             Intent intent = new Intent(getApplicationContext(), mClass);
+            intent.putExtra("data", dataStructureTopic.dataStructureAlgorithms().get(position));
             startActivity(intent);
         });
 

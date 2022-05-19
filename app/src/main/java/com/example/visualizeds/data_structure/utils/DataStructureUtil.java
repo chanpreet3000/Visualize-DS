@@ -6,6 +6,8 @@ import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithmContent;
 import com.example.visualizeds.data_structure.classes.DataStructureTopic;
 import com.example.visualizeds.data_structure.classes.Difficulty;
+import com.example.visualizeds.data_structure.topics.array.searching.binary_search.BinarySearchVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.array.searching.linear_search.LinearSearchVisualizerActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +23,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Searching",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Linear Search", null,
+                                                    new DataStructureAlgorithm("Linear Search", LinearSearchVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_THEORY,
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_ALGORITHM,
@@ -29,7 +31,16 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_WORST_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_BEST_CASE),
-                                                            Difficulty.BASIC, R.drawable.ic_linear_search)
+                                                            Difficulty.BASIC, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Binary Search", BinarySearchVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_binary_search)
                                             )), Difficulty.EASY, R.drawable.ic_search)
                             )), Difficulty.EASY, R.drawable.ic_array_24)
             ));

@@ -14,6 +14,12 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
+            android:name=".data_structure.topics.array.searching.linear_search.LinearSearchVisualizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.topics.array.searching.binary_search.BinarySearchVisualizerActivity"
+            android:exported="false" />
+        <activity
             android:name=".data_structure.activity.DataStructureAlgorithmTheoryActivity"
             android:exported="false" />
         <activity
