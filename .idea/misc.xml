@@ -6,6 +6,9 @@
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/black_green_gradient.xml" value="0.1735" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ds_item_background.xml" value="0.1735" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ic_arrow_upward_24.xml" value="0.1735" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ic_linked_list.xml" value="0.1805" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ic_linked_list_4.xml" value="0.1805" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/ic_linked_list_5.xml" value="0.1805" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/outline_btn.xml" value="0.1735" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/drawable/solid_btn.xml" value="0.1735" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/font/mavenpro.xml" value="0.27487179487179486" />
@@ -13,7 +16,9 @@
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_array_topic.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_bubble_sort_theory.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_bubble_sort_visualizer.xml" value="0.25" />
-        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure.xml" value="0.2" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure.xml" value="0.264" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_algorithm_content.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_algorithm_theory.xml" value="0.2" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_topic.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structure_topic_algorithm.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/activity_data_structures.xml" value="0.25" />
@@ -30,7 +35,10 @@
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/ds_item_layout.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_node.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_topic.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_topic_algorithm.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_topic_algorithm_content.xml" value="0.25" />
+        <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/item_data_structure_topic_algorithm_theory.xml" value="0.25" />
         <entry key="..\:/Users/chanp/AndroidStudioProjects/VisualizeDS/app/src/main/res/layout/temp_item.xml" value="0.25" />
       </map>
     </option>

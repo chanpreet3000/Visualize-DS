@@ -6,25 +6,23 @@ import java.util.List;
 //For topics like searching and sorting
 public class DataStructureTopic implements Serializable {
     private final String name;
-    private final List<DataStructureTopicAlgorithm> dataStructureTopicAlgorithms;
+    private final List<DataStructureAlgorithm> dataStructureAlgorithms;
     private final Difficulty difficulty;
     private final Integer icon;
-    private final Integer iconColor;
 
-    public DataStructureTopic(String name, List<DataStructureTopicAlgorithm> dataStructureTopicAlgorithms, Difficulty difficulty, Integer icon, Integer iconColor) {
+    public DataStructureTopic(String name, List<DataStructureAlgorithm> dataStructureAlgorithms, Difficulty difficulty, Integer icon) {
         this.name = name;
-        this.dataStructureTopicAlgorithms = dataStructureTopicAlgorithms;
+        this.dataStructureAlgorithms = dataStructureAlgorithms;
         this.difficulty = difficulty;
         this.icon = icon;
-        this.iconColor = iconColor;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<DataStructureTopicAlgorithm> getDataStructureTopicAlgorithms() {
-        return dataStructureTopicAlgorithms;
+    public List<DataStructureAlgorithm> dataStructureAlgorithms() {
+        return dataStructureAlgorithms;
     }
 
     public Difficulty getDifficulty() {
@@ -35,7 +33,4 @@ public class DataStructureTopic implements Serializable {
         return icon;
     }
 
-    public Integer getIconColor() {
-        return iconColor;
-    }
 }

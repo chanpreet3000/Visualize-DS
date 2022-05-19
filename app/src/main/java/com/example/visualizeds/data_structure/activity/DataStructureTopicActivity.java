@@ -17,25 +17,28 @@ public class DataStructureTopicActivity extends AppCompatActivity {
 
     private ActivityDataStructureTopicBinding binding;
     private DataStructureTopicAdapter adapter;
+    private DataStructure dataStructure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDataStructureTopicBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        DataStructure dataStructure = (DataStructure) getIntent().getSerializableExtra("data");
+        dataStructure = (DataStructure) getIntent().getSerializableExtra("data");
+
+        binding.headingTextView.setText(String.format("%s Topics", dataStructure.getName()));
 
         initRecyclerView(dataStructure.getDataStructureTopics());
-        adapter.setOnClickListener(position -> {
-            Intent intent = new Intent(getApplicationContext(), DataStructureTopicAlgorithmActivity.class);
-            intent.putExtra("data", dataStructure.getDataStructureTopics().get(position));
-            startActivity(intent);
-        });
     }
 
     private void initRecyclerView(List<DataStructureTopic> list) {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DataStructureTopicAdapter(list);
+        adapter = new DataStructureTopicAdapter(getApplicationContext(), list);
         binding.recyclerView.setAdapter(adapter);
+        adapter.setOnClickListener(position -> {
+            Intent intent = new Intent(getApplicationContext(), DataStructureAlgorithmActivity.class);
+            intent.putExtra("data", dataStructure.getDataStructureTopics().get(position));
+            startActivity(intent);
+        });
     }
 }

@@ -9,14 +9,12 @@ public class DataStructure implements Serializable {
     private final List<DataStructureTopic> dataStructureTopics;
     private final Difficulty difficulty;
     private final Integer icon;
-    private final Integer iconColor;
 
-    public DataStructure(String name, List<DataStructureTopic> dataStructureTopics, Difficulty difficulty, Integer icon, Integer iconColor) {
+    public DataStructure(String name, List<DataStructureTopic> dataStructureTopics, Difficulty difficulty, Integer icon) {
         this.name = name;
         this.dataStructureTopics = dataStructureTopics;
         this.difficulty = difficulty;
         this.icon = icon;
-        this.iconColor = iconColor;
     }
 
     public String getName() {
@@ -33,9 +31,5 @@ public class DataStructure implements Serializable {
 
     public Integer getIcon() {
         return icon;
-    }
-
-    public Integer getIconColor() {
-        return iconColor;
     }
 }

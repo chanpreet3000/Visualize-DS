@@ -2,19 +2,17 @@ package com.example.visualizeds.data_structure.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructure;
+import com.example.visualizeds.data_structure.utils.DataStructureUtil;
+import com.example.visualizeds.databinding.ItemDataStructureBinding;
 
 import java.util.List;
 
@@ -32,18 +30,19 @@ public class DataStructureAdapter extends RecyclerView.Adapter<DataStructureAdap
     @NonNull
     @Override
     public DSItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_data_structure, parent, false);
-        return new DSItemViewHolder(view);
+        ItemDataStructureBinding binding = ItemDataStructureBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new DSItemViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DSItemViewHolder holder, int position) {
         DataStructure data = list.get(position);
-        holder.titleTextView.setText(data.getName());
-        holder.difficultyTextView.setText(data.getDifficulty().toString());
-        holder.dataStructureIconCard.setCardBackgroundColor(AppCompatResources.getColorStateList(context, data.getIconColor()));
+        holder.binding.titleTextView.setText(data.getName());
+        holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
+        Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
+        holder.binding.dataStructureIconCard.setCardBackgroundColor(AppCompatResources.getColorStateList(context, color));
         if (data.getIcon() != null) {
-            holder.dataStructureIcon.setImageDrawable(AppCompatResources.getDrawable(context, data.getIcon()));
+            holder.binding.dataStructureIcon.setImageResource(data.getIcon());
         }
     }
 
@@ -57,25 +56,16 @@ public class DataStructureAdapter extends RecyclerView.Adapter<DataStructureAdap
     }
 
     public class DSItemViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleTextView;
-        public TextView difficultyTextView;
-        public CardView dataStructureIconCard;
-        public ImageView dataStructureIcon;
+        public ItemDataStructureBinding binding;
 
-        public DSItemViewHolder(@NonNull View itemView) {
-            super(itemView);
-
+        public DSItemViewHolder(@NonNull ItemDataStructureBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
             //Animation
-            itemView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.left_slide_in_fade_in));
-
-            //Referencing
-            titleTextView = itemView.findViewById(R.id.titleTextView);
-            difficultyTextView = itemView.findViewById(R.id.difficultyTextView);
-            dataStructureIconCard = itemView.findViewById(R.id.dataStructureIconCard);
-            dataStructureIcon = itemView.findViewById(R.id.dataStructureIcon);
+//            binding.getRoot().setAnimation(AnimationUtils.loadAnimation(context, R.anim.left_slide_in_fade_in));
 
             //OnClick Listener for the item View
-            itemView.setOnClickListener(v -> {
+            binding.getRoot().setOnClickListener(v -> {
                 if (listener == null) return;
                 listener.onCLick(getAdapterPosition());
             });
