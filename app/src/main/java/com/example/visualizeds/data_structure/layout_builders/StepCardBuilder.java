@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.utils;
+package com.example.visualizeds.data_structure.layout_builders;
 
 import android.content.Context;
 import android.view.LayoutInflater;

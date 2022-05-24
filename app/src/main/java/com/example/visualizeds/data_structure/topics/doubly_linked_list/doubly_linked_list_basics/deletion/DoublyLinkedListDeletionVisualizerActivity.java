@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.traversal;
+package com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,23 +8,25 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
+import com.example.visualizeds.data_structure.layout_builders.DoublyLinkedListNodeBuilder;
 import com.example.visualizeds.data_structure.layout_builders.LinkedListNodeBuilder;
 import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
-import com.example.visualizeds.databinding.ActivityLinkedListTraversalVisualizerBinding;
+import com.example.visualizeds.databinding.ActivityDoublyLinkedListDeletionVisualizerBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
+public class DoublyLinkedListDeletionVisualizerActivity extends AppCompatActivity {
 
-    private ActivityLinkedListTraversalVisualizerBinding binding;
+    private ActivityDoublyLinkedListDeletionVisualizerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLinkedListTraversalVisualizerBinding.inflate(getLayoutInflater());
+        binding = ActivityDoublyLinkedListDeletionVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         //filling header information
         DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
@@ -46,6 +48,7 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
         //button click listener
         binding.visualizeButton.setOnClickListener(v -> {
             //clear all views of the linear Layout
+
             clearLayout();
             initialView(arr);
 
@@ -65,16 +68,25 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
                 if (i != arr.size() - 1)
                     stepCardBuilder.setCardDescription("This node is not the equal to the search target.\nTherefore we move to the next node.");
                 else
-                    stepCardBuilder.setCardDescription("We reached the end of the linked list because the next pointer points to NULL.\nTherefore, the element does not exists.");
+                    stepCardBuilder.setCardDescription("We reached the end of the Doubly Linked List because the next pointer points to NULL.\nTherefore, the element does not exists.");
                 if (arr.get(i) == target)
-                    stepCardBuilder.setCardDescription("We found the element to be searched.");
+                    stepCardBuilder.setCardDescription("We found the element to be deleted.");
 
                 //Generating Data for Step Card
                 generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), i, target);
                 //Adding view to the holder of the Step Card
                 binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
-                if (arr.get(i) == target)
+                if (arr.get(i) == target) {
+                    arr.remove(i);
+                    StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
+                    builder.setCardTitle("Final Doubly Linked List");
+                    builder.setCardDescription("This is the Doubly Linked List after deletion.");
+                    //Generating Data for Step Card
+                    generateLinkedListView(arr, builder.getDataNodeHolder(), -1, -1);
+                    //Adding view to the holder of the Step Card
+                    binding.holderLinearLayout.addView(builder.getStepCard());
                     return;
+                }
             }
         });
     }
@@ -85,8 +97,8 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
 
     private void initialView(List<Integer> arr) {
         StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
-        builder.setCardTitle("Initial Linked List");
-        builder.setCardDescription("This is the initial Linked List.");
+        builder.setCardTitle("Initial Doubly Linked List");
+        builder.setCardDescription("This is the initial Linked.");
         //Generating Data for Step Card
         generateLinkedListView(arr, builder.getDataNodeHolder(), -1, -1);
         //Adding view to the holder of the Step Card
@@ -95,31 +107,32 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
 
     private void generateLinkedListView(@NonNull List<Integer> arr, @NonNull LinearLayout holder, int index, int target) {
         //adding head node
-        LinkedListNodeBuilder linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-        linkedListNodeBuilder.setNodeData("HEAD");
-        holder.addView(linkedListNodeBuilder.getNode());
+        DoublyLinkedListNodeBuilder doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
+        doublyLinkedListNodeBuilder.setNodeData("HEAD");
+        holder.addView(doublyLinkedListNodeBuilder.getNode());
 
+        //adding data nodes
         //adding data nodes
         for (int i = 0; i < arr.size(); i++) {
             //Initializing the data node view
-            linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-            linkedListNodeBuilder.setNodeData(arr.get(i));
+            doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
+            doublyLinkedListNodeBuilder.setNodeData(arr.get(i));
             if (i == index) {
-                linkedListNodeBuilder.showIndexPointer();
+                doublyLinkedListNodeBuilder.showIndexPointer();
                 if (arr.get(i) == target) {
-                    linkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_RED);
+                    doublyLinkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_RED);
                 } else {
-                    linkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_YELLOW_GREEN);
+                    doublyLinkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_YELLOW_GREEN);
                 }
             }
             //adding data node to the linearLayout.
-            holder.addView(linkedListNodeBuilder.getNode());
+            holder.addView(doublyLinkedListNodeBuilder.getNode());
         }
 
         //adding last NULL node
-        linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-        linkedListNodeBuilder.setNodeData("NULL");
-        linkedListNodeBuilder.hideNodeNextPointer();
-        holder.addView(linkedListNodeBuilder.getNode());
+        doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
+        doublyLinkedListNodeBuilder.setNodeData("NULL");
+        doublyLinkedListNodeBuilder.hideNodeNextPointer();
+        holder.addView(doublyLinkedListNodeBuilder.getNode());
     }
 }

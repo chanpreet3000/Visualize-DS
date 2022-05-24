@@ -36,10 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@id/dataStructureIconCard"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dataStructureNextIcon"
             app:layout_constraintStart_toEndOf="@id/dataStructureIconCard"
-            app:layout_constraintTop_toTopOf="@id/dataStructureIconCard">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/titleTextView"
@@ -70,9 +70,9 @@
             android:id="@+id/dataStructureNextIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_margin="16dp"
             app:cardBackgroundColor="@color/dark_green"
             app:cardCornerRadius="999dp"
-            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">

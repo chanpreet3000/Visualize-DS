@@ -14,10 +14,22 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
+            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".data_structure.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity"
+            android:exported="false" />
+        <activity
             android:name=".data_structure.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionActivity"
+            android:name=".data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity"
             android:exported="false" />
         <activity
             android:name=".data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity"

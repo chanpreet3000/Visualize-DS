@@ -13,7 +13,11 @@ import com.example.visualizeds.data_structure.topics.array.searching.linear_sear
 import com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
-import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionActivity;
+import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity;
 
 import java.util.ArrayList;
@@ -102,7 +106,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Linked List Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", LinkedListInsertionActivity.class,
+                                                    new DataStructureAlgorithm("Insertion", LinkedListInsertionVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_ALGORITHM,
@@ -111,7 +115,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Traversal", LinkedListTraversalVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Traversal/Searching", LinkedListTraversalVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_THEORY,
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_ALGORITHM,
@@ -119,9 +123,51 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_WORST_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_BEST_CASE),
-                                                            Difficulty.EASY, R.drawable.ic_add)
+                                                            Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Deletion", LinkedListDeletionVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_DELETION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_deletion)
                                             )), Difficulty.EASY, R.drawable.ic_linked_list)
-                            )), Difficulty.EASY, R.drawable.ic_linked_list)
+                            )), Difficulty.EASY, R.drawable.ic_linked_list),
+                    new DataStructure("Doubly Linked List",
+                            new ArrayList<>(Arrays.asList(
+                                    new DataStructureTopic("Doubly Linked List Basics",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Insertion", DoublyLinkedListInsertionVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("Traversal/Searching", DoublyLinkedListTraversalVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Deletion", DoublyLinkedListDeletionVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_deletion)
+                                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
             ));
 
 

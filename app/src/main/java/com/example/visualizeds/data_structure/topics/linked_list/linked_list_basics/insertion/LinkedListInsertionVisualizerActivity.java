@@ -8,21 +8,21 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
-import com.example.visualizeds.data_structure.utils.LinkedListNodeBuilder;
-import com.example.visualizeds.data_structure.utils.StepCardBuilder;
-import com.example.visualizeds.databinding.ActivityLinkedListInsertionBinding;
+import com.example.visualizeds.data_structure.layout_builders.LinkedListNodeBuilder;
+import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
+import com.example.visualizeds.databinding.ActivityLinkedListInsertionVisualizerBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LinkedListInsertionActivity extends AppCompatActivity {
+public class LinkedListInsertionVisualizerActivity extends AppCompatActivity {
 
-    private ActivityLinkedListInsertionBinding binding;
+    private ActivityLinkedListInsertionVisualizerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLinkedListInsertionBinding.inflate(getLayoutInflater());
+        binding = ActivityLinkedListInsertionVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //filling header information
@@ -36,27 +36,21 @@ public class LinkedListInsertionActivity extends AppCompatActivity {
 
 
         List<Integer> arr = new ArrayList<>();
-
+        initialView(arr);
         //button click listener
         binding.visualizeButton.setOnClickListener(v -> {
             //clear all views of the linear Layout
             clearLayout();
 
             //Generating Visuals
-            StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
-            stepCardBuilder.setCardTitle("Initial Linked List");
-            stepCardBuilder.setCardDescription("This is the initial Linked List before insertion.");
-            //Generating Data for Step Card
-            generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), -1);
-            //Adding view to the holder of the Step Card
-            binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+            initialView(arr);
 
 
             //Generating in Between layout
             int steps = 0;
             for (int i = 0; i < arr.size(); i++) {
                 //Generating Visuals
-                stepCardBuilder = new StepCardBuilder(getApplicationContext());
+                StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
                 stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
                 if (i != arr.size() - 1)
                     stepCardBuilder.setCardDescription("This is not the end of the List.\nTherefore we move to the next node.");
@@ -78,7 +72,7 @@ public class LinkedListInsertionActivity extends AppCompatActivity {
             }
             arr.add(target);
 
-            stepCardBuilder = new StepCardBuilder(getApplicationContext());
+            StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
             stepCardBuilder.setCardTitle("Final Step");
             stepCardBuilder.setCardDescription(String.format("Linked list after adding node with value %d.", target));
             //Generating Data for Step Card
@@ -90,6 +84,16 @@ public class LinkedListInsertionActivity extends AppCompatActivity {
 
     private void clearLayout() {
         binding.holderLinearLayout.removeAllViews();
+    }
+
+    private void initialView(List<Integer> arr) {
+        StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
+        builder.setCardTitle("Initial doubly Doubly Linked List");
+        builder.setCardDescription("This is the initial doubly Doubly Linked List.");
+        //Generating Data for Step Card
+        generateLinkedListView(arr, builder.getDataNodeHolder(), -1);
+        //Adding view to the holder of the Step Card
+        binding.holderLinearLayout.addView(builder.getStepCard());
     }
 
     private void generateLinkedListView(@NonNull List<Integer> arr, @NonNull LinearLayout holder, int index) {

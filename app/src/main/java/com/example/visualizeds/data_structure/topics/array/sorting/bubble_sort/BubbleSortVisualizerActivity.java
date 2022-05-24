@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
-import com.example.visualizeds.data_structure.utils.DataNodeBuilder;
+import com.example.visualizeds.data_structure.layout_builders.DataNodeBuilder;
 import com.example.visualizeds.data_structure.utils.DataStructureUtil;
-import com.example.visualizeds.data_structure.utils.StepCardBuilder;
+import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
 import com.example.visualizeds.databinding.ActivityBubbleSortVisualizerBinding;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.utils;
+package com.example.visualizeds.data_structure.layout_builders;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,10 +11,12 @@ import androidx.cardview.widget.CardView;
 
 import com.example.visualizeds.R;
 
+import java.util.Objects;
+
 public class LinkedListNodeBuilder {
 
     private static final int DATA_NODE_MARGIN_LEFT = 0;
-    private static final int DATA_NODE_MARGIN_TOP = 0;
+    private static final int DATA_NODE_MARGIN_TOP = 16;
     private static final int DATA_NODE_MARGIN_RIGHT = 0;
     private static final int DATA_NODE_MARGIN_DOWN = 0;
     private final Context context;
@@ -52,7 +54,7 @@ public class LinkedListNodeBuilder {
 
     public void setNodeData(String s) {
         dataNodeDataTextView.setText(s);
-        if (s == "HEAD" || s == "NULL")
+        if (Objects.equals(s, "HEAD") || Objects.equals(s, "NULL"))
             this.setNodeColor(COLOR_BLACK);
     }
 

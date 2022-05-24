@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.traversal;
+package com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.deletion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,21 +10,22 @@ import android.widget.Toast;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
 import com.example.visualizeds.data_structure.layout_builders.LinkedListNodeBuilder;
 import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
-import com.example.visualizeds.databinding.ActivityLinkedListTraversalVisualizerBinding;
+import com.example.visualizeds.databinding.ActivityLinkedListDeletionVisualizerBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
+public class LinkedListDeletionVisualizerActivity extends AppCompatActivity {
 
-    private ActivityLinkedListTraversalVisualizerBinding binding;
+    private ActivityLinkedListDeletionVisualizerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLinkedListTraversalVisualizerBinding.inflate(getLayoutInflater());
+        binding = ActivityLinkedListDeletionVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         //filling header information
         DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
@@ -46,6 +47,7 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
         //button click listener
         binding.visualizeButton.setOnClickListener(v -> {
             //clear all views of the linear Layout
+
             clearLayout();
             initialView(arr);
 
@@ -67,14 +69,24 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
                 else
                     stepCardBuilder.setCardDescription("We reached the end of the linked list because the next pointer points to NULL.\nTherefore, the element does not exists.");
                 if (arr.get(i) == target)
-                    stepCardBuilder.setCardDescription("We found the element to be searched.");
+                    stepCardBuilder.setCardDescription("We found the element to be deleted.");
 
                 //Generating Data for Step Card
                 generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), i, target);
                 //Adding view to the holder of the Step Card
                 binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
                 if (arr.get(i) == target)
+                {
+                    arr.remove(i);
+                    StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
+                    builder.setCardTitle("Final Linked List");
+                    builder.setCardDescription("This is the Linked list after deletion.");
+                    //Generating Data for Step Card
+                    generateLinkedListView(arr, builder.getDataNodeHolder(), -1, -1);
+                    //Adding view to the holder of the Step Card
+                    binding.holderLinearLayout.addView(builder.getStepCard());
                     return;
+                }
             }
         });
     }
@@ -86,7 +98,7 @@ public class LinkedListTraversalVisualizerActivity extends AppCompatActivity {
     private void initialView(List<Integer> arr) {
         StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
         builder.setCardTitle("Initial Linked List");
-        builder.setCardDescription("This is the initial Linked List.");
+        builder.setCardDescription("This is the initial Linked.");
         //Generating Data for Step Card
         generateLinkedListView(arr, builder.getDataNodeHolder(), -1, -1);
         //Adding view to the holder of the Step Card
