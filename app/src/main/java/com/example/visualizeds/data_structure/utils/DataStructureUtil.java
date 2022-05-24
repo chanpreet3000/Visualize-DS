@@ -1,5 +1,7 @@
 package com.example.visualizeds.data_structure.utils;
 
+import androidx.annotation.NonNull;
+
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructure;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
@@ -8,6 +10,11 @@ import com.example.visualizeds.data_structure.classes.DataStructureTopic;
 import com.example.visualizeds.data_structure.classes.Difficulty;
 import com.example.visualizeds.data_structure.topics.array.searching.binary_search.BinarySearchVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.searching.linear_search.LinearSearchVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionActivity;
+import com.example.visualizeds.data_structure.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +22,7 @@ import java.util.List;
 
 public class DataStructureUtil {
 
-    public static List<Integer> listOfColors = new ArrayList<>(Arrays.asList(R.color.cedar_orange, R.color.oxford_blue, R.color.dark_green));
+    public static List<Integer> listOfColors = new ArrayList<>(Arrays.asList(R.color.oxford_blue, R.color.dark_green, R.color.dark_red, R.color.old_lace_black));
 
     public static List<DataStructure> dataStructures =
             new ArrayList<>(Arrays.asList(
@@ -41,7 +48,108 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_binary_search)
-                                            )), Difficulty.EASY, R.drawable.ic_search)
-                            )), Difficulty.EASY, R.drawable.ic_array_24)
+                                            )), Difficulty.EASY, R.drawable.ic_search),
+                                    new DataStructureTopic("Sorting",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Bubble Sort", BubbleSortVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BUBBLE_SORT_BEST_CASE),
+                                                            Difficulty.BASIC, R.drawable.ic_bubble_sort),
+                                                    new DataStructureAlgorithm("Selection Sort", SelectionSortVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_CODE,
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.SELECTION_SORT_BEST_CASE),
+                                                            Difficulty.BASIC, R.drawable.ic_selection_sort),
+                                                    new DataStructureAlgorithm("Insertion Sort", InsertionSortVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_CODE,
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.INSERTION_SORT_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_insertion_sort),
+                                                    new DataStructureAlgorithm("Merge Sort", null,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_CODE,
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.MERGE_SORT_BEST_CASE),
+                                                            Difficulty.MEDIUM, R.drawable.ic_merge_sort),
+                                                    new DataStructureAlgorithm("Quick Sort", null,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_CODE,
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.QUICK_SORT_BEST_CASE),
+                                                            Difficulty.MEDIUM, R.drawable.ic_merge_sort)
+                                            )), Difficulty.EASY, R.drawable.ic_sorting)
+                            )), Difficulty.EASY, R.drawable.ic_array_24),
+                    new DataStructure("Linked List",
+                            new ArrayList<>(Arrays.asList(
+                                    new DataStructureTopic("Linked List Basics",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Insertion", LinkedListInsertionActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("Traversal", LinkedListTraversalVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_CODE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.LINKED_LIST_TRAVERSAL_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add)
+                                            )), Difficulty.EASY, R.drawable.ic_linked_list)
+                            )), Difficulty.EASY, R.drawable.ic_linked_list)
             ));
+
+
+    @NonNull
+    public static List<Integer> stringToArray(@NonNull String s) {
+        StringBuilder c = new StringBuilder();
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ') {
+                try {
+                    int number = Integer.parseInt(c.toString());
+                    arr.add(number);
+                    c = new StringBuilder();
+                } catch (Exception ignored) {
+                }
+
+            } else {
+                c.append(s.charAt(i));
+            }
+            if (i == s.length() - 1) {
+                try {
+                    int number = Integer.parseInt(c.toString());
+                    arr.add(number);
+                    c = new StringBuilder();
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        return arr;
+    }
 }

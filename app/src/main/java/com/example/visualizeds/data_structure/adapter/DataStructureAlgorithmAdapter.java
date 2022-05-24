@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
+import com.example.visualizeds.data_structure.utils.DataStructureUtil;
 import com.example.visualizeds.databinding.ItemDataStructureTopicAlgorithmBinding;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
     @NonNull
     @Override
     public DSItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemDataStructureTopicAlgorithmBinding binding = ItemDataStructureTopicAlgorithmBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        ItemDataStructureTopicAlgorithmBinding binding = ItemDataStructureTopicAlgorithmBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new DSItemViewHolder(binding);
     }
 
@@ -36,6 +37,11 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
         DataStructureAlgorithm data = list.get(position);
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
+        Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
+        holder.binding.dataStructureIconCard.setCardBackgroundColor(context.getColor(color));
+        if (data.getIcon() != null) {
+            holder.binding.dataStructureIcon.setImageResource(data.getIcon());
+        }
     }
 
     @Override

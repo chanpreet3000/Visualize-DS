@@ -16,7 +16,6 @@ import java.util.List;
 public class DataStructureActivity extends AppCompatActivity {
 
     private ActivityDataStructureBinding binding;
-    private DataStructureAdapter adapter;
     private List<DataStructure> dataStructures;
 
     @Override
@@ -31,7 +30,7 @@ public class DataStructureActivity extends AppCompatActivity {
 
     private void initRecyclerView(List<DataStructure> list) {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DataStructureAdapter(getApplicationContext(), list);
+        DataStructureAdapter adapter = new DataStructureAdapter(getApplicationContext(), list);
         binding.recyclerView.setAdapter(adapter);
         adapter.setOnClickListener(position -> {
             Intent intent = new Intent(getApplicationContext(), DataStructureTopicActivity.class);

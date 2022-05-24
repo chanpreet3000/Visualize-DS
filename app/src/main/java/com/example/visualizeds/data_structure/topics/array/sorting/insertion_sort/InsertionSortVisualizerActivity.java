@@ -1,33 +1,29 @@
-package com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort;
+package com.example.visualizeds.data_structure.topics.array.sorting.insertion_sort;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
 import com.example.visualizeds.data_structure.utils.DataNodeBuilder;
 import com.example.visualizeds.data_structure.utils.DataStructureUtil;
 import com.example.visualizeds.data_structure.utils.StepCardBuilder;
-import com.example.visualizeds.databinding.ActivityBubbleSortVisualizerBinding;
+import com.example.visualizeds.databinding.ActivityInsertionSortVisualizerBinding;
 
 import java.util.List;
 
-public class BubbleSortVisualizerActivity extends AppCompatActivity {
-
+public class InsertionSortVisualizerActivity extends AppCompatActivity {
     private static final int COLOR_SWAPPED = R.color.dark_red;
     private static final int COLOR_NOT_SWAPPED = R.color.citron;
-
-    private ActivityBubbleSortVisualizerBinding binding;
+    private ActivityInsertionSortVisualizerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityBubbleSortVisualizerBinding.inflate(getLayoutInflater());
+        binding = ActivityInsertionSortVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
         //filling header information
         DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
         binding.titleTextView.setText(dataStructureAlgorithm.getName());
@@ -47,37 +43,35 @@ public class BubbleSortVisualizerActivity extends AppCompatActivity {
             //Generating Visuals
             List<Integer> arr = DataStructureUtil.stringToArray(binding.arrayEditText.getText().toString().trim());
 
-            //Bubble Sort
+            //Insertion Sort
             int steps = 0;
-            for (int i = 0; i < arr.size(); i++) {
-                for (int j = 0; j < arr.size() - 1; j++) {
+            for (int i = 1; i < arr.size(); i++) {
+                int temp = arr.get(i);
+                int j = i - 1;
+                while (j >= 0 && temp <= arr.get(j)) {
                     //Building step card
                     StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
                     stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
-                    if (arr.get(j) > arr.get(j + 1)) {
-                        stepCardBuilder.setCardDescription(String.format("%d is greater than %d.\nTherefore swapping %d & %d.", arr.get(j), arr.get(j + 1), arr.get(j), arr.get(j + 1)));
-                    } else {
-                        stepCardBuilder.setCardDescription(String.format("%d is not greater than %d.\nTherefore no swapping necessary.", arr.get(j), arr.get(j + 1)));
-                    }
-
-                    //Bubble Sort Condition
-                    int color;
-                    if (arr.get(j) > arr.get(j + 1)) {
-                        color = COLOR_SWAPPED;
-                        int temp = arr.get(j);
-                        arr.set(j, arr.get(j + 1));
-                        arr.set(j + 1, temp);
-                    } else {
-                        color = COLOR_NOT_SWAPPED;
-                    }
+                    stepCardBuilder.setCardDescription(String.format("%d is greater than %d.\nTherefore, moving array element right.", arr.get(j), temp));
 
                     //Generating Data for Step Card
-                    generateArrayView(arr, stepCardBuilder.getDataNodeHolder(), j, color);
+                    generateArrayView(arr, stepCardBuilder.getDataNodeHolder(), j, COLOR_SWAPPED);
 
                     //Adding view to the holder of the Step Card
                     binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+
+                    //Insertion Sort condition
+                    arr.set(j + 1, arr.get(j));
+                    arr.set(j, temp);
+                    j = j - 1;
                 }
             }
+            //Building step card
+            StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
+            stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
+            stepCardBuilder.setCardDescription("The Array is now sorted!");
+            //Adding view to the holder of the Step Card
+            binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
         });
     }
 

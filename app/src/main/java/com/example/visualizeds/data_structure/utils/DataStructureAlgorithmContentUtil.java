@@ -86,4 +86,299 @@ public class DataStructureAlgorithmContentUtil {
     public static final String BINARY_SEARCH_AVERAGE_CASE = "Log N";
     public static final String BINARY_SEARCH_BEST_CASE = "1";
 
+    public static final String BUBBLE_SORT_THEORY =
+            "Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are not in the intended order.\n" +
+                    "\n" +
+                    "Just like the movement of air bubbles in the water that rise up to the surface, each element of the array move to the end in each iteration.\n" +
+                    "Therefore, it is called a bubble sort.";
+    public static final String BUBBLE_SORT_ALGORITHM =
+            "1) Starting from the first index, compare the first and the second elements.\n" +
+                    "\n" +
+                    "2) If the first element is greater than the second element, they are swapped.\n" +
+                    "\n" +
+                    "3) Now, compare the second and the third elements. Swap them if they are not in order.\n" +
+                    "\n" +
+                    "4) The above process goes on until the last element.\n" +
+                    "\n" +
+                    "5) After this the largest element will come at the end of the array.\n" +
+                    "\n" +
+                    "6) Repeat from Step 1 (N - 1) more time to sort all elements.\n";
+    public static final String BUBBLE_SORT_CODE =
+            "int main()\n" +
+                    "{\n" +
+                    "    int n = 5;\n" +
+                    "    int arr[]{5, 4, 3, 2, 1};\n" +
+                    "    int start = 0, end = n - 1;\n" +
+                    "    for (int i = 0; i < n; i++)\n" +
+                    "        // swapping if the next element is smaller than the previous elements\n" +
+                    "        for (int j = 0; j < n - 1; j++)\n" +
+                    "            if (arr[j] > arr[j + 1])\n" +
+                    "                swap(arr[j], arr[j + 1]);\n" +
+                    "\n" +
+                    "    // printing sorted array\n" +
+                    "    for (int i = 0; i < n; i++)\n" +
+                    "        cout << arr[i] << \" \";\n" +
+                    "    return 0;\n" +
+                    "}";
+    public static final String BUBBLE_SORT_WORST_CASE = "N<sup>2</sup>";
+    public static final String BUBBLE_SORT_AVERAGE_CASE = "N<sup>2</sup>";
+    public static final String BUBBLE_SORT_BEST_CASE = "N<sup>2</sup>";
+
+    public static final String SELECTION_SORT_THEORY =
+            "Selection sort is a simple sorting algorithm. This sorting algorithm is an in-place comparison-based algorithm in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. Initially, the sorted part is empty and the unsorted part is the entire list.\n" +
+                    "\n" +
+                    "The smallest element is selected from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. This process continues moving unsorted array boundary by one element to the right.\n" +
+                    "\n";
+    public static final String SELECTION_SORT_ALGORITHM =
+            "1) Set MIN to location 0\n" +
+                    "\n" +
+                    "2) Search the minimum element in the list\n" +
+                    "\n" +
+                    "3) Swap with value at location MIN\n" +
+                    "\n" +
+                    "4) Increment MIN to point to next element\n" +
+                    "\n" +
+                    "5) Repeat until list is sorted";
+    public static final String SELECTION_SORT_CODE =
+            "int main()\n" +
+                    "{\n" +
+                    "    int n = 5;\n" +
+                    "    int arr[]{5, 4, 3, 2, 1};\n" +
+                    "    for (int i = 0; i < n; i++)\n" +
+                    "    {\n" +
+                    "        int pos = i;\n" +
+                    "        for (int j = i; j < n; j++)\n" +
+                    "        {\n" +
+                    "            if (arr[j] < arr[pos])\n" +
+                    "            {\n" +
+                    "                pos = j;\n" +
+                    "            }\n" +
+                    "        }\n" +
+                    "        swap(arr[pos], arr[i]);\n" +
+                    "    }\n" +
+                    "    for (int i = 0; i < n; i++)\n" +
+                    "    {\n" +
+                    "        cout << arr[i] << \" \";\n" +
+                    "    }\n" +
+                    "    return 0;\n" +
+                    "}";
+    public static final String SELECTION_SORT_WORST_CASE = "N<sup>2</sup>";
+    public static final String SELECTION_SORT_AVERAGE_CASE = "N<sup>2</sup>";
+    public static final String SELECTION_SORT_BEST_CASE = "N<sup>2</sup>";
+
+    //Insertion Sort
+    public static final String INSERTION_SORT_THEORY =
+            "Insertion sort is a simple sorting algorithm. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.";
+    public static final String INSERTION_SORT_ALGORITHM =
+            "1) If the element is the first element, assume that it is already sorted. Return 1.\n" +
+                    "\n" +
+                    "2) Pick the next element, and store it separately in a key.\n" +
+                    "\n" +
+                    "3) Now, compare the key with all elements in the sorted array.\n" +
+                    "\n" +
+                    "4) If the element in the sorted array is smaller than the current element, then move to the next element. Else, shift greater elements in the array towards the right.\n" +
+                    "\n" +
+                    "5) Insert the value.\n" +
+                    "\n" +
+                    "6) Repeat until the array is sorted.";
+    public static final String INSERTION_SORT_CODE =
+            "int main()\n" +
+                    "{\n" +
+                    "    int n = 5;\n" +
+                    "    int arr[]{5, 4, 3, 2, 1};\n" +
+                    "    int i, j, temp;\n" +
+                    "    for (i = 1; i < n; i++)\n" +
+                    "    {\n" +
+                    "        temp = arr[i];\n" +
+                    "        j = i - 1;\n" +
+                    "\n" +
+                    "        while (j >= 0 && temp <= arr[j])\n" +
+                    "        {\n" +
+                    "            arr[j + 1] = arr[j];\n" +
+                    "            j = j - 1;\n" +
+                    "        }\n" +
+                    "        arr[j + 1] = temp;\n" +
+                    "    }\n" +
+                    "    for (int i = 0; i < n; i++)\n" +
+                    "    {\n" +
+                    "        cout << arr[i] << \" \";\n" +
+                    "    }\n" +
+                    "    return 0;\n" +
+                    "}";
+    public static final String INSERTION_SORT_WORST_CASE = "N<sup>2</sup>";
+    public static final String INSERTION_SORT_AVERAGE_CASE = "N<sup>2</sup>";
+    public static final String INSERTION_SORT_BEST_CASE = "N";
+
+    public static final String MERGE_SORT_THEORY =
+            "Merge Sort is one of the most popular sorting algorithms that is based on the principle of Divide and Conquer Algorithm.\n" +
+                    "\n" +
+                    "Here, a problem is divided into multiple sub-problems. Each sub-problem is solved individually. Finally, sub-problems are combined to form the final solution.";
+    public static final String MERGE_SORT_ALGORITHM =
+            "MergeSort Algorithm\n" +
+                    "The MergeSort function repeatedly divides the array into two halves until we reach a stage where we try to perform MergeSort on a subarray of size 1.\n" +
+                    "\n" +
+                    "After that, the merge function comes into play and combines the sorted arrays into larger arrays until the whole array is merged.";
+    public static final String MERGE_SORT_CODE =
+            "void merge(int arr[], int p, int q, int r) {\n" +
+                    "  \n" +
+                    "  int n1 = q - p + 1;\n" +
+                    "  int n2 = r - q;\n" +
+                    "\n" +
+                    "  int L[n1], M[n2];\n" +
+                    "\n" +
+                    "  for (int i = 0; i < n1; i++)\n" +
+                    "    L[i] = arr[p + i];\n" +
+                    "  for (int j = 0; j < n2; j++)\n" +
+                    "    M[j] = arr[q + 1 + j];\n" +
+                    "\n" +
+                    "  int i, j, k;\n" +
+                    "  i = 0;\n" +
+                    "  j = 0;\n" +
+                    "  k = p;\n" +
+                    "\n" +
+                    "  while (i < n1 && j < n2) {\n" +
+                    "    if (L[i] <= M[j]) {\n" +
+                    "      arr[k] = L[i];\n" +
+                    "      i++;\n" +
+                    "    } else {\n" +
+                    "      arr[k] = M[j];\n" +
+                    "      j++;\n" +
+                    "    }\n" +
+                    "    k++;\n" +
+                    "  }\n" +
+                    "\n" +
+                    "  while (i < n1) {\n" +
+                    "    arr[k] = L[i];\n" +
+                    "    i++;\n" +
+                    "    k++;\n" +
+                    "  }\n" +
+                    "\n" +
+                    "  while (j < n2) {\n" +
+                    "    arr[k] = M[j];\n" +
+                    "    j++;\n" +
+                    "    k++;\n" +
+                    "  }\n" +
+                    "}\n" +
+                    "\n" +
+                    "void mergeSort(int arr[], int l, int r) {\n" +
+                    "  if (l < r) {\n" +
+                    "    int m = l + (r - l) / 2;\n" +
+                    "\n" +
+                    "    mergeSort(arr, l, m);\n" +
+                    "    mergeSort(arr, m + 1, r);\n" +
+                    "\n" +
+                    "    merge(arr, l, m, r);\n" +
+                    "  }\n" +
+                    "}";
+    public static final String MERGE_SORT_WORST_CASE = "N * Log N";
+    public static final String MERGE_SORT_AVERAGE_CASE = "N * Log N";
+    public static final String MERGE_SORT_BEST_CASE = "N * Log N";
+
+
+    //Quick Sort
+    public static final String QUICK_SORT_THEORY =
+            "Quicksort is the widely used sorting algorithm that makes n log n comparisons in average case for sorting an array of n elements. It is a faster and highly efficient sorting algorithm. This algorithm follows the divide and conquer approach." +
+                    "\n" +
+                    "Divide and conquer is a technique of breaking down the algorithms into subproblems, then solving the subproblems, and combining the results back together to solve the original problem.";
+    public static final String QUICK_SORT_ALGORITHM =
+            "1) Quicksort picks an element as pivot, and then it partitions the given array around the picked pivot element.\n" +
+                    "\n" +
+                    "2) In quick sort, a large array is divided into two arrays in which one holds values that are smaller than the specified value (Pivot), and another array holds the values that are greater than the pivot.\n" +
+                    "\n" +
+                    "3) After that, left and right sub-arrays are also partitioned using the same approach.\n" +
+                    "\n" +
+                    "4) It will continue until the single element remains in the sub-array.";
+    public static final String QUICK_SORT_CODE =
+            "int partition (int arr[], int low, int high)\n" +
+                    "{\n" +
+                    "    int pivot = arr[high]; // pivot\n" +
+                    "    int i = (low - 1);\n" +
+                    " \n" +
+                    "    for (int j = low; j <= high - 1; j++)\n" +
+                    "    {\n" +
+                    "        if (arr[j] < pivot)\n" +
+                    "        {\n" +
+                    "            i++;\n" +
+                    "            swap(&arr[i], &arr[j]);\n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "    swap(arr[i + 1], arr[high]);\n" +
+                    "    return (i + 1);\n" +
+                    "}\n" +
+                    " \n" +
+                    "void quickSort(int arr[], int low, int high)\n" +
+                    "{\n" +
+                    "    if (low < high)\n" +
+                    "    {\n" +
+                    "        int pi = partition(arr, low, high);\n" +
+                    " \n" +
+                    "        quickSort(arr, low, pi - 1);\n" +
+                    "        quickSort(arr, pi + 1, high);\n" +
+                    "    }\n" +
+                    "}";
+    public static final String QUICK_SORT_WORST_CASE = "N<sup>2</sup>";
+    public static final String QUICK_SORT_AVERAGE_CASE = "N * Log N";
+    public static final String QUICK_SORT_BEST_CASE = "N * Log N";
+
+
+    //Linked list
+
+
+    //linked list insertion
+
+    public static final String LINKED_LIST_INSERTION_THEORY =
+            "There are three possible positions where we can enter a new node in a linked list\n" +
+                    "\n" +
+                    "\t\tInsertion at beginning\n" +
+                    "\t\tInsertion after nth position\n" +
+                    "\t\tInsertion at end\n" +
+                    "\n" +
+                    "Generally by definition, if a new node is added it is added at the beginning of the linked list and not the end. So, we do not need to traverse the list every time for insertion\n" +
+                    "\n";
+    public static final String LINKED_LIST_INSERTION_ALGORITHM =
+            "1) Create a new node and assign its data value and its next node to NULL.\n" +
+                    "\n" +
+                    "2) If the list is empty, change the head node to the new node.\n" +
+                    "\n" +
+                    "3) If not then traverse till the last node.\n" +
+                    "\n" +
+                    "4) Assign the last node’s next pointer to this new node.\n" +
+                    "\n" +
+                    "5) Now, the new node has become the last node.";
+    public static final String LINKED_LIST_INSERTION_CODE =
+            "class Node\n" +
+                    "{\n" +
+                    "public:\n" +
+                    "    int data;\n" +
+                    "    Node *next;\n" +
+                    "    Node(int _data)\n" +
+                    "    {\n" +
+                    "        data = _data;\n" +
+                    "        next = NULL;\n" +
+                    "    }\n" +
+                    "};\n" +
+                    "\n" +
+                    "Node *Insert(Node *head, int data)\n" +
+                    "{\n" +
+                    "    Node *newNode = new Node(data);\n" +
+                    "    if (head == NULL)\n" +
+                    "        return head = newNode;\n" +
+                    "    Node *temp = head;\n" +
+                    "    while (temp->next != NULL)\n" +
+                    "        temp = temp->next;\n" +
+                    "    temp->next = newNode;\n" +
+                    "    return head;\n" +
+                    "}";
+    public static final String LINKED_LIST_INSERTION_WORST_CASE = "N";
+    public static final String LINKED_LIST_INSERTION_AVERAGE_CASE = "N";
+    public static final String LINKED_LIST_INSERTION_BEST_CASE = "1";
+
+
+    // Linked List Traversal
+    public static final String LINKED_LIST_TRAVERSAL_THEORY = "";
+    public static final String LINKED_LIST_TRAVERSAL_ALGORITHM = "";
+    public static final String LINKED_LIST_TRAVERSAL_CODE = "";
+    public static final String LINKED_LIST_TRAVERSAL_WORST_CASE = "N";
+    public static final String LINKED_LIST_TRAVERSAL_AVERAGE_CASE = "N";
+    public static final String LINKED_LIST_TRAVERSAL_BEST_CASE = "1";
 }

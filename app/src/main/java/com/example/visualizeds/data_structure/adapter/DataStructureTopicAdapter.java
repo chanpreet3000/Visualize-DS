@@ -3,13 +3,10 @@ package com.example.visualizeds.data_structure.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructureTopic;
 import com.example.visualizeds.data_structure.utils.DataStructureUtil;
 import com.example.visualizeds.databinding.ItemDataStructureTopicBinding;
@@ -40,9 +37,9 @@ public class DataStructureTopicAdapter extends RecyclerView.Adapter<DataStructur
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
         Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
-        holder.binding.dataStructureIconCard.setCardBackgroundColor(AppCompatResources.getColorStateList(context, color));
+        holder.binding.dataStructureIconCard.setCardBackgroundColor(context.getColor(color));
         if (data.getIcon() != null) {
-            holder.binding.dataStructureIcon.setImageDrawable(AppCompatResources.getDrawable(context, data.getIcon()));
+            holder.binding.dataStructureIcon.setImageResource(data.getIcon());
         }
     }
 
