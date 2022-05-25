@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
-import com.example.visualizeds.data_structure.layout_builders.DataNodeBuilder;
+import com.example.visualizeds.data_structure.builder.DataNodeBuilder;
 import com.example.visualizeds.data_structure.utils.DataStructureUtil;
-import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
+import com.example.visualizeds.data_structure.builder.StepCardBuilder;
 import com.example.visualizeds.databinding.ActivitySelectionSortVisualizerBinding;
 
 import java.util.List;
@@ -100,6 +100,9 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
                 dataNodeBuilder.setNodeColor(color);
             }
             holder.addView(dataNodeBuilder.getNode());
+
+            //requesting focus
+            holder.requestChildFocus(holder.getChildAt(ptr), holder.getChildAt(ptr));
         }
     }
 }

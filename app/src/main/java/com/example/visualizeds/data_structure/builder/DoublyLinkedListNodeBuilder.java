@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.layout_builders;
+package com.example.visualizeds.data_structure.builder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -55,10 +55,6 @@ public class DoublyLinkedListNodeBuilder {
         dataNodeDataTextView.setText(s);
         if (Objects.equals(s, "HEAD") || Objects.equals(s, "NULL"))
             this.setNodeColor(COLOR_BLACK);
-    }
-
-    public void hideNode() {
-        doublyLinkedListNode.setVisibility(View.GONE);
     }
 
     public void showIndexPointer() {

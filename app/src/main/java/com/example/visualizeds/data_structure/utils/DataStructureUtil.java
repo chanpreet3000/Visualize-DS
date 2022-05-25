@@ -13,6 +13,7 @@ import com.example.visualizeds.data_structure.topics.array.searching.linear_sear
 import com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity;
@@ -167,7 +168,23 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_deletion)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
-                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
+                    new DataStructure("Binary Search Tree",
+                            new ArrayList<>(Arrays.asList(
+                                    new DataStructureTopic("Binary Search Tree Basics",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Insertion", BinarySearchInsertionTreeVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_deletion)
+                                            )), Difficulty.EASY, R.drawable.ic_tree)
+                            )), Difficulty.EASY, R.drawable.ic_tree)
+
             ));
 
 

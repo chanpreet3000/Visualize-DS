@@ -7,9 +7,9 @@ import android.widget.LinearLayout;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
-import com.example.visualizeds.data_structure.layout_builders.DataNodeBuilder;
+import com.example.visualizeds.data_structure.builder.DataNodeBuilder;
 import com.example.visualizeds.data_structure.utils.DataStructureUtil;
-import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
+import com.example.visualizeds.data_structure.builder.StepCardBuilder;
 import com.example.visualizeds.databinding.ActivityInsertionSortVisualizerBinding;
 
 import java.util.List;
@@ -91,6 +91,9 @@ public class InsertionSortVisualizerActivity extends AppCompatActivity {
             }
             //adding data node to the linearLayout.
             holder.addView(dataNodeBuilder.getNode());
+
+            //requesting focus
+            holder.requestChildFocus(holder.getChildAt(j), holder.getChildAt(j));
         }
     }
 }

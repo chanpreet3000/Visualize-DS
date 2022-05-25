@@ -8,9 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
-import com.example.visualizeds.data_structure.layout_builders.DoublyLinkedListNodeBuilder;
-import com.example.visualizeds.data_structure.layout_builders.LinkedListNodeBuilder;
-import com.example.visualizeds.data_structure.layout_builders.StepCardBuilder;
+import com.example.visualizeds.data_structure.builder.DoublyLinkedListNodeBuilder;
+import com.example.visualizeds.data_structure.builder.StepCardBuilder;
 import com.example.visualizeds.databinding.ActivityDoublyLinkedListInsertionVisualizerBinding;
 
 import java.util.ArrayList;
@@ -114,6 +113,9 @@ public class DoublyLinkedListInsertionVisualizerActivity extends AppCompatActivi
             }
             //adding data node to the linearLayout.
             holder.addView(doublyLinkedListNodeBuilder.getNode());
+
+            //requesting focus
+            holder.requestChildFocus(holder.getChildAt(index+ 1),holder.getChildAt(index+ 1));
         }
 
         //adding last NULL node

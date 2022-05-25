@@ -1,4 +1,4 @@
-package com.example.visualizeds.data_structure.layout_builders;
+package com.example.visualizeds.data_structure.builder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -28,7 +28,7 @@ public class DataNodeBuilder {
         this.context = context;
 
         //Initializing the data node view
-        dataNode = LayoutInflater.from(context).inflate(R.layout.item_data_structure_node, null);
+        dataNode = LayoutInflater.from(context).inflate(R.layout.item_data_node, null);
 
         //params
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
