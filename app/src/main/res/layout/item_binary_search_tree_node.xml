@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
-    android:layout_height="100dp"
-    android:background="@drawable/layout_border_black"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:rotation="90"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_long_arrow" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/dataNodeCardView"
@@ -18,42 +25,78 @@
             android:id="@+id/dataNodeDataTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:padding="8dp"
             android:text="125"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.53" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.53" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/layout_border_black"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
         <ImageView
             android:id="@+id/nodeLeftPointer"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
             android:rotation="145"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             android:scaleY="1.5"
             android:src="@drawable/ic_long_arrow"
             android:visibility="visible" />
 
         <ImageView
             android:id="@+id/nodeRightPointer"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
             android:rotation="45"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             android:scaleY="1.5"
             android:src="@drawable/ic_long_arrow"
             android:visibility="visible" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nodeHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minWidth="150dp"
+        android:orientation="horizontal" />
 
 </LinearLayout>

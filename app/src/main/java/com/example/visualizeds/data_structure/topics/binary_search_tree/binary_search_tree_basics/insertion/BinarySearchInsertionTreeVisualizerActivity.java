@@ -40,7 +40,7 @@ public class BinarySearchInsertionTreeVisualizerActivity extends AppCompatActivi
         BinaryTreeNode root = null;
 
         for (int i = 0; i < 10; i++) {
-            int rand = new Random().nextInt() % 100 + 100;
+            int rand = new Random().nextInt() % 300 + 300;
             root = BinaryTreeNode.insertNode(root, rand);
         }
         BinaryTreeNode.inOrderTraversal(root);

@@ -2,12 +2,16 @@ package com.example.visualizeds.data_structure.builder;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.visualizeds.R;
@@ -22,27 +26,23 @@ public class BinarySearchTreeBuilder {
     @SuppressLint("ResourceType")
     public BinarySearchTreeBuilder(Context context) {
         this.context = context;
-
         //Generating constraint layout.
         constraintLayout = new ConstraintLayout(context);
         ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        constraintLayout.setId(150);
         constraintLayout.setLayoutParams(layoutParams);
     }
 
     public ConstraintLayout generateBinarySearchTree(BinaryTreeNode root) {
         root = generateBinarySearchTreeHelper(root);
-        generateBinarySearchTreeConstraintHelper(root);
+        root = generateBinarySearchTreeConstraintHelper(root);
+        constraintLayout.addView(root.nodeView);
         return constraintLayout;
     }
 
     private BinaryTreeNode generateBinarySearchTreeHelper(BinaryTreeNode root) {
         if (root == null) return null;
-
         //Generating a view of the BST Node.
-        root.nodeView = LayoutInflater.from(context).inflate(R.layout.item_binary_search_tree_node, constraintLayout, false);
-        int id = new Random().nextInt();
-        root.nodeView.setId(id % Integer.MAX_VALUE);
+        root.nodeView = LayoutInflater.from(context).inflate(R.layout.item_binary_search_tree_node, null);
 
         //recursive fn for left and right subtree.
         root.leftNode = generateBinarySearchTreeHelper(root.leftNode);
@@ -50,46 +50,18 @@ public class BinarySearchTreeBuilder {
         return root;
     }
 
-    private void generateBinarySearchTreeConstraintHelper(BinaryTreeNode root) {
-        if (root == null) return;
-        ConstraintLayout.LayoutParams childParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        //Calculating constraints of the view
-        if (root.parentNode == null) {
-            childParams.startToStart = constraintLayout.getId();
-            childParams.endToEnd = constraintLayout.getId();
-            childParams.topToTop = constraintLayout.getId();
-            childParams.topMargin = 32;
-        } else {
-            childParams.topToBottom = root.parentNode.nodeView.getId();
+    private BinaryTreeNode generateBinarySearchTreeConstraintHelper(BinaryTreeNode root) {
+        if (root == null) return null;
 
-            if (root.data < root.parentNode.data) {
-                if (root.parentNode.rightNode != null) {
-                    childParams.endToStart = root.parentNode.rightNode.nodeView.getId();
-                    childParams.rightMargin = 0;
-                } else {
-                    childParams.endToEnd = root.parentNode.nodeView.getId();
-                }
-                childParams.startToStart = root.parentNode.nodeView.getId();
-
-//                if (root.parentNode.parentNode == null) {
-//                    childParams.rightMargin = 600;
-//                } else {
-//                    childParams.rightMargin = 350;
-//                }
-            } else {
-                if (root.parentNode.leftNode != null) {
-                    childParams.startToEnd = root.parentNode.leftNode.nodeView.getId();
-                    childParams.leftMargin = 0;
-                } else {
-                    childParams.startToStart = root.parentNode.nodeView.getId();
-                }
-                childParams.endToEnd = root.parentNode.nodeView.getId();
-//                if (root.parentNode.parentNode == null) {
-//                    childParams.leftMargin = 600;
-//                } else {
-//                    childParams.leftMargin = 350;
-//                }
-            }
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.weight = 1;
+        if (root.leftNode != null) {
+            root.leftNode.nodeView.setLayoutParams(params);
+            ((LinearLayout) root.nodeView.findViewById(R.id.nodeHolder)).addView(root.leftNode.nodeView);
+        }
+        if (root.rightNode != null) {
+            root.rightNode.nodeView.setLayoutParams(params);
+            ((LinearLayout) root.nodeView.findViewById(R.id.nodeHolder)).addView(root.rightNode.nodeView);
         }
 
         //adding values to the BST Node UI.
@@ -100,12 +72,15 @@ public class BinarySearchTreeBuilder {
         if (root.rightNode == null)
             ((ImageView) root.nodeView.findViewById(R.id.nodeRightPointer)).setVisibility(View.INVISIBLE);
 
+        if(root.rightNode == null || root.leftNode == null){
+            root.nodeView.findViewById(R.id.divider).setVisibility(View.GONE);
+        }
 
-        //Setting the layout parameters
-        constraintLayout.addView(root.nodeView, childParams);
 
-        //Recursive fn call
-        generateBinarySearchTreeConstraintHelper(root.leftNode);
-        generateBinarySearchTreeConstraintHelper(root.rightNode);
+        //Recursive calls
+        root.leftNode = generateBinarySearchTreeConstraintHelper(root.leftNode);
+        root.rightNode = generateBinarySearchTreeConstraintHelper(root.rightNode);
+        return root;
     }
+
 }
