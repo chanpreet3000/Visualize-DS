@@ -602,4 +602,160 @@ public class DataStructureAlgorithmContentUtil {
     public static final String DOUBLY_LINKED_LIST_DELETION_WORST_CASE = "N";
     public static final String DOUBLY_LINKED_LIST_DELETION_AVERAGE_CASE = "N";
     public static final String DOUBLY_LINKED_LIST_DELETION_BEST_CASE = "1";
+
+    //BST
+
+    //Insertion
+
+    public static final String BINARY_SEARCH_TREE_INSERTION_THEORY =
+            "Binary Search Tree is a node-based binary tree data structure which has the following properties:  \n" +
+                    "\n" +
+                    "1) The left subtree of a node contains only nodes with keys lesser than the node’s key.\n" +
+                    "2) The right subtree of a node contains only nodes with keys greater than the node’s key.\n" +
+                    "3) The left and right subtree each must also be a binary search tree. \n" +
+                    "4) There must be no duplicate nodes.";
+    public static final String BINARY_SEARCH_TREE_INSERTION_ALGORITHM =
+            "1) Start from the root. \n" +
+                    "\n" +
+                    "2) Compare the searching element with root, if less than root, then recursively call left subtree, else recursively call right subtree.\n" +
+                    " \n" +
+                    "3) If the element to search is found anywhere, return true, else return false.\n" +
+                    "\n" +
+                    "4) We start searching a key from the root until we hit a leaf node. Once a leaf node is found, the new node is added as a child of the leaf node.\n" +
+                    "\n" +
+                    "5) If the key is already present we will not insert the key.";
+    public static final String BINARY_SEARCH_TREE_INSERTION_CODE =
+            "class TreeNode\n" +
+                    "{\n" +
+                    "public:\n" +
+                    "    int data;\n" +
+                    "    TreeNode *left, *right;\n" +
+                    "    TreeNode(int _data)\n" +
+                    "    {\n" +
+                    "        data = _data;\n" +
+                    "        left = NULL;\n" +
+                    "        right = NULL;\n" +
+                    "    }\n" +
+                    "};\n" +
+                    "\n" +
+                    "TreeNode *Insertion(TreeNode *root, int target)\n" +
+                    "{\n" +
+                    "    if (root == NULL)\n" +
+                    "        return new TreeNode(target);\n" +
+                    "    if (target < root->data)\n" +
+                    "        root->left = Insertion(root->left, target);\n" +
+                    "    else if (target > root->data)\n" +
+                    "        root->right = Insertion(root->right, target);\n" +
+                    "    return root;\n" +
+                    "}";
+    public static final String BINARY_SEARCH_TREE_INSERTION_WORST_CASE = "Log N";
+    public static final String BINARY_SEARCH_TREE_INSERTION_AVERAGE_CASE = "Log N";
+    public static final String BINARY_SEARCH_TREE_INSERTION_BEST_CASE = "1";
+
+    //infix
+    public static final String BINARY_SEARCH_TREE_INFIX_THEORY =
+            "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., inorder traversal.";
+    public static final String BINARY_SEARCH_TREE_INFIX_ALGORITHM =
+            "1) Visit all the nodes in the left subtree.\n" +
+                    "\n" +
+                    "2) Visit the root node.\n" +
+                    "\n" +
+                    "3) Visit all the nodes in the right subtree.";
+    public static final String BINARY_SEARCH_TREE_INFIX_CODE =
+            "class TreeNode\n" +
+                    "{\n" +
+                    "public:\n" +
+                    "    int data;\n" +
+                    "    TreeNode *left, *right;\n" +
+                    "    TreeNode(int _data)\n" +
+                    "    {\n" +
+                    "        data = _data;\n" +
+                    "        left = NULL;\n" +
+                    "        right = NULL;\n" +
+                    "    }\n" +
+                    "};\n" +
+                    "\n" +
+                    "void InfixTraversal(TreeNode *root)\n" +
+                    "{\n" +
+                    "    if (root == NULL)\n" +
+                    "        return;\n" +
+                    "    InfixTraversal(root->left);\n" +
+                    "    cout << root->data << \" \";\n" +
+                    "    InfixTraversal(root->right);\n" +
+                    "}";
+    public static final String BINARY_SEARCH_TREE_INFIX_WORST_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_INFIX_AVERAGE_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_INFIX_BEST_CASE = "N";
+
+    //prefix
+
+    public static final String BINARY_SEARCH_TREE_PREFIX_THEORY =
+            "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., prefix traversal.";
+    public static final String BINARY_SEARCH_TREE_PREFIX_ALGORITHM =
+            "1) Visit the root node.\n" +
+                    "\n" +
+                    "2) Visit all the nodes in the left subtree.\n" +
+                    "\n" +
+                    "3) Visit all the nodes in the right subtree.";
+    public static final String BINARY_SEARCH_TREE_PREFIX_CODE =
+            "class TreeNode\n" +
+                    "{\n" +
+                    "public:\n" +
+                    "    int data;\n" +
+                    "    TreeNode *left, *right;\n" +
+                    "    TreeNode(int _data)\n" +
+                    "    {\n" +
+                    "        data = _data;\n" +
+                    "        left = NULL;\n" +
+                    "        right = NULL;\n" +
+                    "    }\n" +
+                    "};\n" +
+                    "\n" +
+                    "void PrefixTraversal(TreeNode *root)\n" +
+                    "{\n" +
+                    "    if (root == NULL)\n" +
+                    "        return;\n" +
+                    "    cout << root->data << \" \";\n" +
+                    "    PrefixTraversal(root->left);\n" +
+                    "    PrefixTraversal(root->right);\n" +
+                    "}";
+    public static final String BINARY_SEARCH_TREE_PREFIX_WORST_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_PREFIX_AVERAGE_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_PREFIX_BEST_CASE = "N";
+
+    //postfix
+
+    public static final String BINARY_SEARCH_TREE_POSTFIX_THEORY =
+            "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., postfix traversal.";
+    public static final String BINARY_SEARCH_TREE_POSTFIX_ALGORITHM =
+            "1) Visit all the nodes in the left subtree.\n" +
+                    "\n" +
+                    "2) Visit all the nodes in the right subtree.\n" +
+                    "\n" +
+                    "3) Visit the root node.";
+    public static final String BINARY_SEARCH_TREE_POSTFIX_CODE =
+            "class TreeNode\n" +
+                    "{\n" +
+                    "public:\n" +
+                    "    int data;\n" +
+                    "    TreeNode *left, *right;\n" +
+                    "    TreeNode(int _data)\n" +
+                    "    {\n" +
+                    "        data = _data;\n" +
+                    "        left = NULL;\n" +
+                    "        right = NULL;\n" +
+                    "    }\n" +
+                    "};\n" +
+                    "\n" +
+                    "void PostfixTraversal(TreeNode *root)\n" +
+                    "{\n" +
+                    "    if (root == NULL)\n" +
+                    "        return;\n" +
+                    "    PostfixTraversal(root->left);\n" +
+                    "    PostfixTraversal(root->right);\n" +
+                    "    cout << root->data << \" \";\n" +
+                    "}";
+    public static final String BINARY_SEARCH_TREE_POSTFIX_WORST_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_POSTFIX_AVERAGE_CASE = "N";
+    public static final String BINARY_SEARCH_TREE_POSTFIX_BEST_CASE = "N";
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".data_structure.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity">
+    tools:context=".data_structure.topics.binary_search_tree.traversal.infix.BinarySearchInfixVisualizerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,26 +72,26 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:text="Enter element to be inserted."
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                android:text="Enter element to be inserted."-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="22sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <EditText
-                android:id="@+id/targetEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="Enter a number."
-                android:minHeight="48dp"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+<!--            <EditText-->
+<!--                android:id="@+id/targetEditText"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                android:hint="Enter a number."-->
+<!--                android:minHeight="48dp"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="normal" />-->
 
             <Button
                 android:id="@+id/visualizeButton"

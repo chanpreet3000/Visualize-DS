@@ -14,6 +14,9 @@ import com.example.visualizeds.data_structure.topics.array.sorting.bubble_sort.B
 import com.example.visualizeds.data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.binary_search_tree.traversal.infix.BinarySearchInfixVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.binary_search_tree.traversal.postfix.BinarySearchPostfixVisualizerActivity;
+import com.example.visualizeds.data_structure.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity;
 import com.example.visualizeds.data_structure.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity;
@@ -175,16 +178,45 @@ public class DataStructureUtil {
                                             new ArrayList<>(Arrays.asList(
                                                     new DataStructureAlgorithm("Insertion", BinarySearchInsertionTreeVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_CODE,
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_WORST_CASE,
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
-                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
-                                                            Difficulty.EASY, R.drawable.ic_deletion)
-                                            )), Difficulty.EASY, R.drawable.ic_tree)
-                            )), Difficulty.EASY, R.drawable.ic_tree)
-
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add)
+                                            )), Difficulty.MEDIUM, R.drawable.ic_tree),
+                                    new DataStructureTopic("Binary Search Tree Traversals",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Infix Traversal", BinarySearchInfixVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Prefix Traversal", BinarySearchPrefixVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Postfix Traversal", BinarySearchPostfixVisualizerActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_CODE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_linear_search)
+                                            )), Difficulty.MEDIUM, R.drawable.ic_tree)
+                            )), Difficulty.MEDIUM, R.drawable.ic_tree)
             ));
 
 

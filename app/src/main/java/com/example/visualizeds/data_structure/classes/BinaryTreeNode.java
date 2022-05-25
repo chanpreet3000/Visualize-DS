@@ -35,12 +35,4 @@ public class BinaryTreeNode {
         }
         return root;
     }
-
-    public static void inOrderTraversal(BinaryTreeNode root) {
-        if (root == null) return;
-        inOrderTraversal(root.leftNode);
-        Log.d("HELLOWORLD", "inOrderTraversal: " + root.data);
-        inOrderTraversal(root.rightNode);
-    }
-
 }

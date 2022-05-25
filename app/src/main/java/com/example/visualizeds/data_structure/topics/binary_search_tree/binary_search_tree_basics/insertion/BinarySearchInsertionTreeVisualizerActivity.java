@@ -1,30 +1,16 @@
 package com.example.visualizeds.data_structure.topics.binary_search_tree.binary_search_tree_basics.insertion;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsoluteLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.visualizeds.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.visualizeds.data_structure.builder.BinarySearchTreeBuilder;
-import com.example.visualizeds.data_structure.builder.DoublyLinkedListNodeBuilder;
-import com.example.visualizeds.data_structure.builder.LinkedListNodeBuilder;
 import com.example.visualizeds.data_structure.builder.StepCardBuilder;
 import com.example.visualizeds.data_structure.classes.BinaryTreeNode;
 import com.example.visualizeds.data_structure.classes.DataStructureAlgorithm;
 import com.example.visualizeds.databinding.ActivityBinarySearchTreeInsertionVisualizerBinding;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class BinarySearchInsertionTreeVisualizerActivity extends AppCompatActivity {
@@ -37,17 +23,104 @@ public class BinarySearchInsertionTreeVisualizerActivity extends AppCompatActivi
         binding = ActivityBinarySearchTreeInsertionVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BinaryTreeNode root = null;
+        //filling header information
+        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
+        binding.titleTextView.setText(dataStructureAlgorithm.getName());
+        binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
+        binding.iconImageView.setImageResource(dataStructureAlgorithm.getIcon());
 
-        for (int i = 0; i < 10; i++) {
-            int rand = new Random().nextInt() % 300 + 300;
+        //Setting title
+        setTitle(dataStructureAlgorithm.getName() + " Visualizer");
+        BinaryTreeNode root = null;
+        //Binary Tree
+        for (int i = 0; i < 3; i++) {
+            int rand = new Random().nextInt() % 50;
             root = BinaryTreeNode.insertNode(root, rand);
         }
-        BinaryTreeNode.inOrderTraversal(root);
+        initialView(root);
 
+
+        //button click listener
+        BinaryTreeNode finalRoot = root;
+        binding.visualizeButton.setOnClickListener(v -> {
+            //clear all views of the linear Layout
+            clearLayout();
+            initialView(finalRoot);
+            BinaryTreeNode temp = finalRoot;
+
+            int target = 0;
+            try {
+                target = Integer.parseInt(binding.targetEditText.getText().toString().trim());
+            } catch (Exception e) {
+                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            //Generating in Between layout
+            int steps = 0;
+            while (temp != null) {
+                //Generating Visuals
+                StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
+                stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
+
+                //Adding view to the holder of the Step Card
+                BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
+                stepCardBuilder.getDataNodeHolder().addView(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, temp.data));
+
+                //Description
+                if (target == temp.data) {
+                    stepCardBuilder.setCardDescription("The element to be inserted is already present in the Binary Search Tree.");
+                } else if (target < temp.data) {
+                    stepCardBuilder.setCardDescription(String.format("%d is less than %d.\nTherefore we move to the left subtree.", target, temp.data));
+                } else {
+                    stepCardBuilder.setCardDescription(String.format("%d is greater than %d.\nTherefore we move to the right subtree.", target, temp.data));
+                }
+                binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+
+                //BST properties.
+                if (target == temp.data) {
+                    return;
+                } else if (target < temp.data) {
+                    temp = temp.leftNode;
+                } else {
+                    temp = temp.rightNode;
+                }
+                if (temp == null) {
+                    stepCardBuilder = new StepCardBuilder(getApplicationContext());
+                    stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
+                    stepCardBuilder.setCardDescription("We reached a null node so we will insert the node here.");
+                    //Adding view to the holder of the Step Card
+                    binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+                }
+            }
+            //Final Step Card
+            BinaryTreeNode.insertNode(finalRoot, target);
+            StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
+            stepCardBuilder.setCardTitle("Binary Search Tree After Insertion");
+            stepCardBuilder.setCardDescription("This is the Binary Search Tree after Insertion.");
+
+            //Generating Tree for Step Card
+            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
+            stepCardBuilder.getDataNodeHolder().addView(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, target));
+
+            //Adding view to the holder of the Step Card
+            binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+        });
+    }
+
+    private void clearLayout() {
+        binding.holderLinearLayout.removeAllViews();
+    }
+
+    private void initialView(BinaryTreeNode root) {
+        StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
+        stepCardBuilder.setCardTitle("Initial Binary Search Tree");
+        stepCardBuilder.setCardDescription("This is the initial Binary Search Tree.");
+
+        //Generating Tree for Step Card
         BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-        ConstraintLayout constraintLayout = binarySearchTreeBuilder.generateBinarySearchTree(root);
-//        constraintLayout.setBackground(getDrawable(R.drawable.red_border));
-        binding.scrollView.addView(constraintLayout);
+        stepCardBuilder.getDataNodeHolder().addView(binarySearchTreeBuilder.generateBinarySearchTree(root, Integer.MAX_VALUE));
+
+        //Adding view to the holder of the Step Card
+        binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
     }
 }

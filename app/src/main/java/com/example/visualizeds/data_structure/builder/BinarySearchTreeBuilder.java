@@ -2,12 +2,9 @@ package com.example.visualizeds.data_structure.builder;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,8 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.visualizeds.R;
 import com.example.visualizeds.data_structure.classes.BinaryTreeNode;
-
-import java.util.Random;
 
 public class BinarySearchTreeBuilder {
     private final Context context;
@@ -32,54 +27,51 @@ public class BinarySearchTreeBuilder {
         constraintLayout.setLayoutParams(layoutParams);
     }
 
-    public ConstraintLayout generateBinarySearchTree(BinaryTreeNode root) {
-        root = generateBinarySearchTreeHelper(root);
+    public ConstraintLayout generateBinarySearchTree(BinaryTreeNode root, int target) {
+        root = generateBinarySearchTreeHelper(root, target);
         root = generateBinarySearchTreeConstraintHelper(root);
         constraintLayout.addView(root.nodeView);
         return constraintLayout;
     }
 
-    private BinaryTreeNode generateBinarySearchTreeHelper(BinaryTreeNode root) {
+    private BinaryTreeNode generateBinarySearchTreeHelper(BinaryTreeNode root, int target) {
         if (root == null) return null;
         //Generating a view of the BST Node.
         root.nodeView = LayoutInflater.from(context).inflate(R.layout.item_binary_search_tree_node, null);
 
+        //Adding Values to the nodes.
+        ((TextView) root.nodeView.findViewById(R.id.dataNodeDataTextView)).setText(String.valueOf(root.data));
+        if (root.rightNode == null || root.leftNode == null)
+            root.nodeView.findViewById(R.id.divider).setVisibility(View.GONE);
+
+        if (root.data == target) {
+            root.nodeView.findViewById(R.id.dataNodeCardView).setForeground(AppCompatResources.getDrawable(context, R.drawable.red_border));
+        }
+
         //recursive fn for left and right subtree.
-        root.leftNode = generateBinarySearchTreeHelper(root.leftNode);
-        root.rightNode = generateBinarySearchTreeHelper(root.rightNode);
+        root.leftNode = generateBinarySearchTreeHelper(root.leftNode, target);
+        root.rightNode = generateBinarySearchTreeHelper(root.rightNode, target);
         return root;
     }
 
     private BinaryTreeNode generateBinarySearchTreeConstraintHelper(BinaryTreeNode root) {
         if (root == null) return null;
+        //Recursive calls
+        root.leftNode = generateBinarySearchTreeConstraintHelper(root.leftNode);
+        root.rightNode = generateBinarySearchTreeConstraintHelper(root.rightNode);
+
+        View currentView = root.nodeView;
+        LinearLayout linearLayout = currentView.findViewById(R.id.nodeHolder);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.weight = 1;
         if (root.leftNode != null) {
-            root.leftNode.nodeView.setLayoutParams(params);
-            ((LinearLayout) root.nodeView.findViewById(R.id.nodeHolder)).addView(root.leftNode.nodeView);
+            linearLayout.addView(root.leftNode.nodeView, params);
         }
         if (root.rightNode != null) {
-            root.rightNode.nodeView.setLayoutParams(params);
-            ((LinearLayout) root.nodeView.findViewById(R.id.nodeHolder)).addView(root.rightNode.nodeView);
+            linearLayout.addView(root.rightNode.nodeView, params);
         }
-
-        //adding values to the BST Node UI.
-        ((TextView) root.nodeView.findViewById(R.id.dataNodeDataTextView)).setText(String.valueOf(root.data));
-        if (root.leftNode == null)
-            ((ImageView) root.nodeView.findViewById(R.id.nodeLeftPointer)).setVisibility(View.INVISIBLE);
-
-        if (root.rightNode == null)
-            ((ImageView) root.nodeView.findViewById(R.id.nodeRightPointer)).setVisibility(View.INVISIBLE);
-
-        if(root.rightNode == null || root.leftNode == null){
-            root.nodeView.findViewById(R.id.divider).setVisibility(View.GONE);
-        }
-
-
-        //Recursive calls
-        root.leftNode = generateBinarySearchTreeConstraintHelper(root.leftNode);
-        root.rightNode = generateBinarySearchTreeConstraintHelper(root.rightNode);
+        root.nodeView = currentView;
         return root;
     }
 
