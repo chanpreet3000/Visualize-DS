@@ -14,61 +14,64 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
-            android:name=".data_structure.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixVisualizerActivity"
+            android:name=".topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.binary_search_tree.traversal.postfix.BinarySearchPostfixVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.binary_search_tree.traversal.infix.BinarySearchInfixVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity"
+            android:name=".topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity"
+            android:name=".topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.array.searching.linear_search.LinearSearchVisualizerActivity"
+            android:name=".topics.array.sorting.selection_sort.SelectionSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.array.searching.binary_search.BinarySearchVisualizerActivity"
+            android:name=".topics.array.searching.linear_search.LinearSearchVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.activity.DataStructureAlgorithmTheoryActivity"
+            android:name=".topics.array.searching.binary_search.BinarySearchVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity"
+            android:name=".activity.DataStructureAlgorithmTheoryActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.activity.DataStructureTopicActivity"
+            android:name=".topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.activity.DataStructureAlgorithmActivity"
+            android:name=".activity.DataStructureTopicActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure.activity.DataStructureActivity"
+            android:name=".activity.DataStructureAlgorithmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DataStructureActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
