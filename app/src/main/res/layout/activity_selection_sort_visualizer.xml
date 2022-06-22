@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".topics.array.sorting.selection_sort.SelectionSortVisualizerActivity">
+    tools:context="com.chanpreet.visualizeds.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

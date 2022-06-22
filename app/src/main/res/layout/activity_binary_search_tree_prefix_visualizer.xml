@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity">
+    tools:context="com.chanpreet.visualizeds.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
