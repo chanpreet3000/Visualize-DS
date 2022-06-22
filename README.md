@@ -37,4 +37,8 @@ Visualize Data Structure is an Android Application aiming to simplify the learni
     <img src = "https://user-images.githubusercontent.com/66767005/174963477-5a3cd56c-eb80-4fd4-9c8c-02cf868d232b.jpg" width = "200"/>
     <img src = "https://user-images.githubusercontent.com/66767005/174963481-7293b7c2-5c08-4ffe-b12c-9832999eba27.jpg" width = "200"/>
     
+ * Theory Section Template
+
+    <img src = "https://user-images.githubusercontent.com/66767005/174966285-d97687c5-944b-44e5-9cb0-f1b753e50cbb.jpg" width = "200"/>
+
 I am working on implementing more algorithms and data structures.
