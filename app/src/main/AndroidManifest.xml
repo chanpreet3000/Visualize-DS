@@ -14,64 +14,67 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
-            android:name="com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity"
+            android:name=".VisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity"
+            android:name=".topics.array.sorting.bubble_sort.ArrayBubbleSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity"
+            android:name=".topics.array.searching.binary_search.ArrayBinarySearchVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity"
+            android:name=".topics.array.searching.linear_search.ArrayLinearSearchActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity"
+            android:name=".topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity"
+            android:name=".topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity"
+            android:name=".topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity"
+            android:name=".topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.array.searching.linear_search.LinearSearchVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.array.searching.binary_search.BinarySearchVisualizerActivity"
+            android:name=".topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.activity.DataStructureAlgorithmTheoryActivity"
+            android:name=".topics.array.sorting.insertion_sort.ArrayInsertionSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity"
+            android:name=".topics.array.sorting.selection_sort.SelectionSortVisualizerActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.activity.DataStructureTopicActivity"
+            android:name=".activity.DataStructureAlgorithmTheoryActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.activity.DataStructureAlgorithmActivity"
+            android:name=".activity.DataStructureTopicActivity"
             android:exported="false" />
         <activity
-            android:name="com.chanpreet.visualizeds.activity.DataStructureActivity"
+            android:name=".activity.DataStructureAlgorithmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DataStructureActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

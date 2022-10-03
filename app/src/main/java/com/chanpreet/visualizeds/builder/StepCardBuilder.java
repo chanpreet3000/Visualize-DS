@@ -21,7 +21,6 @@ public class StepCardBuilder {
     private final TextView descriptionTextView;
 
     public StepCardBuilder(Context context) {
-
         //generating Step Card
         stepCard = LayoutInflater.from(context).inflate(R.layout.item_visualizer_step_card_1, null,false);
 

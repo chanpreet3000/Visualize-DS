@@ -37,7 +37,7 @@ public class BinarySearchTreeDeletionVisualizerActivity extends AppCompatActivit
 
         //Binary Tree
         for (int i = 0; i < 5; i++) {
-            int rand = new Random().nextInt() % 500;
+            int rand = new Random().nextInt() % 100;
             root = BinaryTreeNode.insertNode(root, rand);
         }
         initialView(root);

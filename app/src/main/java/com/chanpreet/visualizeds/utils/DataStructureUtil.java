@@ -1,27 +1,36 @@
 package com.chanpreet.visualizeds.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Point;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.ScrollView;
+
 import androidx.annotation.NonNull;
 
-import com.chanpreet.visualizeds.topics.array.searching.binary_search.BinarySearchVisualizerActivity;
-import com.chanpreet.visualizeds.topics.array.searching.linear_search.LinearSearchVisualizerActivity;
-import com.chanpreet.visualizeds.topics.array.sorting.bubble_sort.BubbleSortVisualizerActivity;
-import com.chanpreet.visualizeds.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity;
 import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithmContent;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
-import com.chanpreet.visualizeds.topics.array.sorting.insertion_sort.InsertionSortVisualizerActivity;
+import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
+import com.chanpreet.visualizeds.topics.array.searching.binary_search.ArrayBinarySearchVisualizerActivity;
+import com.chanpreet.visualizeds.topics.array.searching.linear_search.ArrayLinearSearchActivity;
+import com.chanpreet.visualizeds.topics.array.sorting.bubble_sort.ArrayBubbleSortVisualizerActivity;
+import com.chanpreet.visualizeds.topics.array.sorting.insertion_sort.ArrayInsertionSortVisualizerActivity;
+import com.chanpreet.visualizeds.topics.array.sorting.selection_sort.SelectionSortVisualizerActivity;
+import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity;
+import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
+import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity;
 import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity;
 import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity;
 import com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.deletion.DoublyLinkedListDeletionVisualizerActivity;
 import com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.insertion.DoublyLinkedListInsertionVisualizerActivity;
 import com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.traversal.DoublyLinkedListTraversalVisualizerActivity;
+import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.deletion.LinkedListDeletionVisualizerActivity;
 import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.insertion.LinkedListInsertionVisualizerActivity;
 import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.traversal.LinkedListTraversalVisualizerActivity;
 
@@ -39,7 +48,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Searching",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Linear Search", LinearSearchVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Linear Search", ArrayLinearSearchActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_THEORY,
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_ALGORITHM,
@@ -48,7 +57,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.LINEAR_SEARCH_BEST_CASE),
                                                             Difficulty.BASIC, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Binary Search", BinarySearchVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Binary Search", ArrayBinarySearchVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_ALGORITHM,
@@ -60,7 +69,7 @@ public class DataStructureUtil {
                                             )), Difficulty.EASY, R.drawable.ic_search),
                                     new DataStructureTopic("Sorting",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Bubble Sort", BubbleSortVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Bubble Sort", ArrayBubbleSortVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BUBBLE_SORT_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BUBBLE_SORT_ALGORITHM,
@@ -78,7 +87,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.SELECTION_SORT_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.SELECTION_SORT_BEST_CASE),
                                                             Difficulty.BASIC, R.drawable.ic_selection_sort),
-                                                    new DataStructureAlgorithm("Insertion Sort", InsertionSortVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Insertion Sort", ArrayInsertionSortVisualizerActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.INSERTION_SORT_THEORY,
                                                                     DataStructureAlgorithmContentUtil.INSERTION_SORT_ALGORITHM,
@@ -256,5 +265,36 @@ public class DataStructureUtil {
             }
         }
         return arr;
+    }
+
+    public static void fillHeaderInformation(Activity activity, ActivityVisualizerBinding binding) {
+        //getting Information from Intent.
+        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) activity.getIntent().getSerializableExtra("data");
+
+        //Filling the header Information.
+        binding.titleTextView.setText(dataStructureAlgorithm.getName());
+        binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
+        binding.iconImageView.setImageResource(dataStructureAlgorithm.getIcon());
+
+        //Setting title
+        activity.setTitle(dataStructureAlgorithm.getName() + " Visualizer");
+    }
+
+    public static void scrollToView(final ScrollView scrollViewParent, final View view) {
+        // Get deepChild Offset
+        Point childOffset = new Point();
+        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
+        // Scroll to child.
+        scrollViewParent.smoothScrollTo(0, childOffset.y);
+    }
+
+    private static void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
+        ViewGroup parentGroup = (ViewGroup) parent;
+        accumulatedOffset.x += child.getLeft();
+        accumulatedOffset.y += child.getTop();
+        if (parentGroup.equals(mainParent)) {
+            return;
+        }
+        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
     }
 }

@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.topics.array.sorting.selection_sort;
+package com.chanpreet.visualizeds.topics.array.sorting.bubble_sort;
 
 import android.os.Bundle;
 import android.text.InputType;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SelectionSortVisualizerActivity extends AppCompatActivity {
+public class ArrayBubbleSortVisualizerActivity extends AppCompatActivity {
 
     private ActivityVisualizerBinding binding;
     private EditText arrayEditText;
@@ -61,51 +61,37 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
         List<Integer> arr = DataStructureUtil.stringToArray(arrayEditText.getText().toString().trim());
 
         List<StepCard> stepCardList = new ArrayList<>();
-        //Selection Sort
+        //Bubble Sort
         int steps = 0;
         for (int i = 0; i < arr.size(); i++) {
-            int pos = i;
-            for (int j = i; j < arr.size(); j++) {
-                HashMap<Integer, Integer> map = new HashMap<>();
+            for (int j = 0; j < arr.size() - 1 - i; j++) {
+                //Building step card
                 StepCard stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-                if (arr.get(j) < arr.get(pos)) {
-                    stepCard.setDescription(String.format(Locale.US, "%d is smaller than %d.\nNow, smallest value is %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                } else {
-                    stepCard.setDescription(String.format(Locale.US, "%d is not smaller than %d.\nTherefore, smallest value is still %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                }
-                //Selection Sort Condition
-                if (arr.get(j) < arr.get(pos)) {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
+                HashMap<Integer, Integer> map = new HashMap<>();
+                if (arr.get(j) > arr.get(j + 1)) {
+                    int temp = arr.get(j);
+                    arr.set(j, arr.get(j + 1));
+                    arr.set(j + 1, temp);
                     map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
-                    pos = j;
+                    map.put(j + 1, ArrayBuilder.COLOR_TARGET_MATCHED);
+                    stepCard.setDescription(String.format(Locale.US, "%d is greater than %d.\nTherefore swapping %d & %d.", arr.get(j), arr.get(j + 1), arr.get(j), arr.get(j + 1)));
                 } else {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                     map.put(j, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
+                    map.put(j + 1, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
+                    stepCard.setDescription(String.format(Locale.US, "%d is not greater than %d.\nTherefore no swapping necessary.", arr.get(j), arr.get(j + 1)));
                 }
                 stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
                 stepCardList.add(stepCard);
             }
-            int temp = arr.get(i);
-            arr.set(i, arr.get(pos));
-            arr.set(pos, temp);
         }
-
-        HashMap<Integer, Integer> map = new HashMap<>();
-        StepCard stepCard = new StepCard();
-        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription("Array is now sorted!");
-        stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
-        stepCardList.add(stepCard);
-        //Adapter
         adapter.setStepCardList(stepCardList);
     }
-
 
     private void generateInputUI() {
         //Creating UI
         ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array.");
+        binding1.textView.setText("Enter your array (Sorted Array)");
         binding1.editText.setHint("Enter numbers here (with spaces)");
         binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
@@ -114,6 +100,7 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
 
         //caching UI
         arrayEditText = binding1.editText;
+
         //
         adapter = new StepCardAdapter(getApplicationContext());
         binding.viewPager.setAdapter(adapter);

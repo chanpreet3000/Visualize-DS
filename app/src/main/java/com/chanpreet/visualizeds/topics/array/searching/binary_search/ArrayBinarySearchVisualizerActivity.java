@@ -1,9 +1,10 @@
-package com.chanpreet.visualizeds.topics.array.sorting.selection_sort;
+package com.chanpreet.visualizeds.topics.array.searching.binary_search;
 
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,10 +21,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SelectionSortVisualizerActivity extends AppCompatActivity {
+public class ArrayBinarySearchVisualizerActivity extends AppCompatActivity {
 
     private ActivityVisualizerBinding binding;
     private EditText arrayEditText;
+    private EditText targetEditText;
     private StepCardAdapter adapter;
 
     @Override
@@ -42,6 +44,7 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
         binding.visualizeButton.setOnClickListener(v -> visualizeButtonClicked());
         binding.leftStepBtn.setOnClickListener(v -> {
             int curr = binding.viewPager.getCurrentItem();
+            int n = Objects.requireNonNull(binding.viewPager.getAdapter()).getItemCount();
             int next = Math.max(0, curr - 1);
             binding.viewPager.setCurrentItem(next);
         });
@@ -56,67 +59,71 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
     private void visualizeButtonClicked() {
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
-
         //getting array and target
         List<Integer> arr = DataStructureUtil.stringToArray(arrayEditText.getText().toString().trim());
-
-        List<StepCard> stepCardList = new ArrayList<>();
-        //Selection Sort
-        int steps = 0;
-        for (int i = 0; i < arr.size(); i++) {
-            int pos = i;
-            for (int j = i; j < arr.size(); j++) {
-                HashMap<Integer, Integer> map = new HashMap<>();
-                StepCard stepCard = new StepCard();
-                stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-                if (arr.get(j) < arr.get(pos)) {
-                    stepCard.setDescription(String.format(Locale.US, "%d is smaller than %d.\nNow, smallest value is %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                } else {
-                    stepCard.setDescription(String.format(Locale.US, "%d is not smaller than %d.\nTherefore, smallest value is still %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                }
-                //Selection Sort Condition
-                if (arr.get(j) < arr.get(pos)) {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
-                    map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
-                    pos = j;
-                } else {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
-                    map.put(j, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
-                }
-                stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
-                stepCardList.add(stepCard);
-            }
-            int temp = arr.get(i);
-            arr.set(i, arr.get(pos));
-            arr.set(pos, temp);
+        int target;
+        try {
+            target = Integer.parseInt(targetEditText.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        StepCard stepCard = new StepCard();
-        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription("Array is now sorted!");
-        stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
-        stepCardList.add(stepCard);
-        //Adapter
+        int start = 0, end = arr.size() - 1;
+        int steps = 0;
+        List<StepCard> stepCardList = new ArrayList<>();
+        boolean canContinue = true;
+        while (start <= end) {
+            if (!canContinue) break;
+            int mid = start + (end - start) / 2;
+            //generating Step Card
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+
+            HashMap<Integer, Integer> map = new HashMap<>();
+            if (arr.get(mid) == target) {
+                canContinue = false;
+                map.put(mid, ArrayBuilder.COLOR_TARGET_MATCHED);
+                stepCard.setDescription("Target was found at the middle position.");
+            } else {
+                map.put(mid, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
+                if (arr.get(mid) > target) {
+                    end = mid - 1;
+                    stepCard.setDescription("Target is smaller than element at the middle position.\nTherefore we eliminate right side from the middle.");
+                } else {
+                    start = mid + 1;
+                    stepCard.setDescription("Target is greater than element at the middle position.\nTherefore we eliminate left side from the middle.");
+                }
+            }
+            stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
+            stepCardList.add(stepCard);
+        }
         adapter.setStepCardList(stepCardList);
     }
-
 
     private void generateInputUI() {
         //Creating UI
         ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array.");
+        binding1.textView.setText("Enter your array (Sorted Array)");
         binding1.editText.setHint("Enter numbers here (with spaces)");
         binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
+        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Enter element to be searched");
+        binding2.editText.setHint("Enter number to be searched");
+        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
         //adding UI
         binding.inputLinearLayout.addView(binding1.getRoot());
+        binding.inputLinearLayout.addView(binding2.getRoot());
 
         //caching UI
         arrayEditText = binding1.editText;
+        targetEditText = binding2.editText;
         //
         adapter = new StepCardAdapter(getApplicationContext());
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setOffscreenPageLimit(4);
+        //
     }
 }

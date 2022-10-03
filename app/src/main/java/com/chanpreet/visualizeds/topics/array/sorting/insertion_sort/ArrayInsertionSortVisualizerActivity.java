@@ -1,11 +1,11 @@
-package com.chanpreet.visualizeds.topics.array.sorting.selection_sort;
+package com.chanpreet.visualizeds.topics.array.sorting.insertion_sort;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.chanpreet.visualizeds.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SelectionSortVisualizerActivity extends AppCompatActivity {
-
+public class ArrayInsertionSortVisualizerActivity extends AppCompatActivity {
     private ActivityVisualizerBinding binding;
     private EditText arrayEditText;
     private StepCardAdapter adapter;
@@ -61,51 +60,44 @@ public class SelectionSortVisualizerActivity extends AppCompatActivity {
         List<Integer> arr = DataStructureUtil.stringToArray(arrayEditText.getText().toString().trim());
 
         List<StepCard> stepCardList = new ArrayList<>();
-        //Selection Sort
+        //Insertion Sort
         int steps = 0;
-        for (int i = 0; i < arr.size(); i++) {
-            int pos = i;
-            for (int j = i; j < arr.size(); j++) {
+        for (int i = 1; i < arr.size(); i++) {
+            int temp = arr.get(i);
+            int j = i - 1;
+            while (j >= 0 && temp <= arr.get(j)) {
                 HashMap<Integer, Integer> map = new HashMap<>();
+                //Building step card
                 StepCard stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-                if (arr.get(j) < arr.get(pos)) {
-                    stepCard.setDescription(String.format(Locale.US, "%d is smaller than %d.\nNow, smallest value is %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                } else {
-                    stepCard.setDescription(String.format(Locale.US, "%d is not smaller than %d.\nTherefore, smallest value is still %d.", arr.get(j), arr.get(pos), arr.get(j)));
-                }
-                //Selection Sort Condition
-                if (arr.get(j) < arr.get(pos)) {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
-                    map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
-                    pos = j;
-                } else {
-                    map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
-                    map.put(j, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
-                }
+                stepCard.setDescription(String.format(Locale.US, "%d is greater than %d.\nTherefore, moving array element right.", arr.get(j), temp));
+                //
+                map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
+
+                //Generating Data for Step Card
                 stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
                 stepCardList.add(stepCard);
-            }
-            int temp = arr.get(i);
-            arr.set(i, arr.get(pos));
-            arr.set(pos, temp);
-        }
 
+                //Insertion Sort condition
+                arr.set(j + 1, arr.get(j));
+                arr.set(j, temp);
+                j = j - 1;
+            }
+        }
         HashMap<Integer, Integer> map = new HashMap<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription("Array is now sorted!");
+        stepCard.setDescription(String.format(Locale.US, "Array is now sorted!"));
         stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
         stepCardList.add(stepCard);
         //Adapter
         adapter.setStepCardList(stepCardList);
     }
 
-
     private void generateInputUI() {
         //Creating UI
         ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array.");
+        binding1.textView.setText("Enter your array (Sorted Array)");
         binding1.editText.setHint("Enter numbers here (with spaces)");
         binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
