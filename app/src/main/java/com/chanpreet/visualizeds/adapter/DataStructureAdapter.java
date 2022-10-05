@@ -1,6 +1,7 @@
 package com.chanpreet.visualizeds.adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -37,7 +38,7 @@ public class DataStructureAdapter extends RecyclerView.Adapter<DataStructureAdap
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
         Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
-        holder.binding.dataStructureIconCard.setCardBackgroundColor(context.getColor(color));
+        holder.binding.cardView.setImageTintList(ColorStateList.valueOf(context.getColor(color)));
         if (data.getIcon() != null) {
             holder.binding.dataStructureIcon.setImageResource(data.getIcon());
         }

@@ -2,8 +2,10 @@ package com.chanpreet.visualizeds.topics;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.chanpreet.visualizeds.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
@@ -27,7 +29,10 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         fillHeaderInformation();
         generateInputUI();
 
-        binding.visualizeButton.setOnClickListener(v -> visualizeButtonClicked());
+        binding.visualizeButton.setOnClickListener(v -> {
+            hideKeyboard();
+            visualizeButtonClicked();
+        });
         binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
         binding.rightStepBtn.setOnClickListener(v -> visualizeNextStep());
 
@@ -77,5 +82,14 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     }
 
     public void onCreate() {
+    }
+
+    private void hideKeyboard() {
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }
