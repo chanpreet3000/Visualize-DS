@@ -1,129 +1,105 @@
 package com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.traversal;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.text.InputType;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.chanpreet.visualizeds.builder.DoublyLinkedListNodeBuilder;
-import com.chanpreet.visualizeds.builder.LinkedListNodeBuilder;
-import com.chanpreet.visualizeds.builder.StepCardBuilder;
-import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
-import com.chanpreet.visualizeds.databinding.ActivityDoublyLinkedListTraversalVisualizerBinding;
+import com.chanpreet.visualizeds.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
+import com.chanpreet.visualizeds.topics.VisualizerActivity;
+import com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.DoublyLinkedListBuilder;
+import com.chanpreet.visualizeds.topics.doubly_linked_list.doubly_linked_list_basics.DoublyLinkedListNode;
+import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.LinkedListNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
-public class DoublyLinkedListTraversalVisualizerActivity extends AppCompatActivity {
+public class DoublyLinkedListTraversalVisualizerActivity extends VisualizerActivity {
 
-    private ActivityDoublyLinkedListTraversalVisualizerBinding binding;
+    private EditText arrayEditText;
+    private DoublyLinkedListNode head = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityDoublyLinkedListTraversalVisualizerBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    public void onCreate() {
+        super.onCreate();
 
-        //filling header information
-        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
-        binding.titleTextView.setText(dataStructureAlgorithm.getName());
-        binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
-        binding.iconImageView.setImageResource(dataStructureAlgorithm.getIcon());
-
-        //Setting title
-        setTitle(dataStructureAlgorithm.getName() + " Visualizer");
-
-
-        List<Integer> arr = new ArrayList<>();
+        Random random = new Random();
+        DoublyLinkedListNode temp = head;
         for (int i = 0; i < 5; i++) {
-            int rand = new Random().nextInt() % 100;
-            arr.add(rand);
-        }
-        initialView(arr);
-
-        //button click listener
-        binding.visualizeButton.setOnClickListener(v -> {
-            //clear all views of the linear Layout
-            clearLayout();
-            initialView(arr);
-
-            int target = 0;
-            try {
-                target = Integer.parseInt(binding.targetEditText.getText().toString().trim());
-            } catch (Exception e) {
-                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-                return;
+            DoublyLinkedListNode node = new DoublyLinkedListNode(random.nextInt() % 20);
+            if (temp == null) {
+                head = node;
+                temp = head;
+            } else {
+                temp.next = node;
+                temp = temp.next;
             }
-            //Generating in Between layout
-            int steps = 0;
-            for (int i = 0; i < arr.size(); i++) {
-                //Generating Visuals
-                StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
-                stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
-                if (i != arr.size() - 1)
-                    stepCardBuilder.setCardDescription("This node is not the equal to the search target.\nTherefore we move to the next node.");
-                else
-                    stepCardBuilder.setCardDescription("We reached the end of the Doubly Linked List because the next pointer points to NULL.\nTherefore, the element does not exists.");
-                if (arr.get(i) == target)
-                    stepCardBuilder.setCardDescription("We found the element to be searched.");
-
-                //Generating Data for Step Card
-                generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), i, target);
-                //Adding view to the holder of the Step Card
-                binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
-                if (arr.get(i) == target)
-                    return;
-            }
-        });
-    }
-
-    private void clearLayout() {
-        binding.holderLinearLayout.removeAllViews();
-    }
-
-    private void initialView(List<Integer> arr) {
-        StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
-        builder.setCardTitle("Initial Doubly Linked List");
-        builder.setCardDescription("This is the initial Doubly Linked List.");
-        //Generating Data for Step Card
-        generateLinkedListView(arr, builder.getDataNodeHolder(), -1, -1);
-        //Adding view to the holder of the Step Card
-        binding.holderLinearLayout.addView(builder.getStepCard());
-    }
-
-    private void generateLinkedListView(@NonNull List<Integer> arr, @NonNull LinearLayout holder, int index, int target) {
-        //adding head node
-        DoublyLinkedListNodeBuilder doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
-        doublyLinkedListNodeBuilder.setNodeData("HEAD");
-        holder.addView(doublyLinkedListNodeBuilder.getNode());
-
-        //adding data nodes
-        for (int i = 0; i < arr.size(); i++) {
-            //Initializing the data node view
-            doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
-            doublyLinkedListNodeBuilder.setNodeData(arr.get(i));
-            if (i == index) {
-                doublyLinkedListNodeBuilder.showIndexPointer();
-                if (arr.get(i) == target) {
-                    doublyLinkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_RED);
-                } else {
-                    doublyLinkedListNodeBuilder.setNodeColor(LinkedListNodeBuilder.COLOR_YELLOW_GREEN);
-                }
-            }
-            //adding data node to the linearLayout.
-            holder.addView(doublyLinkedListNodeBuilder.getNode());
-
-            //requesting focus
-            holder.requestChildFocus(holder.getChildAt(index+ 1),holder.getChildAt(index+ 1));
         }
 
-        //adding last NULL node
-        doublyLinkedListNodeBuilder = new DoublyLinkedListNodeBuilder(getApplicationContext());
-        doublyLinkedListNodeBuilder.setNodeData("NULL");
-        doublyLinkedListNodeBuilder.hideNodeNextPointer();
-        holder.addView(doublyLinkedListNodeBuilder.getNode());
+        List<StepCard> stepCardList = new ArrayList<>();
+        StepCard stepCard = new StepCard();
+        stepCard.setTitle("Initial Doubly Linked List!");
+        stepCard.setDescription("");
+        stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
+        stepCardList.add(stepCard);
+        adapter.setStepCardList(stepCardList);
+    }
+
+    @Override
+    public void generateInputUI() {
+//Creating UI
+        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding1.textView.setText("Enter an element to be searched!");
+        binding1.editText.setHint("Enter a value");
+        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        //adding UI
+        binding.inputLinearLayout.addView(binding1.getRoot());
+
+        //caching UI
+        arrayEditText = binding1.editText;
+    }
+
+    @Override
+    public void visualizeButtonClicked() {
+        int steps = 0;
+        //getting array and target
+        int target;
+        try {
+            target = Integer.parseInt(arrayEditText.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        boolean found = false;
+        List<StepCard> stepCardList = new ArrayList<>();
+        DoublyLinkedListNode temp = head;
+        while (temp != null) {
+            if (found) break;
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+            HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
+            if (temp.data == target) {
+                stepCard.setDescription("We found the element to be searched.");
+                map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
+                found = true;
+            } else {
+                stepCard.setDescription("This node is not the equal to the search target.\nTherefore we move to the next node.");
+                map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
+            }
+            stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
+            stepCardList.add(stepCard);
+            temp = temp.next;
+        }
+        if (!found) {
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle("Target not Present!");
+            stepCard.setDescription("");
+            stepCardList.add(stepCard);
+        }
+        adapter.setStepCardList(stepCardList);
     }
 }

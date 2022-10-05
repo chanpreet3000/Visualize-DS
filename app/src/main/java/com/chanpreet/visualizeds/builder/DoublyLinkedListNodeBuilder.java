@@ -41,8 +41,8 @@ public class DoublyLinkedListNodeBuilder {
 
         //referencing
         doublyLinkedListNode.setLayoutParams(params);
-        dataNodeDataTextView = doublyLinkedListNode.findViewById(R.id.dataNodeDataTextView);
-        dataNodeCardView = doublyLinkedListNode.findViewById(R.id.dataNodeCardView);
+        dataNodeDataTextView = doublyLinkedListNode.findViewById(R.id.data_text_view);
+        dataNodeCardView = doublyLinkedListNode.findViewById(R.id.card_view);
         dataNodeIndexPointer = doublyLinkedListNode.findViewById(R.id.dataNodeIndexPointer);
         nodeNextPointer = doublyLinkedListNode.findViewById(R.id.nodeNextPointer);
     }

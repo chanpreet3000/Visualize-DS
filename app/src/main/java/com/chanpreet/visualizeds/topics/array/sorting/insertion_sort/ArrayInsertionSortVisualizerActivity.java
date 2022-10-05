@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
+import com.chanpreet.visualizeds.topics.VisualizerActivity;
 import com.chanpreet.visualizeds.topics.array.ArrayBuilder;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 
@@ -20,39 +21,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class ArrayInsertionSortVisualizerActivity extends AppCompatActivity {
-    private ActivityVisualizerBinding binding;
+public class ArrayInsertionSortVisualizerActivity extends VisualizerActivity {
     private EditText arrayEditText;
-    private StepCardAdapter adapter;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityVisualizerBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        //filling header information
-        DataStructureUtil.fillHeaderInformation(this, binding);
-
-        //Generating a Input UI
-        generateInputUI();
-
-        //button click listener
-        binding.visualizeButton.setOnClickListener(v -> visualizeButtonClicked());
-        binding.leftStepBtn.setOnClickListener(v -> {
-            int curr = binding.viewPager.getCurrentItem();
-            int next = Math.max(0, curr - 1);
-            binding.viewPager.setCurrentItem(next);
-        });
-        binding.rightStepBtn.setOnClickListener(v -> {
-            int curr = binding.viewPager.getCurrentItem();
-            int n = Objects.requireNonNull(binding.viewPager.getAdapter()).getItemCount();
-            int next = Math.min(n - 1, curr + 1);
-            binding.viewPager.setCurrentItem(next);
-        });
-    }
-
-    private void visualizeButtonClicked() {
+    public void visualizeButtonClicked() {
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 
@@ -94,7 +66,8 @@ public class ArrayInsertionSortVisualizerActivity extends AppCompatActivity {
         adapter.setStepCardList(stepCardList);
     }
 
-    private void generateInputUI() {
+    @Override
+    public void generateInputUI() {
         //Creating UI
         ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
         binding1.textView.setText("Enter your array (Sorted Array)");

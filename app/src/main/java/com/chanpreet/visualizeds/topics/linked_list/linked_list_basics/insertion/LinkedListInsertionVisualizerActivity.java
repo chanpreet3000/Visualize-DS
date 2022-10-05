@@ -1,126 +1,107 @@
 package com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.insertion;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.text.InputType;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.chanpreet.visualizeds.builder.StepCardBuilder;
-import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
-import com.chanpreet.visualizeds.builder.LinkedListNodeBuilder;
-import com.chanpreet.visualizeds.databinding.ActivityLinkedListInsertionVisualizerBinding;
+import com.chanpreet.visualizeds.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
+import com.chanpreet.visualizeds.topics.VisualizerActivity;
+import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.LinkedListBuilder;
+import com.chanpreet.visualizeds.topics.linked_list.linked_list_basics.LinkedListNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
-public class LinkedListInsertionVisualizerActivity extends AppCompatActivity {
+public class LinkedListInsertionVisualizerActivity extends VisualizerActivity {
 
-    private ActivityLinkedListInsertionVisualizerBinding binding;
+    private EditText arrayEditText;
+    private LinkedListNode head = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityLinkedListInsertionVisualizerBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    public void onCreate() {
+        super.onCreate();
 
-        //filling header information
-        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
-        binding.titleTextView.setText(dataStructureAlgorithm.getName());
-        binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
-        binding.iconImageView.setImageResource(dataStructureAlgorithm.getIcon());
-
-        //Setting title
-        setTitle(dataStructureAlgorithm.getName() + " Visualizer");
-
-
-        List<Integer> arr = new ArrayList<>();
-        initialView(arr);
-        //button click listener
-        binding.visualizeButton.setOnClickListener(v -> {
-            //clear all views of the linear Layout
-            clearLayout();
-
-            //Generating Visuals
-            initialView(arr);
-
-
-            //Generating in Between layout
-            int steps = 0;
-            for (int i = 0; i < arr.size(); i++) {
-                //Generating Visuals
-                StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
-                stepCardBuilder.setCardTitle(String.format("Step %d", ++steps));
-                if (i != arr.size() - 1)
-                    stepCardBuilder.setCardDescription("This is not the end of the List.\nTherefore we move to the next node.");
-                else
-                    stepCardBuilder.setCardDescription("We reached the end of the linked list because the next pointer points to NULL.\nTherefore, we will add the Node here.");
-                //Generating Data for Step Card
-                generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), i);
-                //Adding view to the holder of the Step Card
-                binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
+        Random random = new Random();
+        LinkedListNode temp = head;
+        for (int i = 0; i < 3; i++) {
+            LinkedListNode node = new LinkedListNode(random.nextInt() % 20);
+            if (temp == null) {
+                head = node;
+                temp = head;
+            } else {
+                temp.next = node;
+                temp = temp.next;
             }
-
-            //Inserting the value
-            int target = 0;
-            try {
-                target = Integer.parseInt(binding.targetEditText.getText().toString().trim());
-            } catch (Exception e) {
-                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-                return;
-            }
-            arr.add(target);
-
-            StepCardBuilder stepCardBuilder = new StepCardBuilder(getApplicationContext());
-            stepCardBuilder.setCardTitle("Final Step");
-            stepCardBuilder.setCardDescription(String.format("Linked list after adding node with value %d.", target));
-            //Generating Data for Step Card
-            generateLinkedListView(arr, stepCardBuilder.getDataNodeHolder(), arr.size() - 1);
-            //Adding view to the holder of the Step Card
-            binding.holderLinearLayout.addView(stepCardBuilder.getStepCard());
-        });
-    }
-
-    private void clearLayout() {
-        binding.holderLinearLayout.removeAllViews();
-    }
-
-    private void initialView(List<Integer> arr) {
-        StepCardBuilder builder = new StepCardBuilder(getApplicationContext());
-        builder.setCardTitle("Initial doubly Doubly Linked List");
-        builder.setCardDescription("This is the initial doubly Doubly Linked List.");
-        //Generating Data for Step Card
-        generateLinkedListView(arr, builder.getDataNodeHolder(), -1);
-        //Adding view to the holder of the Step Card
-        binding.holderLinearLayout.addView(builder.getStepCard());
-    }
-
-    private void generateLinkedListView(@NonNull List<Integer> arr, @NonNull LinearLayout holder, int index) {
-        //adding head node
-        LinkedListNodeBuilder linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-        linkedListNodeBuilder.setNodeData("HEAD");
-        holder.addView(linkedListNodeBuilder.getNode());
-
-        //adding data nodes
-        for (int i = 0; i < arr.size(); i++) {
-            //Initializing the data node view
-            linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-            linkedListNodeBuilder.setNodeData(arr.get(i));
-            if (i == index) {
-                linkedListNodeBuilder.showIndexPointer();
-            }
-            //adding data node to the linearLayout.
-            holder.addView(linkedListNodeBuilder.getNode());
-
-            //requesting focus
-            holder.requestChildFocus(holder.getChildAt(index+ 1),holder.getChildAt(index+ 1));
         }
 
-        //adding last NULL node
-        linkedListNodeBuilder = new LinkedListNodeBuilder(getApplicationContext());
-        linkedListNodeBuilder.setNodeData("NULL");
-        linkedListNodeBuilder.hideNodeNextPointer();
-        holder.addView(linkedListNodeBuilder.getNode());
+        List<StepCard> stepCardList = new ArrayList<>();
+        StepCard stepCard = new StepCard();
+        stepCard.setTitle("Initial Linked List!");
+        stepCard.setDescription("");
+        stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
+        stepCardList.add(stepCard);
+        adapter.setStepCardList(stepCardList);
+    }
+
+    @Override
+    public void generateInputUI() {
+//Creating UI
+        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding1.textView.setText("Enter an element to be inserted!");
+        binding1.editText.setHint("Enter a value");
+        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        //adding UI
+        binding.inputLinearLayout.addView(binding1.getRoot());
+
+        //caching UI
+        arrayEditText = binding1.editText;
+    }
+
+    @Override
+    public void visualizeButtonClicked() {
+        int steps = 0;
+        //getting array and target
+        int target;
+        try {
+            target = Integer.parseInt(arrayEditText.getText().toString());
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        List<StepCard> stepCardList = new ArrayList<>();
+        LinkedListNode temp = head;
+        LinkedListNode prev = null;
+        while (temp != null) {
+
+
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+            stepCard.setDescription("This is not the end of the Linked List.\nTherefore we move towards the next element.");
+            HashMap<LinkedListNode, Integer> map = new HashMap<>();
+            map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
+            stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
+            stepCardList.add(stepCard);
+            prev = temp;
+            temp = temp.next;
+        }
+        LinkedListNode newNode = new LinkedListNode((target));
+        if (prev == null) {
+            head = newNode;
+        } else {
+            prev.next = newNode;
+        }
+        StepCard stepCard = new StepCard();
+        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+        stepCard.setDescription("This is the end!.\nTherefore we add the element right here!.");
+        HashMap<LinkedListNode, Integer> map = new HashMap<>();
+        map.put(newNode, LinkedListBuilder.COLOR_TARGET_MATCHED);
+        stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
+        stepCardList.add(stepCard);
+        adapter.setStepCardList(stepCardList);
     }
 }

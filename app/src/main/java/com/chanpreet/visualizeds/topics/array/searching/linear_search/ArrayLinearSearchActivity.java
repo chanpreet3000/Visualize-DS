@@ -1,17 +1,13 @@
 package com.chanpreet.visualizeds.topics.array.searching.linear_search;
 
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.chanpreet.visualizeds.StepCard;
-import com.chanpreet.visualizeds.adapter.StepCardAdapter;
-import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
+import com.chanpreet.visualizeds.topics.VisualizerActivity;
 import com.chanpreet.visualizeds.topics.array.ArrayBuilder;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 
@@ -19,44 +15,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
-public class ArrayLinearSearchActivity extends AppCompatActivity {
-    private ActivityVisualizerBinding binding;
+public class ArrayLinearSearchActivity extends VisualizerActivity {
     private EditText arrayEditText;
     private EditText targetEditText;
-    private StepCardAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityVisualizerBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    public void generateInputUI() {
+//Creating UI
+        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding1.textView.setText("Enter your array");
+        binding1.editText.setHint("Enter numbers here (with spaces)");
+        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
-        //filling header information
-        DataStructureUtil.fillHeaderInformation(this, binding);
+        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Enter element to be searched");
+        binding2.editText.setHint("Enter number to be searched");
+        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
-        //Generating a Input UI
-        generateInputUI();
+        //adding UI
+        binding.inputLinearLayout.addView(binding1.getRoot());
+        binding.inputLinearLayout.addView(binding2.getRoot());
 
-        //button click listener
-        binding.visualizeButton.setOnClickListener(v -> visualizeButtonClicked());
-        binding.leftStepBtn.setOnClickListener(v -> {
-            int curr = binding.viewPager.getCurrentItem();
-            int n = Objects.requireNonNull(binding.viewPager.getAdapter()).getItemCount();
-            int next = Math.max(0, curr - 1);
-            binding.viewPager.setCurrentItem(next);
-        });
-        binding.rightStepBtn.setOnClickListener(v -> {
-            int curr = binding.viewPager.getCurrentItem();
-            int n = Objects.requireNonNull(binding.viewPager.getAdapter()).getItemCount();
-            int next = Math.min(n - 1, curr + 1);
-            binding.viewPager.setCurrentItem(next);
-        });
+        //caching UI
+        arrayEditText = binding1.editText;
+        targetEditText = binding2.editText;
     }
 
-    private void visualizeButtonClicked() {
-        //clear all views of the linear Layout
+    @Override
+    public void visualizeButtonClicked() {
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 
         //getting array and target
@@ -88,30 +75,5 @@ public class ArrayLinearSearchActivity extends AppCompatActivity {
             stepCardList.add(stepCard);
         }
         adapter.setStepCardList(stepCardList);
-    }
-
-    private void generateInputUI() {
-        //Creating UI
-        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array");
-        binding1.editText.setHint("Enter numbers here (with spaces)");
-        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
-
-        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding2.textView.setText("Enter element to be searched");
-        binding2.editText.setHint("Enter number to be searched");
-        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
-
-        //adding UI
-        binding.inputLinearLayout.addView(binding1.getRoot());
-        binding.inputLinearLayout.addView(binding2.getRoot());
-
-        //caching UI
-        arrayEditText = binding1.editText;
-        targetEditText = binding2.editText;
-        //
-        adapter = new StepCardAdapter(getApplicationContext());
-        binding.viewPager.setAdapter(adapter);
-        binding.viewPager.setOffscreenPageLimit(4);
     }
 }

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemNoDataErrorBinding;
 import com.chanpreet.visualizeds.databinding.ItemStepCardBinding;
 
 import java.util.ArrayList;
@@ -17,11 +18,6 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
 
     private final Context context;
     private List<StepCard> stepCardList;
-
-    public StepCardAdapter(Context context, List<StepCard> stepCardList) {
-        this.context = context;
-        this.stepCardList = stepCardList;
-    }
 
     public StepCardAdapter(Context context) {
         this.context = context;
@@ -45,7 +41,11 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
         holder.binding.titleTextView.setText(stepCardList.get(position).getTitle());
         holder.binding.descriptionTextView.setText(stepCardList.get(position).getDescription());
         holder.binding.dataNodeHolder.removeAllViews();
-        holder.binding.dataNodeHolder.addView(stepCardList.get(position).getData());
+        if (stepCardList.get(position).getData() != null) {
+            holder.binding.dataNodeHolder.addView(stepCardList.get(position).getData());
+        } else {
+            holder.binding.dataNodeHolder.addView(ItemNoDataErrorBinding.inflate(LayoutInflater.from(context)).getRoot());
+        }
     }
 
     @Override

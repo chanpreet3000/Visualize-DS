@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/dataNodeCardView"
+        android:id="@+id/card_view"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -14,7 +14,7 @@
         app:cardCornerRadius="9999dp">
 
         <TextView
-            android:id="@+id/dataNodeDataTextView"
+            android:id="@+id/data_text_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"

@@ -40,12 +40,12 @@ public class BinarySearchTreeBuilder {
         root.nodeView = LayoutInflater.from(context).inflate(R.layout.item_binary_search_tree_node, null);
 
         //Adding Values to the nodes.
-        ((TextView) root.nodeView.findViewById(R.id.dataNodeDataTextView)).setText(String.valueOf(root.data));
+        ((TextView) root.nodeView.findViewById(R.id.data_text_view)).setText(String.valueOf(root.data));
         if (root.rightNode == null || root.leftNode == null)
             root.nodeView.findViewById(R.id.divider).setVisibility(View.GONE);
 
         if (root.data == target) {
-            root.nodeView.findViewById(R.id.dataNodeCardView).setForeground(AppCompatResources.getDrawable(context, R.drawable.red_border));
+            root.nodeView.findViewById(R.id.card_view).setForeground(AppCompatResources.getDrawable(context, R.drawable.red_border));
         }
 
         //recursive fn for left and right subtree.

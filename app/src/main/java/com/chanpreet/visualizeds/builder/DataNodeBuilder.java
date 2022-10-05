@@ -36,9 +36,9 @@ public class DataNodeBuilder {
 
         //referencing
         dataNode.setLayoutParams(params);
-        dataNodeDataTextView = dataNode.findViewById(R.id.dataNodeDataTextView);
+        dataNodeDataTextView = dataNode.findViewById(R.id.data_text_view);
         dataNodeIndexTextView = dataNode.findViewById(R.id.dataNodeIndexTextView);
-        dataNodeCardView = dataNode.findViewById(R.id.dataNodeCardView);
+        dataNodeCardView = dataNode.findViewById(R.id.card_view);
         dataNodeIndexPointer = dataNode.findViewById(R.id.dataNodeIndexPointer);
     }
 

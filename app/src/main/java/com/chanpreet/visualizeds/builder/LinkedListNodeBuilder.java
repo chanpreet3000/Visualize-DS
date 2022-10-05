@@ -42,10 +42,10 @@ public class LinkedListNodeBuilder {
 
         //referencing
         getLinkedListNode.setLayoutParams(params);
-        dataNodeDataTextView = getLinkedListNode.findViewById(R.id.dataNodeDataTextView);
-        dataNodeCardView = getLinkedListNode.findViewById(R.id.dataNodeCardView);
+        dataNodeDataTextView = getLinkedListNode.findViewById(R.id.data_text_view);
+        dataNodeCardView = getLinkedListNode.findViewById(R.id.card_view);
         dataNodeIndexPointer = getLinkedListNode.findViewById(R.id.dataNodeIndexPointer);
-        hideNodeNextPointer = getLinkedListNode.findViewById(R.id.hideNodeNextPointer);
+        hideNodeNextPointer = getLinkedListNode.findViewById(R.id.node_next_pointer);
     }
 
     public void setNodeData(Integer data) {

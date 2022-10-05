@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/dataNodeCardView"
+                android:id="@+id/card_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -26,7 +26,7 @@
                 app:cardCornerRadius="0dp">
 
                 <TextView
-                    android:id="@+id/dataNodeDataTextView"
+                    android:id="@+id/data_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -55,7 +55,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/hideNodeNextPointer"
+            android:id="@+id/node_next_pointer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -68,14 +68,14 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/dataNodeIndexPointer"
+        android:id="@+id/index_pointer"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
         android:padding="6dp"
+        android:visibility="invisible"
         android:paddingStart="12dp"
         android:rotation="270"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_long_arrow"
-        android:visibility="invisible" />
+        android:src="@drawable/ic_long_arrow"/>
 </LinearLayout>
