@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 import com.chanpreet.visualizeds.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
-import com.chanpreet.visualizeds.topics.VisualizerActivity;
+import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.ArrayBuilder;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 

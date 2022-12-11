@@ -37,7 +37,13 @@ import java.util.List;
 
 public class DataStructureUtil {
 
-    public static List<Integer> listOfColors = new ArrayList<>(Arrays.asList(R.color.dark_green, R.color.dark_red, R.color.old_lace_black, R.color.oxford_blue));
+    public static List<Integer> listOfColors = new ArrayList<>(Arrays.asList(
+            R.color.color_1,
+            R.color.color_2,
+            R.color.color_3,
+            R.color.color_4,
+            R.color.color_5,
+            R.color.color_6));
 
     public static List<DataStructure> dataStructures =
             new ArrayList<>(Arrays.asList(

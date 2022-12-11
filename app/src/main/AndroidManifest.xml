@@ -20,7 +20,7 @@
             android:name=".topics.queue.basics.PushPopActivity"
             android:exported="false" />
         <activity
-            android:name=".topics.VisualizerActivity"
+            android:name=".activity.VisualizerActivity"
             android:exported="false" />
         <activity
             android:name=".topics.array.sorting.BubbleSortActivity"

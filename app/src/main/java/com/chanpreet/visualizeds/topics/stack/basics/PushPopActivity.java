@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.chanpreet.visualizeds.StepCard;
 import com.chanpreet.visualizeds.builder.StackBuilder;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
-import com.chanpreet.visualizeds.topics.VisualizerActivity;
+import com.chanpreet.visualizeds.activity.VisualizerActivity;
 
 import java.util.ArrayList;
 import java.util.List;

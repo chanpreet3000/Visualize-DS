@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DataStructureTopicActivity extends AppCompatActivity {
 
@@ -28,6 +29,8 @@ public class DataStructureTopicActivity extends AppCompatActivity {
 
         binding.headingTextView.setText(String.format("%s Topics", dataStructure.getName()));
 
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         initRecyclerView(dataStructure.getDataStructureTopics());
     }
 
@@ -40,5 +43,11 @@ public class DataStructureTopicActivity extends AppCompatActivity {
             intent.putExtra("data", dataStructure.getDataStructureTopics().get(position));
             startActivity(intent);
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

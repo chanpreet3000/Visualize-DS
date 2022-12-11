@@ -1,16 +1,18 @@
 package com.chanpreet.visualizeds.classes;
 
+import com.chanpreet.visualizeds.activity.VisualizerActivity;
+
 import java.io.Serializable;
 
 //Algorithms like linear search and bubble sort
 public class DataStructureAlgorithm implements Serializable {
     private final String name;
-    private final Class visualizeClass;
+    private final Class<?> visualizeClass;
     private final DataStructureAlgorithmContent dataStructureAlgorithmContent;
     private final Difficulty difficulty;
     private final Integer icon;
 
-    public DataStructureAlgorithm(String name, Class visualizeClass, DataStructureAlgorithmContent dataStructureAlgorithmContent, Difficulty difficulty, Integer icon) {
+    public DataStructureAlgorithm(String name, Class<?> visualizeClass, DataStructureAlgorithmContent dataStructureAlgorithmContent, Difficulty difficulty, Integer icon) {
         this.name = name;
         this.visualizeClass = visualizeClass;
         this.dataStructureAlgorithmContent = dataStructureAlgorithmContent;
@@ -22,7 +24,7 @@ public class DataStructureAlgorithm implements Serializable {
         return name;
     }
 
-    public Class getVisualizeClass() {
+    public Class<?> getVisualizeClass() {
         return visualizeClass;
     }
 

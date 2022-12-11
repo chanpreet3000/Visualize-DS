@@ -11,7 +11,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:fontFamily">@font/mavenpro</item>
+        <item name="android:fontFamily">@font/mavenpro_black</item>
+        <item name="android:textStyle">normal</item>
         <!-- Customize your theme here. -->
     </style>
 

@@ -14,6 +14,7 @@ import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DataStructureAlgorithmActivity extends AppCompatActivity {
 
@@ -31,6 +32,8 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
         initRecyclerView(dataStructureTopic.dataStructureAlgorithms());
 
         binding.headingTextView.setText(String.format("%s Algorithms", dataStructureTopic.getName()));
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     private void initRecyclerView(List<DataStructureAlgorithm> list) {
@@ -46,7 +49,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
 
         // Visualize Btn Click Listener
         adapter.setVisualizeListenerOnClickListener(position -> {
-            Class mClass = dataStructureTopic.dataStructureAlgorithms().get(position).getVisualizeClass();
+            Class<?> mClass = dataStructureTopic.dataStructureAlgorithms().get(position).getVisualizeClass();
             if (mClass == null) {
                 Toast.makeText(getApplicationContext(), getString(R.string.missing_visualize_class), Toast.LENGTH_SHORT).show();
                 return;
@@ -56,5 +59,11 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

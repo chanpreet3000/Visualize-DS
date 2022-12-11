@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="150dp"
     app:cardCornerRadius="24dp"
     app:cardUseCompatPadding="true">
 
@@ -36,7 +36,7 @@
                 android:layout_marginVertical="8dp"
                 android:text="Title"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
                 android:text="Difficulty"
-                android:textColor="@color/white"
+                android:textColor="@color/old_lace_white"
                 android:textSize="16sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -65,45 +65,4 @@
                 app:tint="@color/white" />
         </LinearLayout>
     </LinearLayout>
-
-
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/dataStructureIconCard"-->
-    <!--        android:layout_width="55dp"-->
-    <!--        android:layout_height="55dp"-->
-    <!--        android:layout_margin="16dp"-->
-    <!--        app:cardBackgroundColor="@color/cedar_orange"-->
-    <!--        app:cardCornerRadius="16dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/dataStructureIcon"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:padding="8dp"-->
-    <!--            android:src="@drawable/ic_arrow_upward_24"-->
-    <!--            app:tint="@color/white" />-->
-    <!--    </androidx.cardview.widget.CardView>-->
-
-
-    <!--        <androidx.cardview.widget.CardView-->
-    <!--            android:id="@+id/dataStructureNextIcon"-->
-    <!--            android:layout_width="40dp"-->
-    <!--            android:layout_height="40dp"-->
-    <!--            android:layout_margin="16dp"-->
-    <!--            app:cardBackgroundColor="@color/dark_green"-->
-    <!--            app:cardCornerRadius="999dp"-->
-    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--            <ImageView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:padding="8dp"-->
-    <!--                android:src="@drawable/ic_arrow_right_24"-->
-    <!--                app:tint="@color/white" />-->
-    <!--        </androidx.cardview.widget.CardView>-->
 </androidx.cardview.widget.CardView>

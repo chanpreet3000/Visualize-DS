@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chanpreet.visualizeds.utils.DataStructureUtil;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.databinding.ItemDataStructureTopicAlgorithmBinding;
+import com.chanpreet.visualizeds.utils.DataStructureUtil;
 
 import java.util.List;
 
@@ -35,13 +35,17 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
     @Override
     public void onBindViewHolder(@NonNull DSItemViewHolder holder, int position) {
         DataStructureAlgorithm data = list.get(position);
+
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
+
         Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
-        holder.binding.dataStructureIconCard.setCardBackgroundColor(context.getColor(color));
-        if (data.getIcon() != null) {
-            holder.binding.dataStructureIcon.setImageResource(data.getIcon());
-        }
+
+        holder.binding.backgroundCardView1.setBackgroundColor(context.getColor(color));
+        holder.binding.backgroundCardView2.setImageResource(data.getIcon());
+
+        holder.binding.iconCardView.setCardBackgroundColor(context.getColor(color));
+        holder.binding.iconImageView.setImageResource(data.getIcon());
     }
 
     @Override

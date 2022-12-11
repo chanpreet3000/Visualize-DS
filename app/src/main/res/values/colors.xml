@@ -25,4 +25,14 @@
     <color name="blood_red">#FF0035</color>
     <color name="green">#219E21</color>
 
+
+    <color name="color_1">#44001a</color>
+    <color name="color_2">#0C1B33</color>
+    <color name="color_3">#002626</color>
+    <color name="color_4">#2D0035</color>
+    <color name="color_5">#1B1B1B</color>
+    <color name="color_6">#5A001E</color>
+    <color name="color_7">#FF731D</color>
+    <color name="color_8">#219E21</color>
+    <color name="color_9">#FFAA00</color>
 </resources>
