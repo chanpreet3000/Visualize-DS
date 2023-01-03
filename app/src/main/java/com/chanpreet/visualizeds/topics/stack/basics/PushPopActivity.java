@@ -17,7 +17,7 @@ import java.util.Stack;
 
 public class PushPopActivity extends VisualizerActivity {
     private EditText pushEditText;
-    private Stack<Integer> st = new Stack<>();
+    private final Stack<Integer> st = new Stack<>();
 
     @Override
     public void onCreate() {
@@ -62,34 +62,26 @@ public class PushPopActivity extends VisualizerActivity {
 
         st.push(target);
 
-        List<StepCard> stepCardList = new ArrayList<>();
-
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Pushing %d into the Stack.", target));
         stepCard.setDescription("");
         stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.PUSH_OPERATION));
 
-        stepCardList.add(stepCard);
-        adapter.setStepCardList(stepCardList);
+        adapter.addStepCard(stepCard);
     }
 
     private void popButtonClicked() {
-
-        List<StepCard> stepCardList = new ArrayList<>();
-
         StepCard stepCard = new StepCard();
-
         if (st.empty()) {
             stepCard.setTitle("Stack is Empty!");
-            stepCard.setDescription("");
+            stepCard.setDescription("No element to pop from the stack.");
         } else {
-            stepCard.setTitle("POPing from the Stack.");
+            stepCard.setTitle("POP 'ing from the Stack.");
             stepCard.setDescription("");
             stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.POP_OPERATION));
             st.pop();
         }
-        stepCardList.add(stepCard);
-        adapter.setStepCardList(stepCardList);
+        adapter.addStepCard(stepCard);
     }
 
     @Override

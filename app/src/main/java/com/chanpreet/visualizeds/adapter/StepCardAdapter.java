@@ -23,7 +23,13 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
         this.context = context;
         stepCardList = new ArrayList<>();
     }
-
+    public void addStepCard(StepCard stepCard){
+        if(stepCardList.get(0).getData() == null){
+            stepCardList.clear();
+        }
+        this.stepCardList.add(stepCard);
+        notifyDataSetChanged();
+    }
     public void setStepCardList(List<StepCard> stepCardList) {
         this.stepCardList = stepCardList;
         notifyDataSetChanged();

@@ -13,31 +13,79 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/name_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="32dp"
-            android:text="Choose what to"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="38sp"
+            android:textSize="32sp"
             android:textStyle="normal" />
 
         <TextView
+            android:id="@+id/email_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:text="Learn today?"
-            android:textColor="@color/black"
-            android:textSize="32sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#171717"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="36dp"
             app:cardBackgroundColor="@color/oxford_blue"
-            app:cardCornerRadius="32dp" />
+            app:cardCornerRadius="32dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="-10dp"
+                    android:src="@drawable/think2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Choose what to"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Learn today?"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"

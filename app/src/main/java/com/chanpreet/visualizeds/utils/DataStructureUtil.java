@@ -269,6 +269,7 @@ public class DataStructureUtil {
                                                             Difficulty.EASY, R.drawable.ic_add)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+
             ));
 
 

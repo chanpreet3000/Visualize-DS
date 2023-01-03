@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="175dp"
     app:cardCornerRadius="24dp"
     app:cardUseCompatPadding="true">
 
@@ -18,22 +18,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="24dp">
+        android:paddingHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="4dp"
                 android:text="Title"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -43,26 +44,20 @@
                 android:id="@+id/difficultyTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="4dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="4dp"
                 android:text="Difficulty"
-                android:textSize="16sp"
                 android:textColor="@color/old_lace_white"
+                android:textSize="16sp"
                 android:textStyle="normal" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginHorizontal="16dp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/dataStructureIcon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:src="@drawable/ic_array_24"
-                app:tint="@color/white" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/dataStructureIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_array_24"
+            app:tint="@color/white" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

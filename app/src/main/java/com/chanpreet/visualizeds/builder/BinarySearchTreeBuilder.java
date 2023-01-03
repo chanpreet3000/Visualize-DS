@@ -18,7 +18,6 @@ public class BinarySearchTreeBuilder {
     private final Context context;
     private final ConstraintLayout constraintLayout;
 
-    @SuppressLint("ResourceType")
     public BinarySearchTreeBuilder(Context context) {
         this.context = context;
         //Generating constraint layout.

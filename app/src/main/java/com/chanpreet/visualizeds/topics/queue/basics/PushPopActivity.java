@@ -64,21 +64,14 @@ public class PushPopActivity extends VisualizerActivity {
 
         queue.add(target);
 
-        List<StepCard> stepCardList = new ArrayList<>();
-
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Pushing %d into the Stack.", target));
         stepCard.setDescription("");
         stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.PUSH_OPERATION));
-
-        stepCardList.add(stepCard);
-        adapter.setStepCardList(stepCardList);
+        adapter.addStepCard(stepCard);
     }
 
     private void popButtonClicked() {
-
-        List<StepCard> stepCardList = new ArrayList<>();
-
         StepCard stepCard = new StepCard();
 
         if (queue.isEmpty()) {
@@ -90,8 +83,7 @@ public class PushPopActivity extends VisualizerActivity {
             stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.POP_OPERATION));
             queue.remove();
         }
-        stepCardList.add(stepCard);
-        adapter.setStepCardList(stepCardList);
+        adapter.addStepCard(stepCard);
     }
 
     @Override
