@@ -9,19 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.chanpreet.visualizeds.LoginActivity;
 import com.chanpreet.visualizeds.R;
-import com.chanpreet.visualizeds.UserInfo;
+import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
-import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -50,7 +44,6 @@ public class DataStructureActivity extends AppCompatActivity {
                     binding.nameTextView.setText(name_text);
                     binding.emailTextView.setText(userInfo.getEmail());
                 }).addOnCompleteListener(task -> {
-
                 });
 
         dataStructures = DataStructureUtil.dataStructures;

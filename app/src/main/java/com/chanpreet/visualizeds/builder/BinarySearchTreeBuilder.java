@@ -1,6 +1,5 @@
 package com.chanpreet.visualizeds.builder;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.chanpreet.visualizeds.classes.BinaryTreeNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 import com.chanpreet.visualizeds.R;
 
 public class BinarySearchTreeBuilder {

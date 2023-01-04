@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chanpreet.visualizeds.StepCard;
+import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemNoDataErrorBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizerStepCard1Binding;
 
@@ -22,6 +22,7 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     public StepCardAdapter(Context context) {
         this.context = context;
         stepCardList = new ArrayList<>();
+
     }
     public void addStepCard(StepCard stepCard){
         if(stepCardList.get(0).getData() == null){

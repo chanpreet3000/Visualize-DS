@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import com.chanpreet.visualizeds.R;
-import com.chanpreet.visualizeds.classes.DoublyLinkedListNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.DoublyLinkedListNode;
 import com.chanpreet.visualizeds.databinding.ItemDoublyLinkedListBinding;
 
 import java.util.HashMap;

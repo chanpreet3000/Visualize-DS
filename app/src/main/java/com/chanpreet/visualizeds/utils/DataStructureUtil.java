@@ -16,20 +16,20 @@ import com.chanpreet.visualizeds.classes.DataStructureAlgorithmContent;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
-import com.chanpreet.visualizeds.topics.array.searching.BinarySearchActivity;
-import com.chanpreet.visualizeds.topics.array.searching.LinearSearchActivity;
-import com.chanpreet.visualizeds.topics.array.sorting.BubbleSortActivity;
-import com.chanpreet.visualizeds.topics.array.sorting.InsertionSortActivity;
-import com.chanpreet.visualizeds.topics.array.sorting.SelectionSortActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.topics.linked_list.basics.DeletionActivity;
-import com.chanpreet.visualizeds.topics.linked_list.basics.InsertionActivity;
-import com.chanpreet.visualizeds.topics.linked_list.basics.TraversalActivity;
-import com.chanpreet.visualizeds.topics.stack.basics.PushPopActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.BinarySearchActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.LinearSearchActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.BubbleSortActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.InsertionSortActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.SelectionSortActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.DeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.InsertionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.TraversalActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.PushPopActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -156,7 +156,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Doubly Linked List Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", com.chanpreet.visualizeds.topics.doubly_linked_list.basics.InsertionActivity.class,
+                                                    new DataStructureAlgorithm("Insertion", com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.InsertionActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
@@ -165,7 +165,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Traversal/Searching", com.chanpreet.visualizeds.topics.doubly_linked_list.basics.TraversalActivity.class,
+                                                    new DataStructureAlgorithm("Traversal/Searching", com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.TraversalActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_ALGORITHM,
@@ -174,7 +174,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_TRAVERSAL_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Deletion", com.chanpreet.visualizeds.topics.doubly_linked_list.basics.DeletionActivity.class,
+                                                    new DataStructureAlgorithm("Deletion", com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.DeletionActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_DELETION_ALGORITHM,
@@ -258,7 +258,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Queue Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("PUSH/POP Operations", com.chanpreet.visualizeds.topics.queue.basics.PushPopActivity.class,
+                                                    new DataStructureAlgorithm("PUSH/POP Operations", com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.PushPopActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,

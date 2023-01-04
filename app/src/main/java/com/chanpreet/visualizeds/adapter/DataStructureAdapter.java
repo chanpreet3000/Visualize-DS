@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chanpreet.visualizeds.utils.DataStructureUtil;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.databinding.ItemDataStructureBinding;
+import com.chanpreet.visualizeds.utils.DataStructureUtil;
 
 import java.util.List;
 
@@ -59,9 +59,6 @@ public class DataStructureAdapter extends RecyclerView.Adapter<DataStructureAdap
         public DSItemViewHolder(@NonNull ItemDataStructureBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            //Animation
-//            binding.getRoot().setAnimation(AnimationUtils.loadAnimation(context, R.anim.left_slide_in_fade_in));
-
             //OnClick Listener for the item View
             binding.getRoot().setOnClickListener(v -> {
                 if (listener == null) return;

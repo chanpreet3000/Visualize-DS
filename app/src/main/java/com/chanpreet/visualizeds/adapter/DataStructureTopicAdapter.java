@@ -62,6 +62,7 @@ public class DataStructureTopicAdapter extends RecyclerView.Adapter<DataStructur
             //Animation
 //            binding.getRoot().setAnimation(AnimationUtils.loadAnimation(context, R.anim.left_slide_in_fade_in));
 
+
             //OnClick Listener for the item View
             binding.getRoot().setOnClickListener(v -> {
                 if (listener == null) return;

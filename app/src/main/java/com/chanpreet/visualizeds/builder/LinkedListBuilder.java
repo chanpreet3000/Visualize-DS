@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.chanpreet.visualizeds.classes.LinkedListNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.LinkedListNode;
 import com.chanpreet.visualizeds.databinding.ItemLinkedListNodeBinding;
 
 import com.chanpreet.visualizeds.R;

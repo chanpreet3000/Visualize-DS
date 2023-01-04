@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
-import com.chanpreet.visualizeds.databinding.ItemDataStructureTopicAlgorithmBinding;
+import com.chanpreet.visualizeds.databinding.ItemDataStructureAlgorithmBinding;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
     @NonNull
     @Override
     public DSItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemDataStructureTopicAlgorithmBinding binding = ItemDataStructureTopicAlgorithmBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemDataStructureAlgorithmBinding binding = ItemDataStructureAlgorithmBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new DSItemViewHolder(binding);
     }
 
@@ -62,9 +62,9 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
     }
 
     public class DSItemViewHolder extends RecyclerView.ViewHolder {
-        public ItemDataStructureTopicAlgorithmBinding binding;
+        public ItemDataStructureAlgorithmBinding binding;
 
-        public DSItemViewHolder(@NonNull ItemDataStructureTopicAlgorithmBinding binding) {
+        public DSItemViewHolder(@NonNull ItemDataStructureAlgorithmBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             //Animation

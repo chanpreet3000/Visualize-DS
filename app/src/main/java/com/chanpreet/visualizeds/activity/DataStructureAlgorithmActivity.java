@@ -42,7 +42,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(adapter);
         // Theory Btn Click Listener
         adapter.setTheoryOnClickListener(position -> {
-            Intent intent = new Intent(getApplicationContext(), DataStructureAlgorithmTheoryActivity.class);
+            Intent intent = new Intent(getApplicationContext(), DataStructureTheoryActivity.class);
             intent.putExtra("data", dataStructureTopic.dataStructureAlgorithms().get(position));
             startActivity(intent);
         });

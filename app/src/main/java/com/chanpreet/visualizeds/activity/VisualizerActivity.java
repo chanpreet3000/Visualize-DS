@@ -1,13 +1,14 @@
 package com.chanpreet.visualizeds.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.chanpreet.visualizeds.StepCard;
+import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
@@ -66,6 +67,12 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
 //        Setting title
         setTitle(dataStructureAlgorithm.getName() + " Visualizer");
+        binding.textView1.setText(String.format("Want to learn more about %s?", dataStructureAlgorithm.getName()));
+        binding.textView2.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), DataStructureTheoryActivity.class);
+            intent.putExtra("data", dataStructureAlgorithm);
+            startActivity(intent);
+        });
     }
 
     public abstract void generateInputUI();
@@ -99,7 +106,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        onBackPressed();
         return super.onSupportNavigateUp();
     }
 }
