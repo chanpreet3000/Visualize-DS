@@ -13,6 +13,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 import com.chanpreet.visualizeds.R;
 
+import org.checkerframework.checker.units.qual.C;
+
 public class BinarySearchTreeBuilder {
     private final Context context;
     private final ConstraintLayout constraintLayout;
@@ -24,7 +26,13 @@ public class BinarySearchTreeBuilder {
         ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         constraintLayout.setLayoutParams(layoutParams);
     }
-
+//    public static View build(Context context, BinaryTreeNode root, int target){
+//        ConstraintLayout constraintLayout = new ConstraintLayout(context);
+//        root = generateBinarySearchTreeHelper(root, target);
+//        root = generateBinarySearchTreeConstraintHelper(root);
+//        constraintLayout.addView(root.nodeView);
+//        return constraintLayout;
+//    }
     public ConstraintLayout generateBinarySearchTree(BinaryTreeNode root, int target) {
         root = generateBinarySearchTreeHelper(root, target);
         root = generateBinarySearchTreeConstraintHelper(root);

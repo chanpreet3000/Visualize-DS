@@ -13,6 +13,7 @@ import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
 import com.chanpreet.visualizeds.classes.DataStructure;
+import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

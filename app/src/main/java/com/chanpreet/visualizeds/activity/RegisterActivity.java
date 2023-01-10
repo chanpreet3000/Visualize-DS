@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.builder.LoaderBuilder;
+import com.chanpreet.visualizeds.databinding.ActivityRegisterBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -15,17 +15,17 @@ import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithmContent;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.infix.BSTInorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postfix.BSTPostorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.BinarySearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.LinearSearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.BubbleSortActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.InsertionSortActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.SelectionSortActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.binary_search_tree_basics.deletion.BinarySearchTreeDeletionVisualizerActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.binary_search_tree_basics.insertion.BinarySearchInsertionTreeVisualizerActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.infix.BinarySearchInfixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postfix.BinarySearchPostfixTreeVisualizerActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.prefix.BinarySearchPrefixTreeVisualizerActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.DeletionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.InsertionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.TraversalActivity;
@@ -189,7 +189,7 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Binary Search Tree Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", BinarySearchInsertionTreeVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Insertion", BSTInsertionActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_ALGORITHM,
@@ -198,7 +198,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INSERTION_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Deletion", BinarySearchTreeDeletionVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Deletion", BSTDeletionActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_DELETION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_DELETION_ALGORITHM,
@@ -210,7 +210,7 @@ public class DataStructureUtil {
                                             )), Difficulty.MEDIUM, R.drawable.ic_tree),
                                     new DataStructureTopic("Binary Search Tree Traversals",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Infix Traversal", BinarySearchInfixTreeVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Inorder Traversal", BSTInorderActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_ALGORITHM,
@@ -219,7 +219,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_INFIX_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Prefix Traversal", BinarySearchPrefixTreeVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Preorder Traversal", BSTPreorderActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_ALGORITHM,
@@ -228,7 +228,7 @@ public class DataStructureUtil {
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_AVERAGE_CASE,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_PREFIX_BEST_CASE),
                                                             Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Postfix Traversal", BinarySearchPostfixTreeVisualizerActivity.class,
+                                                    new DataStructureAlgorithm("Postorder Traversal", BSTPostorderActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_THEORY,
                                                                     DataStructureAlgorithmContentUtil.BINARY_SEARCH_TREE_POSTFIX_ALGORITHM,
@@ -259,6 +259,21 @@ public class DataStructureUtil {
                                     new DataStructureTopic("Queue Basics",
                                             new ArrayList<>(Arrays.asList(
                                                     new DataStructureAlgorithm("PUSH/POP Operations", com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.PushPopActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add)
+                                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
+                    new DataStructure("BST",
+                            new ArrayList<>(Arrays.asList(
+                                    new DataStructureTopic("BST Basics",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Insertion", BSTInsertionActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,

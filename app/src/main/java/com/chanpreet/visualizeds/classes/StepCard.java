@@ -8,8 +8,8 @@ public class StepCard {
     private View data;
 
     public StepCard() {
-        title = "NO TITLE SPECIFIED!";
-        description = "NO DESCRIPTION SPECIFIED!";
+        title = "";
+        description = "";
     }
 
     public String getTitle() {
