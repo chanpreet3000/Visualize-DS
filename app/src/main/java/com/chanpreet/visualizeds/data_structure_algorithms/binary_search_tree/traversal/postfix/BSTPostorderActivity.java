@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
-import com.chanpreet.visualizeds.builder.BinarySearchTreeBuilder;
+import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 
@@ -21,7 +21,6 @@ public class BSTPostorderActivity extends VisualizerActivity {
     @Override
     public void onCreate() {
         super.onCreate();
-        steps = 0;
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
             root = BinaryTreeNode.insertNode(root, rand);
@@ -30,8 +29,7 @@ public class BSTPostorderActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Binary Search Tree");
 
-        BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-        stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(root, -300));
+        stepCard.setData(BSTBuilder.build(getApplicationContext(), root, -300));
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
@@ -54,8 +52,7 @@ public class BSTPostorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, root.data));
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
             stepCard.setDescription(String.format(Locale.US, "We move to the left subtree.\nCurrent list : %s", arr.toString()));
             stepCardList.add(stepCard);
@@ -70,8 +67,7 @@ public class BSTPostorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, root.data));
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
             stepCard.setDescription(String.format(Locale.US, "We move to the right subtree.\nCurrent list : %s", arr));
             stepCardList.add(stepCard);
@@ -89,8 +85,7 @@ public class BSTPostorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, root.data));
+            stepCard.setData(BSTBuilder.build(this, finalRoot, root.data));
             //Description
             stepCard.setDescription(String.format(Locale.US, "Both Left and right SubTree traversed.\nTherefore, %d is now added to the traversed list.\nCurrent list : %s \n\nNow we move back to the parent Node.", root.data, arr));
             stepCardList.add(stepCard);
@@ -99,6 +94,7 @@ public class BSTPostorderActivity extends VisualizerActivity {
 
     @Override
     public void visualizeButtonClicked() {
+        steps = 0;
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 
@@ -110,9 +106,5 @@ public class BSTPostorderActivity extends VisualizerActivity {
 
     @Override
     public void generateInputUI() {
-        //
-        adapter = new StepCardAdapter(getApplicationContext());
-        binding.viewPager.setAdapter(adapter);
-        binding.viewPager.setOffscreenPageLimit(4);
     }
 }

@@ -27,14 +27,18 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         fillHeaderInformation();
         generateInputUI();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         binding.visualizeButton.setOnClickListener(v -> {
+            binding.viewPager.setCurrentItem(0);
             hideKeyboard();
             visualizeButtonClicked();
         });
+
         binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
         binding.rightStepBtn.setOnClickListener(v -> visualizeNextStep());
 

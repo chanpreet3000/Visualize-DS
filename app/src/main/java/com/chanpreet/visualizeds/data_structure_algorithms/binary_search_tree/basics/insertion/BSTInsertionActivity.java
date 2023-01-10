@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
-import com.chanpreet.visualizeds.builder.BinarySearchTreeBuilder;
+import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
@@ -33,8 +33,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Binary Search Tree");
 
-        BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-        stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(root, -300));
+        stepCard.setData(BSTBuilder.build(getApplicationContext(), root, -300));
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
@@ -63,8 +62,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
 
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(root, temp.data));
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), root, temp.data));
 
             //Description
             if (target == temp.data) {
@@ -97,8 +95,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Binary Search Tree After Insertion");
         stepCard.setDescription("This is the Binary Search Tree after Insertion.");
-        BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-        stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(root, target));
+        stepCard.setData(BSTBuilder.build(getApplicationContext(), root, target));
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
@@ -117,9 +114,5 @@ public class BSTInsertionActivity extends VisualizerActivity {
 
         //caching UI
         targetEditText = binding2.editText;
-        //
-        adapter = new StepCardAdapter(getApplicationContext());
-        binding.viewPager.setAdapter(adapter);
-        binding.viewPager.setOffscreenPageLimit(4);
     }
 }

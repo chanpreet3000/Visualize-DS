@@ -69,10 +69,5 @@ public class BubbleSortActivity extends VisualizerActivity {
 
         //caching UI
         arrayEditText = binding1.editText;
-
-        //
-        adapter = new StepCardAdapter(getApplicationContext());
-        binding.viewPager.setAdapter(adapter);
-        binding.viewPager.setOffscreenPageLimit(4);
     }
 }

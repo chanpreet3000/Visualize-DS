@@ -3,7 +3,6 @@ package com.chanpreet.visualizeds.builder;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,34 +12,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 import com.chanpreet.visualizeds.R;
 
-import org.checkerframework.checker.units.qual.C;
-
-public class BinarySearchTreeBuilder {
-    private final Context context;
-    private final ConstraintLayout constraintLayout;
-
-    public BinarySearchTreeBuilder(Context context) {
-        this.context = context;
-        //Generating constraint layout.
-        constraintLayout = new ConstraintLayout(context);
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        constraintLayout.setLayoutParams(layoutParams);
-    }
-//    public static View build(Context context, BinaryTreeNode root, int target){
-//        ConstraintLayout constraintLayout = new ConstraintLayout(context);
-//        root = generateBinarySearchTreeHelper(root, target);
-//        root = generateBinarySearchTreeConstraintHelper(root);
-//        constraintLayout.addView(root.nodeView);
-//        return constraintLayout;
-//    }
-    public ConstraintLayout generateBinarySearchTree(BinaryTreeNode root, int target) {
-        root = generateBinarySearchTreeHelper(root, target);
+public class BSTBuilder {
+    public static View build(Context context, BinaryTreeNode root, int target) {
+        ConstraintLayout constraintLayout = new ConstraintLayout(context);
+        root = generateBinarySearchTreeHelper(context, root, target);
         root = generateBinarySearchTreeConstraintHelper(root);
         constraintLayout.addView(root.nodeView);
         return constraintLayout;
     }
 
-    private BinaryTreeNode generateBinarySearchTreeHelper(BinaryTreeNode root, int target) {
+    private static BinaryTreeNode generateBinarySearchTreeHelper(Context context, BinaryTreeNode root, int target) {
         if (root == null) return null;
         //Generating a view of the BST Node.
         root.nodeView = LayoutInflater.from(context).inflate(R.layout.item_binary_search_tree_node, null);
@@ -55,12 +36,12 @@ public class BinarySearchTreeBuilder {
         }
 
         //recursive fn for left and right subtree.
-        root.leftNode = generateBinarySearchTreeHelper(root.leftNode, target);
-        root.rightNode = generateBinarySearchTreeHelper(root.rightNode, target);
+        root.leftNode = generateBinarySearchTreeHelper(context, root.leftNode, target);
+        root.rightNode = generateBinarySearchTreeHelper(context, root.rightNode, target);
         return root;
     }
 
-    private BinaryTreeNode generateBinarySearchTreeConstraintHelper(BinaryTreeNode root) {
+    private static BinaryTreeNode generateBinarySearchTreeConstraintHelper(BinaryTreeNode root) {
         if (root == null) return null;
         //Recursive calls
         root.leftNode = generateBinarySearchTreeConstraintHelper(root.leftNode);

@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
-import com.chanpreet.visualizeds.builder.BinarySearchTreeBuilder;
+import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
 
@@ -31,8 +31,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Binary Search Tree");
 
-        BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-        stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(root, -300));
+        stepCard.setData(BSTBuilder.build(getApplicationContext(), root, -300));
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
@@ -57,8 +56,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, root.data));
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
             stepCard.setDescription(String.format(Locale.US, "%d is now added to the traversed list.\nPreorder list : %s \n\nNow we move to the left subtree.", root.data, arr));
             stepCardList.add(stepCard);
@@ -74,8 +72,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
-            BinarySearchTreeBuilder binarySearchTreeBuilder = new BinarySearchTreeBuilder(this);
-            stepCard.setData(binarySearchTreeBuilder.generateBinarySearchTree(finalRoot, root.data));
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
             stepCard.setDescription(String.format("We move to the right subtree.\nPreorder list : %s", arr));
             stepCardList.add(stepCard);
@@ -91,6 +88,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
 
     @Override
     public void visualizeButtonClicked() {
+        steps = 0;
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 
@@ -102,9 +100,5 @@ public class BSTPreorderActivity extends VisualizerActivity {
 
     @Override
     public void generateInputUI() {
-        //
-        adapter = new StepCardAdapter(getApplicationContext());
-        binding.viewPager.setAdapter(adapter);
-        binding.viewPager.setOffscreenPageLimit(4);
     }
 }
