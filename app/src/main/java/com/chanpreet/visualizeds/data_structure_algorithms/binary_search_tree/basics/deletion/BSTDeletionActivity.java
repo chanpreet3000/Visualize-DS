@@ -6,10 +6,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
-import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
-import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.Random;
 public class BSTDeletionActivity extends VisualizerActivity {
 
     private EditText targetEditText;
-    BinaryTreeNode root = null;
+    BSTNode root = null;
 
     @Override
     public void onCreate() {
@@ -28,7 +27,7 @@ public class BSTDeletionActivity extends VisualizerActivity {
 
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
-            root = BinaryTreeNode.insertNode(root, rand);
+            root = BSTNode.insertNode(root, rand);
         }
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
@@ -55,7 +54,7 @@ public class BSTDeletionActivity extends VisualizerActivity {
 
         List<StepCard> stepCardList = new ArrayList<>();
         int steps = 0;
-        BinaryTreeNode temp = root;
+        BSTNode temp = root;
         boolean found = false;
         while (temp != null) {
             //Generating Visuals
@@ -80,9 +79,9 @@ public class BSTDeletionActivity extends VisualizerActivity {
                 found = true;
                 break;
             } else if (target < temp.data) {
-                temp = temp.leftNode;
+                temp = temp.left;
             } else {
-                temp = temp.rightNode;
+                temp = temp.right;
             }
         }
         if (!found) {
@@ -97,11 +96,11 @@ public class BSTDeletionActivity extends VisualizerActivity {
         } else {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            if (temp.leftNode == null && temp.rightNode == null) {
+            if (temp.left == null && temp.right == null) {
                 stepCard.setDescription("There exists no left and right subtree.\nTherefore the node can be directly deleted.");
-            } else if (temp.leftNode != null && temp.rightNode == null) {
+            } else if (temp.left != null && temp.right == null) {
                 stepCard.setDescription("There exists no right subtree.\nTherefore the node can be directly deleted and the left subtree can be directly attached to the node.");
-            } else if (temp.leftNode == null) {
+            } else if (temp.left == null) {
                 stepCard.setDescription("There exists no left subtree.\nTherefore the node can be directly deleted and the right subtree can be directly attached to the node.");
             } else {
                 stepCard.setDescription("There exists both left and right subtree.\nTherefore the node cannot be directly deleted.\nTargeted node will be replaced by the Inorder Successor or Predecessor of the targeted node.");
@@ -122,27 +121,27 @@ public class BSTDeletionActivity extends VisualizerActivity {
         adapter.setStepCardList(stepCardList);
     }
 
-    private BinaryTreeNode deletionBST(BinaryTreeNode finalRoot, int target) {
+    private BSTNode deletionBST(BSTNode finalRoot, int target) {
         if (finalRoot == null) return null;
         if (finalRoot.data == target) {
-            if (finalRoot.leftNode == null && finalRoot.rightNode == null) {
+            if (finalRoot.left == null && finalRoot.right == null) {
                 finalRoot = null;
-            } else if (finalRoot.leftNode != null && finalRoot.rightNode == null) {
-                finalRoot = finalRoot.leftNode;
-            } else if (finalRoot.leftNode == null) {
-                finalRoot = finalRoot.rightNode;
+            } else if (finalRoot.left != null && finalRoot.right == null) {
+                finalRoot = finalRoot.left;
+            } else if (finalRoot.left == null) {
+                finalRoot = finalRoot.right;
             } else {
-                BinaryTreeNode temp = finalRoot.leftNode;
-                while (temp.rightNode != null) {
-                    temp = temp.rightNode;
+                BSTNode temp = finalRoot.left;
+                while (temp.right != null) {
+                    temp = temp.right;
                 }
                 finalRoot.data = temp.data;
-                finalRoot.leftNode = deletionBST(finalRoot.leftNode, temp.data);
+                finalRoot.left = deletionBST(finalRoot.left, temp.data);
             }
         } else if (target < finalRoot.data) {
-            finalRoot.leftNode = deletionBST(finalRoot.leftNode, target);
+            finalRoot.left = deletionBST(finalRoot.left, target);
         } else {
-            finalRoot.rightNode = deletionBST(finalRoot.rightNode, target);
+            finalRoot.right = deletionBST(finalRoot.right, target);
         }
         return finalRoot;
     }

@@ -3,10 +3,9 @@ package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.t
 import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
-import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
-import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Random;
 
 public class BSTPreorderActivity extends VisualizerActivity {
 
-    BinaryTreeNode root = null;
+    BSTNode root = null;
     int steps = 0;
 
     @Override
@@ -25,7 +24,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
         steps = 0;
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
-            root = BinaryTreeNode.insertNode(root, rand);
+            root = BSTNode.insertNode(root, rand);
         }
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
@@ -37,7 +36,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
         adapter.setStepCardList(stepCardList);
     }
 
-    public void helper(List<StepCard> stepCardList, List<Integer> arr, BinaryTreeNode root, BinaryTreeNode finalRoot) {
+    public void helper(List<StepCard> stepCardList, List<Integer> arr, BSTNode root, BSTNode finalRoot) {
         if (root == null) {
             //Generating Visuals
             StepCard stepCard = new StepCard();
@@ -66,7 +65,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
         //LEFT SUBTREE VISUAL + CALL
         {
             //RECURSIVE LEFT SUBTREE CALL
-            helper(stepCardList, arr, root.leftNode, finalRoot);
+            helper(stepCardList, arr, root.left, finalRoot);
 
             //Generating Visuals
             StepCard stepCard = new StepCard();
@@ -82,7 +81,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
         //RIGHT SUBTREE VISUAL + CALL
         {
             //RECURSIVE RIGHT SUBTREE CALL
-            helper(stepCardList, arr, root.rightNode, finalRoot);
+            helper(stepCardList, arr, root.right, finalRoot);
         }
     }
 

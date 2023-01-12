@@ -6,10 +6,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
-import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
-import com.chanpreet.visualizeds.classes.data_structure_containers.BinaryTreeNode;
+import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ import java.util.Random;
 
 public class BSTInsertionActivity extends VisualizerActivity {
     private EditText targetEditText;
-    BinaryTreeNode root = null;
+    BSTNode root = null;
 
     @Override
     public void onCreate() {
@@ -27,7 +26,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
 
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
-            root = BinaryTreeNode.insertNode(root, rand);
+            root = BSTNode.insertNode(root, rand);
         }
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
@@ -52,7 +51,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
             return;
         }
 
-        BinaryTreeNode temp = root;
+        BSTNode temp = root;
         List<StepCard> stepCardList = new ArrayList<>();
         //Generating in Between layout
         int steps = 0;
@@ -78,9 +77,9 @@ public class BSTInsertionActivity extends VisualizerActivity {
             if (target == temp.data) {
                 return;
             } else if (target < temp.data) {
-                temp = temp.leftNode;
+                temp = temp.left;
             } else {
-                temp = temp.rightNode;
+                temp = temp.right;
             }
             if (temp == null) {
                 StepCard stepCard1 = new StepCard();
@@ -91,7 +90,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
             }
         }
         //Final Step Card
-        root = BinaryTreeNode.insertNode(root, target);
+        root = BSTNode.insertNode(root, target);
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Binary Search Tree After Insertion");
         stepCard.setDescription("This is the Binary Search Tree after Insertion.");
