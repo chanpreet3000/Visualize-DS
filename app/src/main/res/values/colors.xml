@@ -35,4 +35,12 @@
     <color name="color_7">#FF731D</color>
     <color name="color_8">#219E21</color>
     <color name="color_9">#FFAA00</color>
+
+<!--    -->
+    <color name="grid_start_color">#219E21</color>
+    <color name="grid_end_color">#C50007</color>
+    <color name="grid_block_color">#000000</color>
+    <color name="grid_default_color">#FFFFFF</color>
+    <color name="grid_path_color">#30FFFF</color>
+    <color name="grid_success_color">#001B60</color>
 </resources>

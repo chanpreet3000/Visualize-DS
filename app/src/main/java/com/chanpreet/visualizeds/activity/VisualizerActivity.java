@@ -29,7 +29,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         fillHeaderInformation();
-        generateInputUI();
+
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -54,6 +54,8 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         list.add(initialStepCard);
         adapter.setStepCardList(list);
 
+
+        generateInputUI();
         this.onCreate();
     }
 

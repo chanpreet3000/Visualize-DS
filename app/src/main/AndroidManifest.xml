@@ -15,6 +15,20 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
+            android:name=".data_structure_algorithms.path_finding.dfs.DFSActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".data_structure_algorithms.path_finding.bfs.BFSActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity"
             android:exported="false">
             <meta-data

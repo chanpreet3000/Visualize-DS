@@ -1,12 +1,5 @@
 package com.chanpreet.visualizeds.utils;
 
-import android.app.Activity;
-import android.graphics.Point;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ScrollView;
-
 import androidx.annotation.NonNull;
 
 import com.chanpreet.visualizeds.R;
@@ -15,20 +8,21 @@ import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithmContent;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.infix.BSTInorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postfix.BSTPostorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity;
-import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.BinarySearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.LinearSearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.BubbleSortActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.InsertionSortActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.SelectionSortActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.infix.BSTInorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postfix.BSTPostorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.DeletionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.InsertionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.TraversalActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.bfs.BFSActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.dfs.DFSActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.PushPopActivity;
 
 import java.util.ArrayList;
@@ -269,11 +263,20 @@ public class DataStructureUtil {
                                                             Difficulty.EASY, R.drawable.ic_add)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
-                    new DataStructure("BST",
+                    new DataStructure("Path Finding",
                             new ArrayList<>(Arrays.asList(
-                                    new DataStructureTopic("BST Basics",
+                                    new DataStructureTopic("Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", BSTInsertionActivity.class,
+                                                    new DataStructureAlgorithm("BFS", BFSActivity.class,
+                                                            new DataStructureAlgorithmContent(
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_CODE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_WORST_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_AVERAGE_CASE,
+                                                                    DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_BEST_CASE),
+                                                            Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("DFS", DFSActivity.class,
                                                             new DataStructureAlgorithmContent(
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_THEORY,
                                                                     DataStructureAlgorithmContentUtil.DOUBLY_LINKED_LIST_INSERTION_ALGORITHM,
@@ -314,36 +317,5 @@ public class DataStructureUtil {
             }
         }
         return arr;
-    }
-
-    public static void fillHeaderInformation(Activity activity, ActivityVisualizerBinding binding) {
-        //getting Information from Intent.
-        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) activity.getIntent().getSerializableExtra("data");
-
-        //Filling the header Information.
-        binding.titleTextView.setText(dataStructureAlgorithm.getName());
-        binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
-        binding.iconImageView.setImageResource(dataStructureAlgorithm.getIcon());
-
-        //Setting title
-        activity.setTitle(dataStructureAlgorithm.getName() + " Visualizer");
-    }
-
-    public static void scrollToView(final ScrollView scrollViewParent, final View view) {
-        // Get deepChild Offset
-        Point childOffset = new Point();
-        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
-        // Scroll to child.
-        scrollViewParent.smoothScrollTo(0, childOffset.y);
-    }
-
-    private static void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
-        ViewGroup parentGroup = (ViewGroup) parent;
-        accumulatedOffset.x += child.getLeft();
-        accumulatedOffset.y += child.getTop();
-        if (parentGroup.equals(mainParent)) {
-            return;
-        }
-        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
     }
 }
