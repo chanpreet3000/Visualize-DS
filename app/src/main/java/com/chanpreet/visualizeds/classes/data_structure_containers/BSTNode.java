@@ -17,13 +17,13 @@ public class BSTNode {
     public static BSTNode insertNode(BSTNode root, Integer data) {
         if (root == null)
             return new BSTNode(data);
-
         if (data == root.data) {
             return root;
         } else if (data < root.data) {
-            return insertNode(root.left, data);
+            root.left =  insertNode(root.left, data);
         } else {
-            return insertNode(root.right, data);
+            root.right = insertNode(root.right, data);
         }
+        return root;
     }
 }

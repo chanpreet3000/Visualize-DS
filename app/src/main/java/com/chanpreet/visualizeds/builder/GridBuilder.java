@@ -18,8 +18,6 @@ public class GridBuilder {
     public static final int BLOCK_COLOR = R.drawable.item_grid_block;
     public static final int DEFAULT_COLOR = R.drawable.item_grid_default;
     public static final int PATH_COLOR = R.drawable.item_grid_path;
-    public static final int SUCCESS_COLOR = R.drawable.item_grid_success;
-
 
     public static GridObject build(Context context, int n, int sz) {
         LinearLayout parent = new LinearLayout(context);

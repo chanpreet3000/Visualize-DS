@@ -15,42 +15,42 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
-            android:name=".data_structure_algorithms.path_finding.dfs.DFSActivity"
+            android:name=".data_structure_algorithms.path_finding.basics.PFDFSActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.path_finding.bfs.BFSActivity"
+            android:name=".data_structure_algorithms.path_finding.basics.PFBFSActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.basics.BSTDeletionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.infix.BSTInorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTInorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.postfix.BSTPostorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTPostorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTPreorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -77,49 +77,49 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.basics.BSTInsertionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.stack.basics.PushPopActivity"
+            android:name=".data_structure_algorithms.stack.basics.StackPushPopActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.queue.basics.PushPopActivity"
+            android:name=".data_structure_algorithms.queue.basics.QueuePushPopActivity"
             android:exported="false" />
         <activity
             android:name=".activity.VisualizerActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.array.sorting.BubbleSortActivity"
+            android:name=".data_structure_algorithms.array.sorting.bubble_sort.ArrayBubbleSortActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.array.searching.BinarySearchActivity"
+            android:name=".data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.array.searching.LinearSearchActivity"
+            android:name=".data_structure_algorithms.array.searching.linear_search.ArrayLinearSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.TraversalActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLTraversalActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.InsertionActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLInsertionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.DeletionActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.DeletionActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.LLDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.TraversalActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.LLTraversalActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.InsertionActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.LLInsertionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.array.sorting.InsertionSortActivity"
+            android:name=".data_structure_algorithms.array.sorting.insertion_sort.ArrayInsertionSortActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.array.sorting.SelectionSortActivity"
+            android:name=".data_structure_algorithms.array.sorting.selection_sort.ArraySelectionSortActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DataStructureTheoryActivity"
