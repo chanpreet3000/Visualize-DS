@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion;
 
 import android.text.InputType;
 import android.widget.EditText;

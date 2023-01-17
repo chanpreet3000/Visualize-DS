@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal;
 
 import android.text.InputType;
 import android.widget.EditText;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class LLDeletionActivity extends VisualizerActivity {
+public class LLTraversalActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
     private LinkedListNode head = null;
@@ -27,7 +27,7 @@ public class LLDeletionActivity extends VisualizerActivity {
 
         Random random = new Random();
         LinkedListNode temp = head;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             LinkedListNode node = new LinkedListNode(random.nextInt() % 20);
             if (temp == null) {
                 head = node;
@@ -51,7 +51,7 @@ public class LLDeletionActivity extends VisualizerActivity {
     public void generateInputUI() {
 //Creating UI
         ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter an element to be deleted!");
+        binding1.textView.setText("Enter an element to be searched!");
         binding1.editText.setHint("Enter a value");
         binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
@@ -76,41 +76,29 @@ public class LLDeletionActivity extends VisualizerActivity {
         boolean found = false;
         List<StepCard> stepCardList = new ArrayList<>();
         LinkedListNode temp = head;
-        LinkedListNode prev = null;
         while (temp != null) {
             if (found) break;
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             HashMap<LinkedListNode, Integer> map = new HashMap<>();
             if (temp.data == target) {
-                stepCard.setDescription("Found the element to be deleted!.");
+                stepCard.setDescription("We found the element to be searched.");
                 map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
-                stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
-                if (prev == null) {
-                    head = head.next;
-                } else {
-                    prev.next = temp.next;
-                }
                 found = true;
             } else {
-                stepCard.setDescription("It is not the target!");
-                map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
-                stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
+                stepCard.setDescription("This node is not the equal to the search target.\nTherefore we move to the next node.");
+                map.put(temp, LinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
             }
+            stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
             stepCardList.add(stepCard);
-            prev = temp;
             temp = temp.next;
         }
-        StepCard stepCard = new StepCard();
-        stepCard.setTitle("Final Linked List!");
-        HashMap<LinkedListNode, Integer> map = new HashMap<>();
-        if (found) {
-            stepCard.setDescription("Linked List after deletion!");
-            stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
-        } else {
-            stepCard.setDescription("Target was not found in the linked list!");
+        if(!found){
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle("Target not Present!");
+            stepCard.setDescription("");
+            stepCardList.add(stepCard);
         }
-        stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
     }
 }

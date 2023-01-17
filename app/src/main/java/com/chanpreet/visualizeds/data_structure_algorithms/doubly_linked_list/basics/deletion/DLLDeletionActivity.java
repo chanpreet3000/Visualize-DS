@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.deletion;
 
 import android.text.InputType;
 import android.widget.EditText;

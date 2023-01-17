@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal;
+package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postorder;
 
 import android.view.View;
 

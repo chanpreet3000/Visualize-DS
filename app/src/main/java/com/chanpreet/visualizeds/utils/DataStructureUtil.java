@@ -19,17 +19,28 @@ import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.merge_s
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.quick_sort.ArrayQuickSortTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.selection_sort.ArraySelectionSortActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.selection_sort.ArraySelectionSortTheory;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.BSTDeletionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.BSTInsertionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.BSTInorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.BSTPostorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.BSTPreorderActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.DLLDeletionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.DLLInsertionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.DLLTraversalActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.LLDeletionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.LLInsertionActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.LLTraversalActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postorder.BSTPostorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postorder.BSTPostorderTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.deletion.DLLDeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.deletion.DLLDeletionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.insertion.DLLInsertionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.insertion.DLLInsertionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.traversal.DLLTraversalActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.traversal.DLLTraversalTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.deletion.LLDeletionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.deletion.LLDeletionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion.LLInsertionActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion.LLInsertionTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFBFSActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFDFSActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.QueuePushPopActivity;
@@ -71,18 +82,18 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Linked List Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", LLInsertionActivity.class, null, Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Traversal/Searching", LLTraversalActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Deletion", LLDeletionActivity.class, null, Difficulty.EASY, R.drawable.ic_deletion)
+                                                    new DataStructureAlgorithm("Insertion", LLInsertionActivity.class, new LLInsertionTheory(), Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("Traversal/Searching", LLTraversalActivity.class, new LLTraversalTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Deletion", LLDeletionActivity.class, new LLDeletionTheory(), Difficulty.EASY, R.drawable.ic_deletion)
                                             )), Difficulty.EASY, R.drawable.ic_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_linked_list),
                     new DataStructure("Doubly Linked List",
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Doubly Linked List Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", DLLInsertionActivity.class, null, Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Traversal/Searching", DLLTraversalActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Deletion", DLLDeletionActivity.class, null, Difficulty.EASY, R.drawable.ic_deletion)
+                                                    new DataStructureAlgorithm("Insertion", DLLInsertionActivity.class, new DLLInsertionTheory(), Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("Traversal/Searching", DLLTraversalActivity.class, new DLLTraversalTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Deletion", DLLDeletionActivity.class, new DLLDeletionTheory(), Difficulty.EASY, R.drawable.ic_deletion)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
                     new DataStructure("Stack",
@@ -103,14 +114,14 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Binary Search Tree Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Insertion", BSTInsertionActivity.class, null, Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("Deletion", BSTDeletionActivity.class, null, Difficulty.MEDIUM, R.drawable.ic_deletion)
+                                                    new DataStructureAlgorithm("Insertion", BSTInsertionActivity.class, new BSTInsertionTheory(), Difficulty.EASY, R.drawable.ic_add),
+                                                    new DataStructureAlgorithm("Deletion", BSTDeletionActivity.class, new BSTDeletionTheory(), Difficulty.MEDIUM, R.drawable.ic_deletion)
                                             )), Difficulty.MEDIUM, R.drawable.ic_tree),
                                     new DataStructureTopic("Binary Search Tree Traversals",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Inorder Traversal", BSTInorderActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Preorder Traversal", BSTPreorderActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Postorder Traversal", BSTPostorderActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search)
+                                                    new DataStructureAlgorithm("Inorder Traversal", BSTInorderActivity.class, new BSTInorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Preorder Traversal", BSTPreorderActivity.class, new BSTPreorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Postorder Traversal", BSTPostorderActivity.class, new BSTPostorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
                                             )), Difficulty.EASY, R.drawable.ic_linear_search)
                             )), Difficulty.MEDIUM, R.drawable.ic_tree),
                     new DataStructure("Path Finding",

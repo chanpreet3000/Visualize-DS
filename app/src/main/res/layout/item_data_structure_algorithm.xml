@@ -17,14 +17,14 @@
             android:layout_height="180dp">
 
             <ImageView
-                android:id="@+id/background_card_view_1"
+                android:id="@+id/backgroundCardView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/cedar_orange"
                 android:scaleType="fitCenter" />
 
             <ImageView
-                android:id="@+id/background_card_view_2"
+                android:id="@+id/backgroundCardView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
@@ -52,7 +52,7 @@
                     app:cardUseCompatPadding="true">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/icon_card_view"
+                        android:id="@+id/iconCardView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
@@ -60,7 +60,7 @@
                         app:cardCornerRadius="8dp">
 
                         <ImageView
-                            android:id="@+id/icon_image_view"
+                            android:id="@+id/iconImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:padding="8dp"
@@ -70,10 +70,10 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/title_text_view"
-                    android:layout_marginTop="8dp"
+                    android:id="@+id/titleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Title"
                     android:textColor="@color/white"
                     android:textSize="22sp"
@@ -82,7 +82,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"

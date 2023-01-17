@@ -37,7 +37,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/tempCardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -55,7 +54,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/node_next_pointer"
+            android:id="@+id/nodeNextPointer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -68,14 +67,14 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/index_pointer"
+        android:id="@+id/indexPointer"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
         android:padding="6dp"
-        android:visibility="invisible"
         android:paddingStart="12dp"
         android:rotation="270"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_long_arrow"/>
+        android:src="@drawable/ic_long_arrow"
+        android:visibility="invisible" />
 </LinearLayout>

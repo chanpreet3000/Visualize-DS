@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion;
 
 import android.text.InputType;
 import android.view.View;

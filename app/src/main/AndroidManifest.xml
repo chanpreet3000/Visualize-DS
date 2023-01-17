@@ -29,28 +29,28 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.basics.BSTDeletionActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.basics.deletion.BSTDeletionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTInorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTPostorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.postorder.BSTPostorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.traversal.BSTPreorderActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -77,7 +77,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.binary_search_tree.basics.BSTInsertionActivity"
+            android:name=".data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity"
             android:exported="false" />
         <activity
             android:name=".data_structure_algorithms.stack.basics.StackPushPopActivity"
@@ -98,22 +98,22 @@
             android:name=".data_structure_algorithms.array.searching.linear_search.ArrayLinearSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLTraversalActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.traversal.DLLTraversalActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLInsertionActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.insertion.DLLInsertionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.doubly_linked_list.basics.DLLDeletionActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.basics.deletion.DLLDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.LLDeletionActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.deletion.LLDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.LLTraversalActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.traversal.LLTraversalActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.linked_list.basics.LLInsertionActivity"
+            android:name=".data_structure_algorithms.linked_list.basics.insertion.LLInsertionActivity"
             android:exported="false" />
         <activity
             android:name=".data_structure_algorithms.array.sorting.insertion_sort.ArrayInsertionSortActivity"

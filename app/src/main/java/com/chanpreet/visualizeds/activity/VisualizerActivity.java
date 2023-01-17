@@ -78,6 +78,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), DataStructureTheoryActivity.class);
             intent.putExtra("data", dataStructureAlgorithm);
             startActivity(intent);
+            finish();
         });
     }
 
