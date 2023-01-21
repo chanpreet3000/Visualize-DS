@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
@@ -30,7 +31,7 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
 
         ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
         binding2.textView.setText("Enter element to be searched");
-        binding2.editText.setHint("Enter number to be searched");
+        binding2.editText.setHint("Enter one Integer.");
         binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
         //adding UI
@@ -62,16 +63,32 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
             if (!canContinue) break;
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", i + 1));
+
             HashMap<Integer, Integer> map = new HashMap<>();
             if (arr.get(i) == target) {
                 canContinue = false;
                 map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
-                stepCard.setDescription(String.format(Locale.US, "%d is equal to %d.\nTherefore, we found the target.", arr.get(i), target));
+                stepCard.setDescription(
+                        TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d", i),
+                                String.format(Locale.US, "%d == %d", arr.get(i), target),
+                                String.format(Locale.US, "%d found at index %d",target, i)));
             } else {
                 map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
-                stepCard.setDescription(String.format(Locale.US, "%d is not equal to %d.\nTherefore, we search further for the target.", arr.get(i), target));
+                stepCard.setDescription(
+                        TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d", i),
+                                String.format(Locale.US, "%d ≠ %d", arr.get(i), target),
+                                "Therefore, we move to the next index"));
             }
             stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
+            stepCardList.add(stepCard);
+        }
+        if (canContinue) {
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle("Element not found");
+            stepCard.setDescription(
+                    TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d > the size of the array", arr.size()),
+                            String.format(Locale.US, "Therefore, %d was not present in the array.", target)));
+            stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, new HashMap<>()));
             stepCardList.add(stepCard);
         }
         adapter.setStepCardList(stepCardList);
