@@ -4,7 +4,7 @@ import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class BSTPreorderTheory extends AlgorithmTheory {
     public BSTPreorderTheory() {
-        super.theory = "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., prefix traversal.";
+        super.theory = "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., pre order traversal.";
 
         super.algorithm = "1) Visit the root node.\n" +
                 "\n" +

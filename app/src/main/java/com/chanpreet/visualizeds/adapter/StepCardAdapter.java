@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemNoDataErrorBinding;
-import com.chanpreet.visualizeds.databinding.ItemVisualizerStepCard1Binding;
+import com.chanpreet.visualizeds.databinding.ItemStepCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     @NonNull
     @Override
     public StepCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemVisualizerStepCard1Binding binding = ItemVisualizerStepCard1Binding.inflate(LayoutInflater.from(context), parent, false);
+        ItemStepCardBinding binding = ItemStepCardBinding.inflate(LayoutInflater.from(context), parent, false);
         return new StepCardViewHolder(binding);
     }
 
@@ -61,9 +61,9 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     }
 
     public static class StepCardViewHolder extends RecyclerView.ViewHolder {
-        public ItemVisualizerStepCard1Binding binding;
+        public ItemStepCardBinding binding;
 
-        public StepCardViewHolder(@NonNull ItemVisualizerStepCard1Binding binding) {
+        public StepCardViewHolder(@NonNull ItemStepCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

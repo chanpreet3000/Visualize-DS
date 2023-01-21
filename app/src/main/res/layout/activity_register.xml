@@ -26,7 +26,8 @@
                 android:layout_marginVertical="3dp"
                 android:text="Sign up"
                 android:textColor="@color/oxford_blue"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameEditTextLayout"
@@ -106,7 +107,8 @@
                 android:layout_marginVertical="8dp"
                 android:text="Gender"
                 android:textColor="@color/oxford_blue"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/genderGroup"
@@ -142,7 +144,8 @@
                 android:layout_marginVertical="8dp"
                 android:text="Age"
                 android:textColor="@color/oxford_blue"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/ageGroup"

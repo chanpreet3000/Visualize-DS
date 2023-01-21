@@ -27,7 +27,7 @@ public class DataStructureTopicActivity extends AppCompatActivity {
         dataStructure = (DataStructure) getIntent().getSerializableExtra("data");
 
         binding.headingTextView.setText(String.format("%s Topics", dataStructure.getName()));
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Topics");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         initRecyclerView(dataStructure.getDataStructureTopics());

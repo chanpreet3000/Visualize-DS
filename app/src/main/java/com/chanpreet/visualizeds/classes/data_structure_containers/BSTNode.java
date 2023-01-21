@@ -2,6 +2,8 @@ package com.chanpreet.visualizeds.classes.data_structure_containers;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 public class BSTNode {
     public int data;
     public BSTNode left, right;
@@ -20,10 +22,16 @@ public class BSTNode {
         if (data == root.data) {
             return root;
         } else if (data < root.data) {
-            root.left =  insertNode(root.left, data);
+            root.left = insertNode(root.left, data);
         } else {
             root.right = insertNode(root.right, data);
         }
         return root;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.valueOf(this.data);
     }
 }

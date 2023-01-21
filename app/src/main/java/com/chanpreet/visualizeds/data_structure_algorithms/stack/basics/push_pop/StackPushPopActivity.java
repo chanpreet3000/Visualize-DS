@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.queue.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.push_pop;
 
 import android.text.InputType;
 import android.view.View;
@@ -6,18 +6,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.chanpreet.visualizeds.classes.StepCard;
-import com.chanpreet.visualizeds.builder.QueueBuilder;
 import com.chanpreet.visualizeds.builder.StackBuilder;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 
-import java.util.LinkedList;
 import java.util.Locale;
-import java.util.Queue;
+import java.util.Stack;
 
-public class QueuePushPopActivity extends VisualizerActivity {
+public class StackPushPopActivity extends VisualizerActivity {
     private EditText pushEditText;
-    private Queue<Integer> queue = new LinkedList<>();
+    private final Stack<Integer> st = new Stack<>();
 
     @Override
     public void onCreate() {
@@ -29,13 +27,13 @@ public class QueuePushPopActivity extends VisualizerActivity {
     public void generateInputUI() {
 //Creating UI
         ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
-        binding1.textView.setText("Push an element into the Queue.");
+        binding1.textView.setText("Push an element into the Stack.");
         binding1.editText.setHint("Enter a value");
         binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
         binding1.button.setText("PUSH");
 
         ItemVisualizeInputCard2Binding binding2 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
-        binding2.textView.setText("Pop an element out of the Queue.");
+        binding2.textView.setText("Pop an element out of the Stack.");
         binding2.editText.setVisibility(View.GONE);
         binding2.button.setText("POP");
 
@@ -60,26 +58,26 @@ public class QueuePushPopActivity extends VisualizerActivity {
             return;
         }
 
-        queue.add(target);
+        st.push(target);
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Pushing %d into the Stack.", target));
         stepCard.setDescription("");
-        stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.PUSH_OPERATION));
+        stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.PUSH_OPERATION));
+
         adapter.addStepCard(stepCard);
     }
 
     private void popButtonClicked() {
         StepCard stepCard = new StepCard();
-
-        if (queue.isEmpty()) {
-            stepCard.setTitle("Queue is Empty!");
-            stepCard.setDescription("");
+        if (st.empty()) {
+            stepCard.setTitle("Stack is Empty!");
+            stepCard.setDescription("No element to pop from the stack.");
         } else {
-            stepCard.setTitle("POP' ing from the Queue.");
+            stepCard.setTitle("POP 'ing from the Stack.");
             stepCard.setDescription("");
-            stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.POP_OPERATION));
-            queue.remove();
+            stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.POP_OPERATION));
+            st.pop();
         }
         adapter.addStepCard(stepCard);
     }
@@ -88,5 +86,4 @@ public class QueuePushPopActivity extends VisualizerActivity {
     public void visualizeButtonClicked() {
 
     }
-
 }

@@ -57,7 +57,7 @@ public class DataStructureTheoryActivity extends AppCompatActivity {
         AlgorithmTheory algorithmTheory = dataStructureAlgorithm.getAlgorithmTheory();
 
         String timeComplexity = "Worst Case\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getWorstCase()) + "\n" +
-                "Average Case\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase()) + "\n" +
+                "Average Case\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase()) + "\n" +
                 "Best Case\t\t\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase());
         List<String> titleList = new ArrayList<>(Arrays.asList("Theory", "Algorithm", "Code", "Time Complexity"));
         List<String> descriptionList = new ArrayList<>(Arrays.asList(algorithmTheory.getTheory(), algorithmTheory.getAlgorithm(), algorithmTheory.getCode(), timeComplexity));

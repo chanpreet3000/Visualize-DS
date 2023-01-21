@@ -36,6 +36,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".data_structure_algorithms.binary_search_tree.traversal.level_order.BSTLevelOrderActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderActivity"
             android:exported="false">
             <meta-data
@@ -80,10 +87,10 @@
             android:name=".data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.stack.basics.StackPushPopActivity"
+            android:name=".data_structure_algorithms.stack.basics.push_pop.StackPushPopActivity"
             android:exported="false" />
         <activity
-            android:name=".data_structure_algorithms.queue.basics.QueuePushPopActivity"
+            android:name=".data_structure_algorithms.queue.basics.push_pop.QueuePushPopActivity"
             android:exported="false" />
         <activity
             android:name=".activity.VisualizerActivity"

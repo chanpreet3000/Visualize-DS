@@ -10,6 +10,7 @@ public class StepCard {
     public StepCard() {
         title = "";
         description = "";
+        data = null;
     }
 
     public String getTitle() {

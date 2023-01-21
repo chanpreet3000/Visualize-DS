@@ -30,7 +30,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
         dataStructureTopic = (DataStructureTopic) getIntent().getSerializableExtra("data");
 
         initRecyclerView(dataStructureTopic.dataStructureAlgorithms());
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Algorithms");
         binding.headingTextView.setText(String.format("%s Algorithms", dataStructureTopic.getName()));
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

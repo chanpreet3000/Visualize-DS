@@ -22,7 +22,7 @@ public class StepCardBuilder {
 
     public StepCardBuilder(Context context) {
         //generating Step Card
-        stepCard = LayoutInflater.from(context).inflate(R.layout.item_visualizer_step_card_1, null,false);
+        stepCard = LayoutInflater.from(context).inflate(R.layout.item_step_card, null,false);
 
         //Setting Step Card Parameters
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

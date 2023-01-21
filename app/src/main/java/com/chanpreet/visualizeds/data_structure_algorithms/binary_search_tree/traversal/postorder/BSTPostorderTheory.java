@@ -4,7 +4,7 @@ import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class BSTPostorderTheory extends AlgorithmTheory {
     public BSTPostorderTheory() {
-        super.theory = "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., postfix traversal.";
+        super.theory = "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., postorder traversal.";
 
         super.algorithm = "1) Visit all the nodes in the left subtree.\n" +
                 "\n" +

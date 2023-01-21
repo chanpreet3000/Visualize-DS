@@ -25,6 +25,8 @@ import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.ba
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.basics.insertion.BSTInsertionTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.inorder.BSTInorderTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.level_order.BSTLevelOrderActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.level_order.BSTLevelOrderTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postorder.BSTPostorderActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.postorder.BSTPostorderTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.preorder.BSTPreorderActivity;
@@ -43,8 +45,10 @@ import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.in
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFBFSActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFDFSActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.QueuePushPopActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.StackPushPopActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_pop.QueuePushPopActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_pop.QueuePushPopTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.push_pop.StackPushPopActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.push_pop.StackPushPopTheory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,14 +104,14 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Stack Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("PUSH/POP Operations", StackPushPopActivity.class, null, Difficulty.EASY, R.drawable.ic_add)
+                                                    new DataStructureAlgorithm("PUSH/POP Operations", StackPushPopActivity.class, new StackPushPopTheory(), Difficulty.EASY, R.drawable.ic_add)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
                     new DataStructure("Queue",
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Queue Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("PUSH/POP Operations", QueuePushPopActivity.class, null, Difficulty.EASY, R.drawable.ic_add)
+                                                    new DataStructureAlgorithm("PUSH/POP Operations", QueuePushPopActivity.class, new QueuePushPopTheory(), Difficulty.EASY, R.drawable.ic_add)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
                     new DataStructure("Binary Search Tree",
@@ -119,9 +123,10 @@ public class DataStructureUtil {
                                             )), Difficulty.MEDIUM, R.drawable.ic_tree),
                                     new DataStructureTopic("Binary Search Tree Traversals",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Inorder Traversal", BSTInorderActivity.class, new BSTInorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Preorder Traversal", BSTPreorderActivity.class, new BSTPreorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Postorder Traversal", BSTPostorderActivity.class, new BSTPostorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
+                                                    new DataStructureAlgorithm("In Order Traversal", BSTInorderActivity.class, new BSTInorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Pre Order Traversal", BSTPreorderActivity.class, new BSTPreorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Post Order Traversal", BSTPostorderActivity.class, new BSTPostorderTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Level Order Traversal", BSTLevelOrderActivity.class, new BSTLevelOrderTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
                                             )), Difficulty.EASY, R.drawable.ic_linear_search)
                             )), Difficulty.MEDIUM, R.drawable.ic_tree),
                     new DataStructure("Path Finding",
