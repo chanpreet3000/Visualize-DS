@@ -56,9 +56,9 @@ public class DataStructureTheoryActivity extends AppCompatActivity {
     private void initViewPager(ActivityDataStructureTheoryBinding binding, DataStructureAlgorithm dataStructureAlgorithm) {
         AlgorithmTheory algorithmTheory = dataStructureAlgorithm.getAlgorithmTheory();
 
-        String timeComplexity = "Worst Case\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getWorstCase()) + "\n\n" +
-                "Average Case\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase()) + "\n\n" +
-                "Best Case\t\t\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase());
+        String timeComplexity = "Worst Case\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getWorstCase()).toString() + "\n\n" +
+                "Average Case\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase()).toString() + "\n\n" +
+                "Best Case\t\t\t\t\t\t\t:  " + formatTimeComplexity(algorithmTheory.getAverageCase()).toString();
         List<String> titleList = new ArrayList<>(Arrays.asList("Theory", "Algorithm", "Code", "Time Complexity"));
         List<String> descriptionList = new ArrayList<>(Arrays.asList(algorithmTheory.getTheory(), algorithmTheory.getAlgorithm(), algorithmTheory.getCode(), timeComplexity));
         List<Integer> imageList = new ArrayList<>(
