@@ -4,6 +4,7 @@ import android.text.InputType;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
@@ -41,7 +42,6 @@ public class LLInsertionActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Linked List!");
-        stepCard.setDescription("");
         stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
@@ -75,33 +75,46 @@ public class LLInsertionActivity extends VisualizerActivity {
         }
         List<StepCard> stepCardList = new ArrayList<>();
         LinkedListNode temp = head;
-        LinkedListNode prev = null;
-        while (temp != null) {
-
-
+        while (temp.next != null) {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription("This is not the end of the Linked List.\nTherefore we move towards the next element.");
+            stepCard.setDescription(
+                    TextBuilder.makeBulletList(
+                            "The Next Address is not NULL.",
+                            "So this is not the last node in the Linked List",
+                            "We move to the next node"));
             HashMap<LinkedListNode, Integer> map = new HashMap<>();
-            map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
+            map.put(temp, LinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
             stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
             stepCardList.add(stepCard);
-            prev = temp;
             temp = temp.next;
         }
-        LinkedListNode newNode = new LinkedListNode((target));
-        if (prev == null) {
-            head = newNode;
-        } else {
-            prev.next = newNode;
-        }
+
+
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription("This is the end!.\nTherefore we add the element right here!.");
+        stepCard.setDescription(TextBuilder.makeBulletList(
+                "The Next Address is NULL.",
+                "So this is the last node in the Linked List",
+                "We insert the node to the next pointer"));
         HashMap<LinkedListNode, Integer> map = new HashMap<>();
+        map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
+        stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
+        stepCardList.add(stepCard);
+
+        LinkedListNode newNode = new LinkedListNode((target));
+        temp.next = newNode;
+
+
+        stepCard = new StepCard();
+        stepCard.setTitle("Final Linked List!");
+        map.clear();
         map.put(newNode, LinkedListBuilder.COLOR_TARGET_MATCHED);
         stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
         stepCardList.add(stepCard);
+
+        //
+
         adapter.setStepCardList(stepCardList);
     }
 }
