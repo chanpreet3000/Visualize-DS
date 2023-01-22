@@ -1,16 +1,17 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.merge_sort;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class ArrayMergeSortTheory extends AlgorithmTheory {
     public ArrayMergeSortTheory() {
-        super.theory = "Merge Sort is one of the most popular sorting algorithms that is based on the principle of Divide and Conquer Algorithm.\n" +
-                "\n" +
-                "Here, a problem is divided into multiple sub-problems. Each sub-problem is solved individually. Finally, sub-problems are combined to form the final solution.";
-        super.algorithm = "MergeSort Algorithm\n" +
-                "The MergeSort function repeatedly divides the array into two halves until we reach a stage where we try to perform MergeSort on a subarray of size 1.\n" +
-                "\n" +
-                "After that, the merge function comes into play and combines the sorted arrays into larger arrays until the whole array is merged.";
+        super.theory =
+                TextBuilder.makeBulletList(
+                        "Merge Sort is one of the most popular sorting algorithms that is based on the principle of Divide and Conquer Algorithm.",
+                        "Here, a problem is divided into multiple sub-problems. Each sub-problem is solved individually. Finally, sub-problems are combined to form the final solution.");
+        super.algorithm =
+                TextBuilder.makeOrderedList("The MergeSort function repeatedly divides the array into two halves until we reach a stage where we try to perform MergeSort on a sub array of size 1.",
+                        "After that, the merge function comes into play and combines the sorted arrays into larger arrays until the whole array is merged.");
 
         super.code = "void merge(int arr[], int p, int q, int r) {\n" +
                 "  \n" +

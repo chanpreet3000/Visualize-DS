@@ -1,19 +1,20 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.quick_sort;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class ArrayQuickSortTheory extends AlgorithmTheory {
     public ArrayQuickSortTheory() {
-        super.theory = "Quicksort is the widely used sorting algorithm that makes n log n comparisons in average case for sorting an array of n elements. It is a faster and highly efficient sorting algorithm. This algorithm follows the divide and conquer approach." +
-                "\n" +
-                "Divide and conquer is a technique of breaking down the algorithms into subproblems, then solving the subproblems, and combining the results back together to solve the original problem.";
-        super.algorithm = "1) Quicksort picks an element as pivot, and then it partitions the given array around the picked pivot element.\n" +
-                "\n" +
-                "2) In quick sort, a large array is divided into two arrays in which one holds values that are smaller than the specified value (Pivot), and another array holds the values that are greater than the pivot.\n" +
-                "\n" +
-                "3) After that, left and right sub-arrays are also partitioned using the same approach.\n" +
-                "\n" +
-                "4) It will continue until the single element remains in the sub-array.";
+        super.theory = TextBuilder.makeBulletList(
+                "Quicksort is the widely used sorting algorithm that makes n log n comparisons in average case for sorting an array of n elements.",
+                "It is a faster and highly efficient sorting algorithm. This algorithm follows the divide and conquer approach.",
+                "Divide and conquer is a technique of breaking down the algorithms into subproblems, then solving the subproblems, and combining the results back together to solve the original problem.");
+
+        super.algorithm =
+                TextBuilder.makeOrderedList("Quicksort picks an element as pivot, and then it partitions the given array around the picked pivot element.",
+                        "In quick sort, a large array is divided into two arrays in which one holds values that are smaller than the specified value (Pivot), and another array holds the values that are greater than the pivot.",
+                        "After that, left and right sub-arrays are also partitioned using the same approach.",
+                        "It will continue until the single element remains in the sub-array.");
 
         super.code = "int partition (int arr[], int low, int high)\n" +
                 "{\n" +
