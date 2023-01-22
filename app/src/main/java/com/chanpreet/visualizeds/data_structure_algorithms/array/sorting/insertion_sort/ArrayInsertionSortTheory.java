@@ -1,21 +1,21 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.insertion_sort;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class ArrayInsertionSortTheory extends AlgorithmTheory {
     public ArrayInsertionSortTheory() {
-        super.theory = "Insertion sort is a simple sorting algorithm. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.";
-        super.algorithm =   "1) If the element is the first element, assume that it is already sorted. Return 1.\n" +
-                "\n" +
-                "2) Pick the next element, and store it separately in a key.\n" +
-                "\n" +
-                "3) Now, compare the key with all elements in the sorted array.\n" +
-                "\n" +
-                "4) If the element in the sorted array is smaller than the current element, then move to the next element. Else, shift greater elements in the array towards the right.\n" +
-                "\n" +
-                "5) Insert the value.\n" +
-                "\n" +
-                "6) Repeat until the array is sorted.";
+        super.theory =
+                TextBuilder.makeBulletList(
+                        "Insertion sort is a simple sorting algorithm.",
+                        "The array is virtually split into a sorted and an unsorted part.",
+                        "Values from the unsorted part are picked and placed at the correct position in the sorted part.");
+        super.algorithm = TextBuilder.makeOrderedList("If the element is the first element, assume that it is already sorted. Return 1.",
+                "Pick the next element, and store it separately in a key.",
+                "Now, compare the key with all elements in the sorted array.",
+                "If the element in the sorted array is smaller than the current element, then move to the next element. Else, shift greater elements in the array towards the right.",
+                "Insert the value.",
+                "Repeat until the array is sorted.");
         super.code = "int main()\n" +
                 "{\n" +
                 "    int n = 5;\n" +
