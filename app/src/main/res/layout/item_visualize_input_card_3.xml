@@ -27,7 +27,9 @@
             android:id="@+id/slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stepSize="10" />
+            android:stepSize="10"
+            android:valueFrom="0"
+            android:valueTo="1000" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

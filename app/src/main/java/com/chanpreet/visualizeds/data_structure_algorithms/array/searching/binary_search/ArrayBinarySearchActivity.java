@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
@@ -20,6 +21,29 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
     private EditText targetEditText;
+
+    @Override
+    public void generateInputUI() {
+        //Creating UI
+        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding1.textView.setText("Enter your array (Sorted Array)");
+        binding1.editText.setHint("Enter numbers here (with spaces)");
+        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Enter element to be searched");
+        binding2.editText.setHint("Enter number to be searched");
+        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        //adding UI
+        binding.inputLinearLayout.addView(binding1.getRoot());
+        binding.inputLinearLayout.addView(binding2.getRoot());
+
+        //caching UI
+        arrayEditText = binding1.editText;
+        targetEditText = binding2.editText;
+    }
+
     @Override
     public void visualizeButtonClicked() {
         //clear all views of the linear Layout
@@ -46,45 +70,40 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
 
             HashMap<Integer, Integer> map = new HashMap<>();
+            String description;
             if (arr.get(mid) == target) {
                 canContinue = false;
                 map.put(mid, ArrayBuilder.COLOR_TARGET_MATCHED);
-                stepCard.setDescription("Target was found at the middle position.");
+                description = TextBuilder.makeBulletList(
+                        String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
+                        String.format(Locale.US, "arr[%d] == %d", mid, target),
+                        String.format(Locale.US, "Element found at index %d", mid));
             } else {
                 map.put(mid, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                 if (arr.get(mid) > target) {
+                    description = TextBuilder.makeBulletList(
+                            String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
+                            String.format(Locale.US, "arr[%d] > %d", mid, target),
+                            "Target is smaller than element at the middle position.",
+                            "Therefore we eliminate right side from the middle.",
+                            String.format(Locale.US, "end = %d", end));
                     end = mid - 1;
-                    stepCard.setDescription("Target is smaller than element at the middle position.\nTherefore we eliminate right side from the middle.");
                 } else {
+                    description = TextBuilder.makeBulletList(
+                            String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
+                            String.format(Locale.US, "arr[%d] < %d", mid, target),
+                            "Target is greater than element at the middle position.",
+                            "Therefore we eliminate left side from the middle.",
+                            String.format(Locale.US, "start = %d", start));
                     start = mid + 1;
-                    stepCard.setDescription("Target is greater than element at the middle position.\nTherefore we eliminate left side from the middle.");
                 }
             }
+            stepCard.setDescription(description);
             stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
             stepCardList.add(stepCard);
         }
         adapter.setStepCardList(stepCardList);
     }
 
-    @Override
-    public void generateInputUI() {
-        //Creating UI
-        ItemVisualizeInputCardBinding binding1 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array (Sorted Array)");
-        binding1.editText.setHint("Enter numbers here (with spaces)");
-        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
-        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding2.textView.setText("Enter element to be searched");
-        binding2.editText.setHint("Enter number to be searched");
-        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
-
-        //adding UI
-        binding.inputLinearLayout.addView(binding1.getRoot());
-        binding.inputLinearLayout.addView(binding2.getRoot());
-
-        //caching UI
-        arrayEditText = binding1.editText;
-        targetEditText = binding2.editText;
-    }
 }
