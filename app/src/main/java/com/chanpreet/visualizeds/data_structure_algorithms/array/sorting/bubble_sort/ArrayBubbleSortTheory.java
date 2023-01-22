@@ -1,24 +1,20 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.bubble_sort;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class ArrayBubbleSortTheory extends AlgorithmTheory {
     public ArrayBubbleSortTheory() {
-        super.theory = "Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are not in the intended order.\n" +
-                "\n" +
-                "Just like the movement of air bubbles in the water that rise up to the surface, each element of the array move to the end in each iteration.\n" +
-                "Therefore, it is called a bubble sort.";
-        super.algorithm =  "1) Starting from the first index, compare the first and the second elements.\n" +
-                "\n" +
-                "2) If the first element is greater than the second element, they are swapped.\n" +
-                "\n" +
-                "3) Now, compare the second and the third elements. Swap them if they are not in order.\n" +
-                "\n" +
-                "4) The above process goes on until the last element.\n" +
-                "\n" +
-                "5) After this the largest element will come at the end of the array.\n" +
-                "\n" +
-                "6) Repeat from Step 1 (N - 1) more time to sort all elements.\n";
+        super.theory =
+                TextBuilder.makeBulletList("Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are not in the intended order.",
+                        "Just like the movement of air bubbles in the water that rise up to the surface, each element of the array move to the end in each iteration.",
+                        "Therefore, it is called a bubble sort.");
+        super.algorithm = TextBuilder.makeOrderedList("Starting from the first index, compare the first and the second elements.",
+                "If the first element is greater than the second element, they are swapped.",
+                "Now, compare the second and the third elements. Swap them if they are not in order.",
+                "The above process goes on until the last element.",
+                "After this the largest element will come at the end of the array.",
+                "Repeat from Step 1 (N - 1) more time to sort all elements.\n");
 
         super.code = "int main()\n" +
                 "{\n" +
