@@ -4,6 +4,7 @@ import android.text.InputType;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.DoublyLinkedListBuilder;
@@ -26,7 +27,7 @@ public class DLLInsertionActivity extends VisualizerActivity {
 
         Random random = new Random();
         DoublyLinkedListNode temp = head;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             DoublyLinkedListNode node = new DoublyLinkedListNode(random.nextInt() % 20);
             if (temp == null) {
                 head = node;
@@ -74,33 +75,41 @@ public class DLLInsertionActivity extends VisualizerActivity {
         }
         List<StepCard> stepCardList = new ArrayList<>();
         DoublyLinkedListNode temp = head;
-        DoublyLinkedListNode prev = head;
-        while (temp != null) {
+        while (temp.next != null) {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
 
-            stepCard.setDescription("This is not the end!.\nTherefore we move to the next Node.");
+            stepCard.setDescription(TextBuilder.makeBulletList("The Next Pointer is not NULL",
+                    "Therefore we move to the next node."));
             map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
 
             stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
             stepCardList.add(stepCard);
-
-            prev = temp;
             temp = temp.next;
         }
 
-        DoublyLinkedListNode node = new DoublyLinkedListNode(target);
-        assert prev != null;
-        prev.next = node;
-        node.prev = prev;
-
+        //
         StepCard stepCard = new StepCard();
-        stepCard.setTitle("Final Doubly Linked List");
+        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
-        map.put(head, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
+
+        map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
-        stepCard.setDescription("After insertion Doubly Linked List looks like this!.");
+        stepCard.setDescription(
+                TextBuilder.makeBulletList("The next Pointer is a NULL Node",
+                        "Therefore the new node will be mapped to the next pointer of this node."));
+        stepCardList.add(stepCard);
+        //
+        DoublyLinkedListNode node = new DoublyLinkedListNode(target);
+        temp.next = node;
+        node.prev = temp;
+
+        stepCard = new StepCard();
+        stepCard.setTitle("Final Doubly Linked List");
+        map.clear();
+        map.put(node, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
+        stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
     }

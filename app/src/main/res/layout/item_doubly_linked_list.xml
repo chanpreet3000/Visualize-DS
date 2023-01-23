@@ -6,36 +6,29 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:foreground="@drawable/layout_border_black"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardCornerRadius="0dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Previous Node Address"
-                    android:textColor="@color/black"
-                    android:textSize="8sp" />
-            </androidx.cardview.widget.CardView>
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Previous Node Address"
+                android:textColor="@color/black"
+                android:textSize="6sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#219E21"
@@ -47,31 +40,24 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="125"
+                    android:text="NULL"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="11sp" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardCornerRadius="0dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Next Node Address"
-                    android:textColor="@color/black"
-                    android:textSize="8sp" />
-            </androidx.cardview.widget.CardView>
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Next Node Address"
+                android:textColor="@color/black"
+                android:textSize="6sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/nodeNextPointer"
-            android:layout_width="match_parent"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="3"
@@ -80,8 +66,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:paddingEnd="4dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_long_arrow"
                 android:visibility="visible" />
@@ -89,8 +75,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:paddingEnd="4dp"
                 android:rotation="180"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_long_arrow"
@@ -102,13 +88,13 @@
 
     <ImageView
         android:id="@+id/indexPointer"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
         android:layout_gravity="start"
         android:padding="6dp"
         android:paddingStart="12dp"
         android:rotation="270"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_long_arrow"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 </LinearLayout>
