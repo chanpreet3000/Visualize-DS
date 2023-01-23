@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.ArrayBuilder;
@@ -35,7 +36,10 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
         binding2.editText.setHint("Enter number to be searched");
         binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
 
+        ItemSuccessAlertCardBinding binding3 = ItemSuccessAlertCardBinding.inflate(getLayoutInflater());
+        binding3.textView.setText("The Array entered must be sorted for binary search to work as intended");
         //adding UI
+        binding.inputLinearLayout.addView(binding3.getRoot());
         binding.inputLinearLayout.addView(binding1.getRoot());
         binding.inputLinearLayout.addView(binding2.getRoot());
 
