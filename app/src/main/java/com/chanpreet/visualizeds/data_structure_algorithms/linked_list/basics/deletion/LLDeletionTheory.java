@@ -1,20 +1,20 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.deletion;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class LLDeletionTheory extends AlgorithmTheory {
     public LLDeletionTheory() {
-        super.theory = "Deleting a node from the beginning of the list is the simplest operation of all. It just need a few adjustments in the node pointers. Since the first node of the list is to be deleted, therefore, we just need to make the head, point to the next of the head.";
+        super.theory = TextBuilder.makeBulletList(
+                "Deleting a node from the beginning of the list is the simplest operation of all.",
+                "It just need a few adjustments in the node pointers.",
+                "Since the first node of the list is to be deleted, therefore, we just need to make the head, point to the next of the head.");
 
-        super.algorithm = "1) If the head node has the given key, make the head node points to the second node and free its memory.\n" +
-                "\n" +
-                "2) Otherwise,\n" +
-                "\n" +
-                "     From the current node, check whether the next node has the given key\n" +
-                "\n" +
-                "     if yes, make the current->next = current->next->next and free the memory.\n" +
-                "\n" +
-                "     else, update the current node to the next and do the above process (from step 2) till the last node.";
+        super.algorithm =
+                TextBuilder.makeOrderedList("If the head node has the given key, make the head node points to the second node and free its memory.",
+                        "Otherwise, From the current node, check whether the next node has the given key",
+                        "if yes, make the current->next = current->next->next and free the memory.",
+                        "else, update the current node to the next and do the above process (from step 2) till the last node.");
 
         super.code = "class Node\n" +
                 "{\n" +
