@@ -1,18 +1,19 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class LLTraversalTheory extends AlgorithmTheory {
     public LLTraversalTheory() {
-        super.theory = "Traversing is the most common operation that is performed in almost every scenario of singly linked list. Traversing means visiting each node of the list once in order to perform some operation on that.";
+        super.theory = TextBuilder.makeBulletList(
+                "Traversing is the most common operation that is performed in almost every scenario of singly linked list.",
+                "Traversing means visiting each node of the list once in order to perform some operation on that.");
 
-        super.algorithm = "1) Initialize temp = head.\n" +
-                "\n" +
-                "2) If temp is NULL we stop the traversal (EXIT).\n" +
-                "\n" +
-                "3) If temp is not NULL we now go to the next node by setting temp = next pointer of the current temp ( temp = temp->next).\n" +
-                "\n" +
-                "4) Repeat Step 2.";
+        super.algorithm =
+                TextBuilder.makeOrderedList("Initialize temp = head.",
+                "If temp is NULL we stop the traversal (EXIT)." ,
+                "If temp is not NULL we now go to the next node by setting temp = next pointer of the current temp ( temp = temp->next).",
+                "Repeat Step 2.");
         super.code = "class Node\n" +
                 "{\n" +
                 "public:\n" +
