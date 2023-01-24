@@ -4,13 +4,11 @@ import android.text.InputType;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.chanpreet.visualizeds.builder.LinkedListBuilder;
-import com.chanpreet.visualizeds.builder.TextBuilder;
-import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.DoublyLinkedListBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
+import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.DoublyLinkedListNode;
-import com.chanpreet.visualizeds.classes.data_structure_containers.LinkedListNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,7 +87,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
                         TextBuilder.makeBulletList("Found the element to be deleted!",
                                 "If the element is the head of the linked list head is set to the next of the head.",
                                 "If not the previous node's next ptr is set to the next ptr of the target node."));
-                map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
+                map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
                 stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
                 if (prev == null) {
                     head = head.next;
@@ -101,7 +99,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
                 stepCard.setDescription(
                         TextBuilder.makeBulletList(String.format(Locale.US, "%d ≠ %d", temp.data, target),
                                 "Now, move to the next node."));
-                map.put(temp, LinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
+                map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
                 stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
             }
             stepCardList.add(stepCard);
