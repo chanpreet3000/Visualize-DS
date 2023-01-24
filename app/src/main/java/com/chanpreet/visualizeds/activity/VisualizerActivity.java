@@ -102,7 +102,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public void onCreate() {
     }
 
-    private void hideKeyboard() {
+    public void hideKeyboard() {
         // Check if no view has focus:
         View view = this.getCurrentFocus();
         if (view != null) {
