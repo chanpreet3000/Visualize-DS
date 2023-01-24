@@ -18,14 +18,13 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
+            android:paddingVertical="16dp"
             android:text="Title"
             android:textColor="@color/oxford_blue"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <HorizontalScrollView
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -45,7 +44,7 @@
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingVertical="8dp"
             android:text="description"
             android:textColor="@color/black"

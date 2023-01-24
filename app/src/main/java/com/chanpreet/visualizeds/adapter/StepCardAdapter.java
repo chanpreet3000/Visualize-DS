@@ -24,13 +24,15 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
         stepCardList = new ArrayList<>();
 
     }
-    public void addStepCard(StepCard stepCard){
-        if(stepCardList.get(0).getData() == null){
+
+    public void addStepCard(StepCard stepCard) {
+        if (stepCardList.get(0).getData() == null) {
             stepCardList.clear();
         }
         this.stepCardList.add(stepCard);
         notifyDataSetChanged();
     }
+
     public void setStepCardList(List<StepCard> stepCardList) {
         this.stepCardList = stepCardList;
         notifyDataSetChanged();
@@ -47,8 +49,11 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     public void onBindViewHolder(@NonNull StepCardViewHolder holder, int position) {
         holder.binding.titleTextView.setText(stepCardList.get(position).getTitle());
         holder.binding.descriptionTextView.setText(stepCardList.get(position).getDescription());
-        holder.binding.dataNodeHolder.removeAllViews();
+
         if (stepCardList.get(position).getData() != null) {
+            if (stepCardList.get(position).getData().getParent() != null) {
+                ((ViewGroup) stepCardList.get(position).getData().getParent()).removeView(stepCardList.get(position).getData());
+            }
             holder.binding.dataNodeHolder.addView(stepCardList.get(position).getData());
         } else {
             holder.binding.dataNodeHolder.addView(ItemNoDataErrorBinding.inflate(LayoutInflater.from(context)).getRoot());

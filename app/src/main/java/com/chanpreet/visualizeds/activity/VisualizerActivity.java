@@ -8,9 +8,9 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
+import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 
 import java.util.ArrayList;
