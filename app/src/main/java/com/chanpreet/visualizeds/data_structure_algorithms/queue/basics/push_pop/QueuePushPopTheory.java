@@ -1,13 +1,15 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_pop;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class QueuePushPopTheory extends AlgorithmTheory {
     public QueuePushPopTheory() {
-        super.theory = "A Queue is defined as a linear data structure that is open at both ends and the operations are performed in First In First Out (FIFO) order. We define a queue to be a list in which all additions to the list are made at one end, and all deletions from the list are made at the other end.";
-        super.algorithm = "1) Element can be inserted using .push(element) function" +
-                "\n" +
-                "\n2) Front element can be removed using .pop() function";
+        super.theory = TextBuilder.makeBulletList(
+                "A Queue is defined as a linear data structure that is open at both ends and the operations are performed in First In First Out (FIFO) order.",
+                "We define a queue to be a list in which all additions to the list are made at one end, and all deletions from the list are made at the other end.");
+        super.algorithm = TextBuilder.makeOrderedList("Element can be inserted using .push(element) function",
+                "Front element can be removed using .pop() function");
 
         super.code = "#include <bits/stdc++.h>\n" +
                 "using namespace std;\n" +

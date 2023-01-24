@@ -5,11 +5,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.chanpreet.visualizeds.classes.StepCard;
-import com.chanpreet.visualizeds.builder.QueueBuilder;
-import com.chanpreet.visualizeds.builder.StackBuilder;
-import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
+import com.chanpreet.visualizeds.builder.QueueBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
+import com.chanpreet.visualizeds.classes.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 import java.util.LinkedList;
 import java.util.Locale;
@@ -17,7 +19,7 @@ import java.util.Queue;
 
 public class QueuePushPopActivity extends VisualizerActivity {
     private EditText pushEditText;
-    private Queue<Integer> queue = new LinkedList<>();
+    private final Queue<Integer> queue = new LinkedList<>();
 
     @Override
     public void onCreate() {
@@ -39,8 +41,16 @@ public class QueuePushPopActivity extends VisualizerActivity {
         binding2.editText.setVisibility(View.GONE);
         binding2.button.setText("POP");
 
+        ItemSuccessAlertCardBinding binding3 = ItemSuccessAlertCardBinding.inflate(getLayoutInflater());
+        binding3.textView.setText("PUSH operation means inserting an element into the queue");
+
+        ItemErrorAlertCardBinding binding4 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+        binding4.textView.setText("POP operation means deleting the last element inserted from the queue");
+
         //adding UI
+        binding.inputLinearLayout.addView(binding3.getRoot());
         binding.inputLinearLayout.addView(binding1.getRoot());
+        binding.inputLinearLayout.addView(binding4.getRoot());
         binding.inputLinearLayout.addView(binding2.getRoot());
 
         //caching UI
@@ -51,6 +61,7 @@ public class QueuePushPopActivity extends VisualizerActivity {
     }
 
     private void pushButtonClicked() {
+        super.hideKeyboard();
         //getting array and target
         int target;
         try {
@@ -63,22 +74,24 @@ public class QueuePushPopActivity extends VisualizerActivity {
         queue.add(target);
 
         StepCard stepCard = new StepCard();
-        stepCard.setTitle(String.format(Locale.US, "Pushing %d into the Stack.", target));
-        stepCard.setDescription("");
-        stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.PUSH_OPERATION));
+        stepCard.setTitle("PUSH Operation");
+        stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Pushing %d into the queue.", target)));
+        stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.PUSH_OPERATION));
         adapter.addStepCard(stepCard);
     }
 
     private void popButtonClicked() {
+        super.hideKeyboard();
+
         StepCard stepCard = new StepCard();
 
         if (queue.isEmpty()) {
             stepCard.setTitle("Queue is Empty!");
-            stepCard.setDescription("");
+            stepCard.setDescription(TextBuilder.makeBulletList("No element to pop from the queue."));
         } else {
-            stepCard.setTitle("POP' ing from the Queue.");
-            stepCard.setDescription("");
-            stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, StackBuilder.POP_OPERATION));
+            stepCard.setTitle("POP Operation");
+            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Removing %d from the queue", queue.peek())));
+            stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.POP_OPERATION));
             queue.remove();
         }
         adapter.addStepCard(stepCard);
