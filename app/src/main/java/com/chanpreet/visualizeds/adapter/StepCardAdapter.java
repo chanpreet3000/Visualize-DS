@@ -49,7 +49,7 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     public void onBindViewHolder(@NonNull StepCardViewHolder holder, int position) {
         holder.binding.titleTextView.setText(stepCardList.get(position).getTitle());
         holder.binding.descriptionTextView.setText(stepCardList.get(position).getDescription());
-
+        holder.binding.dataNodeHolder.removeAllViews();
         if (stepCardList.get(position).getData() != null) {
             if (stepCardList.get(position).getData().getParent() != null) {
                 ((ViewGroup) stepCardList.get(position).getData().getParent()).removeView(stepCardList.get(position).getData());
