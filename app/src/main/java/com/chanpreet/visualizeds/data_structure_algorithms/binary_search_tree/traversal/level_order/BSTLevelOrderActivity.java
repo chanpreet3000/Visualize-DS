@@ -4,8 +4,11 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
+import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,7 +25,8 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
     @Override
     public void onCreate() {
         super.onCreate();
-        for (int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 7; i++) {
             int rand = new Random().nextInt(200) - 100;
             root = BSTNode.insertNode(root, rand);
         }
@@ -52,7 +56,10 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BSTBuilder.build(this, root, root.data));
-        stepCard.setDescription("Adding the root to the queue.\nQueue : " + queue);
+        stepCard.setDescription(
+                TextBuilder.makeBulletList(
+                        "Adding the root to the queue.",
+                        "Queue : " + queue));
         stepCardList.add(stepCard);
 
         List<Integer> levelOrderList = new ArrayList<>();
@@ -63,29 +70,43 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
                 assert front != null;
                 levelOrderList.add(front.data);
 
-                StringBuilder description = new StringBuilder(String.format(Locale.US, "Getting front element from the queue.\nAdding %d to the Level Order List.", front.data));
-
+                String description = TextBuilder.makeBulletList(
+                        String.format(Locale.US, "Front Element from queue : %d", front.data));
+                description += "\n\n";
+                //
                 if (front.left == null) {
-                    description.append("\nLeft node is null therefore we wont add it to the queue");
+                    description += TextBuilder.makeBulletList(
+                            "Left node is NULL",
+                            "Therefore, left node will not be added to the queue");
                 } else {
                     queue.add(front.left);
-                    description.append(String.format(Locale.US, "\nLeft node is NOT null therefore we add %d to the queue", front.left.data));
+                    description += TextBuilder.makeBulletList(
+                            "Left node is NOT NULL",
+                            String.format(Locale.US, "Therefore, left node (%d) will be added to the queue", front.left.data));
                 }
+                description += "\n\n";
 
                 if (front.right == null) {
-                    description.append("\nRight node is null therefore we wont add it to the queue");
+                    description += TextBuilder.makeBulletList(
+                            "Right node is NULL",
+                            "Therefore, right node will not be added to the queue");
                 } else {
                     queue.add(front.right);
-                    description.append(String.format(Locale.US, "\nRight node is NOT null therefore we add %d to the queue", front.right.data));
+                    description += TextBuilder.makeBulletList(
+                            "Right node is NOT NULL",
+                            String.format(Locale.US, "Therefore, right node (%d) will be added to the queue", front.right.data));
                 }
 
-                description.append("\nCurrent Queue : ").append(queue);
-                description.append("\nCurrent Level Order List : ").append(levelOrderList);
+                description += "\n\n";
+                description += TextBuilder.makeBulletList(
+                        String.format(Locale.US, "Queue : %s", queue),
+                        String.format(Locale.US, "Level Order Traversal : %s", levelOrderList));
 
+                //
                 stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
                 stepCard.setData(BSTBuilder.build(this, root, front.data));
-                stepCard.setDescription(description.toString());
+                stepCard.setDescription(description);
                 stepCardList.add(stepCard);
             }
         }
@@ -93,7 +114,12 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
         stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BSTBuilder.build(this, root, -999));
-        stepCard.setDescription("Queue : " + queue + "\n\nQueue is Empty. Therefore we traversed the Binary Search Tree.\n\nLevel Order Traversal is " + levelOrderList);
+        stepCard.setDescription(
+                TextBuilder.makeBulletList(
+                        String.format(Locale.US, "Queue : %s", queue),
+                        "Queue is Empty.",
+                        "Therefore we traversed the Binary Search Tree.",
+                        String.format(Locale.US, "Level Order Traversal : %s", levelOrderList)));
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
@@ -101,5 +127,19 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
 
     @Override
     public void generateInputUI() {
+        ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
+        binding1.textView.setText("Generate BST");
+        binding1.editText.setVisibility(View.GONE);
+        binding1.button.setText("Generate");
+        binding1.button.setOnClickListener(v -> {
+            root = null;
+            this.onCreate();
+        });
+
+        ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Generating new BST will erase previous visualization.");
+
+        binding.inputLinearLayout.addView(binding2.getRoot());
+        binding.inputLinearLayout.addView(binding1.getRoot());
     }
 }
