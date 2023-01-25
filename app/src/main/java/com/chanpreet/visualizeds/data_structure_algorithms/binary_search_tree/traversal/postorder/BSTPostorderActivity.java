@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 
@@ -40,7 +41,8 @@ public class BSTPostorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Description
-            stepCard.setDescription("We reach a null point.\nTherefore we move back to the parent node");
+            stepCard.setDescription(TextBuilder.makeBulletList("We reach a null node.",
+                    "Therefore we move back to the parent node"));
             stepCardList.add(stepCard);
             return;
         }
@@ -53,7 +55,12 @@ public class BSTPostorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(String.format(Locale.US, "We move to the left subtree.\nCurrent list : %s", arr.toString()));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Left Subtree Traversed  : ❌",
+                    "Right Subtree Traversed : ❌",
+                    "Node Traversed          : ❌",
+                    "Now, we traverse the left subtree",
+                    String.format(Locale.US, "PostOrder Traversal : %s", arr)));
             stepCardList.add(stepCard);
 
             //RECURSIVE LEFT SUBTREE CALL
@@ -68,7 +75,13 @@ public class BSTPostorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(String.format(Locale.US, "We move to the right subtree.\nCurrent list : %s", arr));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Left Subtree Traversed  : ✅",
+                    "Right Subtree Traversed : ❌",
+                    "Node Traversed          : ❌",
+                    "Left Subtree is fully traversed.",
+                    "Now, we traverse the right subtree",
+                    String.format(Locale.US, "PostOrder Traversal : %s", arr)));
             stepCardList.add(stepCard);
 
             //RECURSIVE RIGHT SUBTREE CALL
@@ -86,7 +99,14 @@ public class BSTPostorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(this, finalRoot, root.data));
             //Description
-            stepCard.setDescription(String.format(Locale.US, "Both Left and right SubTree traversed.\nTherefore, %d is now added to the traversed list.\nCurrent list : %s \n\nNow we move back to the parent Node.", root.data, arr));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Left Subtree Traversed  : ✅",
+                    "Right Subtree Traversed : ✅",
+                    "Node Traversed          : ✅",
+                    "Left and Right Subtree are fully traversed.",
+                    String.format(Locale.US, "%d is now added to the traversed list.", root.data),
+                    "Now, we move back to the parent node",
+                    String.format(Locale.US, "PostOrder Traversal : %s", arr)));
             stepCardList.add(stepCard);
         }
     }
