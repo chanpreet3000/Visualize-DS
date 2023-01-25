@@ -78,6 +78,7 @@ public class StackPushPopActivity extends VisualizerActivity {
         stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.PUSH_OPERATION));
 
         adapter.addStepCard(stepCard);
+        binding.viewPager.setCurrentItem(adapter.getItemCount() - 1, true);
     }
 
     private void popButtonClicked() {
@@ -93,6 +94,7 @@ public class StackPushPopActivity extends VisualizerActivity {
             st.pop();
         }
         adapter.addStepCard(stepCard);
+        binding.viewPager.setCurrentItem(adapter.getItemCount() - 1, true);
     }
 
     @Override

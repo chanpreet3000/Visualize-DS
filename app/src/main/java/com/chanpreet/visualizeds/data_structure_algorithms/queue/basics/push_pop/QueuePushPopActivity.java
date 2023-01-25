@@ -62,6 +62,7 @@ public class QueuePushPopActivity extends VisualizerActivity {
 
     private void pushButtonClicked() {
         super.hideKeyboard();
+
         //getting array and target
         int target;
         try {
@@ -71,13 +72,15 @@ public class QueuePushPopActivity extends VisualizerActivity {
             return;
         }
 
-        queue.add(target);
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("PUSH Operation");
         stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Pushing %d into the queue.", target)));
-        stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.PUSH_OPERATION));
+        stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.PUSH_OPERATION, target));
         adapter.addStepCard(stepCard);
+        binding.viewPager.setCurrentItem(adapter.getItemCount() - 1, true);
+
+        queue.add(target);
     }
 
     private void popButtonClicked() {
@@ -91,10 +94,11 @@ public class QueuePushPopActivity extends VisualizerActivity {
         } else {
             stepCard.setTitle("POP Operation");
             stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Removing %d from the queue", queue.peek())));
-            stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.POP_OPERATION));
+            stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.POP_OPERATION, -1));
             queue.remove();
         }
         adapter.addStepCard(stepCard);
+        binding.viewPager.setCurrentItem(adapter.getItemCount() - 1, true);
     }
 
     @Override

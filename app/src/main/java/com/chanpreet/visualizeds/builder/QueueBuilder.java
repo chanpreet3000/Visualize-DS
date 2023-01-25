@@ -17,7 +17,6 @@ import com.chanpreet.visualizeds.databinding.ItemStackNodeBinding;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
-import java.util.Stack;
 
 public class QueueBuilder {
     public static final int COLOR_DEFAULT = R.color.green;
@@ -28,7 +27,7 @@ public class QueueBuilder {
     public static final String POP_OPERATION = "POP";
 
     @NonNull
-    public static View build(Context context, Queue<Integer> queue, String param) {
+    public static View build(Context context, Queue<Integer> queue, String param, Integer data) {
         LinearLayout parent = new LinearLayout(context);
         parent.setOrientation(LinearLayout.VERTICAL);
 
@@ -75,12 +74,10 @@ public class QueueBuilder {
         rightLayout.addView(textView2);
 
 
-
         if (Objects.equals(param, PUSH_OPERATION)) {
             textView.setText("PUSH\nOPERATION");
 
             Queue<Integer> temp = new LinkedList<>(queue);
-            temp.remove();
 
             LinearLayout layout1 = new LinearLayout(context);
             layout1.setOrientation(LinearLayout.HORIZONTAL);
@@ -99,6 +96,7 @@ public class QueueBuilder {
 
             temp.clear();
             temp.addAll(queue);
+            temp.add(data);
 
             LinearLayout layout2 = new LinearLayout(context);
             layout2.setOrientation(LinearLayout.HORIZONTAL);
@@ -119,7 +117,7 @@ public class QueueBuilder {
                 temp.remove();
             }
             rightLayout.addView(layout2);
-        } else if (Objects.equals(param, POP_OPERATION)){
+        } else if (Objects.equals(param, POP_OPERATION)) {
             textView.setText("POP\nOPERATION");
 
             Queue<Integer> temp = new LinkedList<>(queue);
