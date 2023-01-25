@@ -9,6 +9,8 @@ import com.chanpreet.visualizeds.builder.GridBuilder;
 import com.chanpreet.visualizeds.classes.GridItemOnClickListener;
 import com.chanpreet.visualizeds.classes.Pair;
 import com.chanpreet.visualizeds.classes.StepCard;
+import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard3Binding;
 
@@ -30,30 +32,48 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
     private static final int[] d4y = {0, 1, 0, -1};
     List<List<ImageView>> listOfImageViews;
     boolean canVisualize = true;
+    boolean canAddObstacle = true;
+
     private ItemVisualizeInputCard2Binding binding1;
     private ItemVisualizeInputCard3Binding binding2;
 
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initializeGrid();
+    }
+
     @Override
     public void generateInputUI() {
+
+        binding.buttonHolder.setVisibility(View.GONE);
         binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
-        binding1.button.setText("Reset Grid");
+        binding1.textView.setText("Reset Grid");
+        binding1.button.setText("Reset");
         binding1.button.setOnClickListener(v -> initializeGrid());
         binding1.editText.setVisibility(View.GONE);
-        binding1.textView.setVisibility(View.GONE);
 
         binding2 = ItemVisualizeInputCard3Binding.inflate(getLayoutInflater());
-        binding2.textView.setText("Set Speed of PathFinder");
+        binding2.textView.setText("Set Tick Speed of PathFinder");
         binding2.slider.setValue(MIN_SPEED);
         binding2.slider.setValueFrom(MIN_SPEED);
         binding2.slider.setValueTo(MAX_SPEED);
 
+        ItemErrorAlertCardBinding binding3 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+        binding3.textView.setText("The Grid should be RESET after each visualization.");
+
+        ItemSuccessAlertCardBinding binding4 = ItemSuccessAlertCardBinding.inflate(getLayoutInflater());
+        binding4.textView.setText("You can tap on the grid blocks to add obstacles.");
+
+        binding.inputLinearLayout.addView(binding3.getRoot());
         binding.inputLinearLayout.addView(binding1.getRoot());
         binding.inputLinearLayout.addView(binding2.getRoot());
-
-        initializeGrid();
+        binding.inputLinearLayout.addView(binding4.getRoot());
     }
 
     private void initializeGrid() {
+        canAddObstacle = true;
 
         GridBuilder.GridObject obj = GridBuilder.build(this, GRID_SIZE, GRID_UNIT);
 
@@ -61,10 +81,14 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Grid");
-        stepCard.setDescription("WHITE\t\t\t: EMPTY CELL" + "\n" +
-                "RED\t\t\t\t: START CELL" + "\n" +
-                "GREEN\t\t\t: END CELL" + "\n" +
-                "BLACK\t\t\t: BLOCK CELL");
+        stepCard.setDescription(
+                "EMPTY CELL \t: ⬜" +
+                        "\n" +
+                        "START CELL \t: \uD83D\uDFE9" +
+                        "\n" +
+                        "END CELL   \t\t\t: \uD83D\uDFE5" +
+                        "\n" +
+                        "BLOCK CELL \t: ⬛");
         stepCard.setData(obj.getView());
         stepCardList.add(stepCard);
 
@@ -102,6 +126,7 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
     public void visualizeButtonClicked() {
         binding.visualizeButton.setEnabled(false);
         setView(false);
+        canAddObstacle = false;
         Handler handler = new Handler();
 
         int[][] vis = new int[GRID_SIZE][GRID_SIZE];
@@ -153,7 +178,7 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
 
     @Override
     public void onClick(View view, Pair loc) {
-        if (!canVisualize) return;
+        if (!canAddObstacle) return;
 
         view.setBackgroundResource(GridBuilder.BLOCK_COLOR);
         mat[loc.first][loc.second] = 1;

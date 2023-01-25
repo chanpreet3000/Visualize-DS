@@ -133,10 +133,10 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("BFS", PFBFSActivity.class, null, Difficulty.EASY, R.drawable.ic_add),
-                                                    new DataStructureAlgorithm("DFS", PFDFSActivity.class, null, Difficulty.EASY, R.drawable.ic_add)
-                                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
-                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+                                                    new DataStructureAlgorithm("BFS", PFBFSActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("DFS", PFDFSActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search)
+                                            )), Difficulty.EASY, R.drawable.ic_linear_search)
+                            )), Difficulty.EASY, R.drawable.ic_baseline_grid_on_24)
 
             ));
 
