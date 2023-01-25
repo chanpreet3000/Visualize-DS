@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
@@ -25,7 +26,7 @@ public class BSTDeletionActivity extends VisualizerActivity {
     public void onCreate() {
         super.onCreate();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 7; i++) {
             int rand = new Random().nextInt(200) - 100;
             root = BSTNode.insertNode(root, rand);
         }
@@ -66,11 +67,14 @@ public class BSTDeletionActivity extends VisualizerActivity {
 
             //Description
             if (target == temp.data) {
-                stepCard.setDescription("The element to be deleted is found.");
+                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d == %d", target, temp.data),
+                        "The element to be deleted is found."));
             } else if (target < temp.data) {
-                stepCard.setDescription(String.format(Locale.US, "%d is less than %d.\nTherefore we move to the left subtree.", target, temp.data));
+                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d < %d", target, temp.data),
+                        "Therefore we move to the left subtree."));
             } else {
-                stepCard.setDescription(String.format(Locale.US, "%d is greater than %d.\nTherefore we move to the right subtree.", target, temp.data));
+                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d > %d", target, temp.data),
+                        "Therefore we move to the right subtree."));
             }
             stepCardList.add(stepCard);
 
@@ -84,39 +88,44 @@ public class BSTDeletionActivity extends VisualizerActivity {
                 temp = temp.right;
             }
         }
+        StepCard stepCard = new StepCard();
         if (!found) {
             //Final Step Card
-            StepCard stepCard = new StepCard();
             stepCard.setTitle("Binary Search Tree After Deletion.");
-            stepCard.setDescription(String.format(Locale.US, "The Binary Search Tree does not contain %d.\nTherefore, No need for deletion.\nThis is the final Binary Search Tree.", target));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    String.format(Locale.US, "The Binary Search Tree does not contain %d.", target),
+                    "Therefore, No need for deletion."));
             //Generating Tree for Step Card
-            stepCard.setData(BSTBuilder.build(getApplicationContext(), root, target));
             //Adding view to the holder of the Step Card
-            stepCardList.add(stepCard);
         } else {
-            StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             if (temp.left == null && temp.right == null) {
-                stepCard.setDescription("There exists no left and right subtree.\nTherefore the node can be directly deleted.");
+                stepCard.setDescription(TextBuilder.makeBulletList("There exists no left and right subtree.",
+                        "Therefore the node can be directly deleted."));
             } else if (temp.left != null && temp.right == null) {
-                stepCard.setDescription("There exists no right subtree.\nTherefore the node can be directly deleted and the left subtree can be directly attached to the node.");
+                stepCard.setDescription(TextBuilder.makeBulletList("There exists no right subtree.",
+                        "Therefore the node can be directly deleted and the left subtree can be directly attached to the node."));
             } else if (temp.left == null) {
-                stepCard.setDescription("There exists no left subtree.\nTherefore the node can be directly deleted and the right subtree can be directly attached to the node.");
+                stepCard.setDescription(TextBuilder.makeBulletList("There exists no left subtree.",
+                        "Therefore the node can be directly deleted and the right subtree can be directly attached to the node."));
             } else {
-                stepCard.setDescription("There exists both left and right subtree.\nTherefore the node cannot be directly deleted.\nTargeted node will be replaced by the Inorder Successor or Predecessor of the targeted node.");
+                stepCard.setDescription(TextBuilder.makeBulletList("There exists both left and right subtree.",
+                        "Therefore the node cannot be directly deleted.",
+                        "Targeted node will be replaced by the Inorder Successor or Predecessor of the targeted node and the Inorder Successor or Predecessor will be deleted."));
             }
+            stepCard.setData(BSTBuilder.build(this, root, -999));
             stepCardList.add(stepCard);
             this.root = deletionBST(root, target);
 
             //printing final tree.
             stepCard = new StepCard();
             stepCard.setTitle("Binary Search Tree After Deletion.");
-            stepCard.setDescription(String.format(Locale.US, "This is the final Binary Search Tree after deleting %d.", target));
+            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "This is the final Binary Search Tree after deleting %d.", target)));
             //Generating Tree for Step Card
-            stepCard.setData(BSTBuilder.build(getApplicationContext(), this.root, target));
             //Adding view to the holder of the Step Card
-            stepCardList.add(stepCard);
         }
+        stepCard.setData(BSTBuilder.build(getApplicationContext(), root, target));
+        stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
     }
