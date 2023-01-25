@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 
@@ -42,7 +43,8 @@ public class BSTPreorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Description
-            stepCard.setDescription("We reach a null point.\nTherefore we move back to the parent node");
+            stepCard.setDescription(TextBuilder.makeBulletList("We reach a null node.",
+                    "Therefore we move back to the parent node"));
             stepCardList.add(stepCard);
             return;
         }
@@ -56,8 +58,14 @@ public class BSTPreorderActivity extends VisualizerActivity {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Node Traversed          : ✅",
+                    "Left Subtree Traversed  : ❌",
+                    "Right Subtree Traversed : ❌",
+                    String.format(Locale.US, "%d is now added to the traversed list.", root.data),
+                    "We move to the left subtree",
+                    String.format(Locale.US, "Preorder Traversal : %s", arr)));
             //Description
-            stepCard.setDescription(String.format(Locale.US, "%d is now added to the traversed list.\nPreorder list : %s \n\nNow we move to the left subtree.", root.data, arr));
             stepCardList.add(stepCard);
         }
 
@@ -73,7 +81,13 @@ public class BSTPreorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(String.format("We move to the right subtree.\nPreorder list : %s", arr));
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Node Traversed          : ✅",
+                    "Left Subtree Traversed  : ✅",
+                    "Right Subtree Traversed : ❌",
+                    "Left Subtree is now fully traversed.",
+                    "Now, We move to the left subtree",
+                    String.format(Locale.US, "Preorder Traversal : %s", arr)));
             stepCardList.add(stepCard);
         }
 
@@ -82,6 +96,21 @@ public class BSTPreorderActivity extends VisualizerActivity {
         {
             //RECURSIVE RIGHT SUBTREE CALL
             helper(stepCardList, arr, root.right, finalRoot);
+
+            //
+            StepCard stepCard = new StepCard();
+            stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+            //Adding view to the holder of the Step Card
+            stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
+            //Description
+            stepCard.setDescription(TextBuilder.makeBulletList(
+                    "Node Traversed          : ✅",
+                    "Left Subtree Traversed  : ✅",
+                    "Right Subtree Traversed : ✅",
+                    "Left and Right Subtree are now fully traversed.",
+                    "Now, We move back to the parent node.",
+                    String.format(Locale.US, "Preorder Traversal : %s", arr)));
+            stepCardList.add(stepCard);
         }
     }
 
