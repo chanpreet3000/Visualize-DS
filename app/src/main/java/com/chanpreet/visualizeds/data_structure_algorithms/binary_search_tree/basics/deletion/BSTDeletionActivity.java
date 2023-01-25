@@ -10,6 +10,8 @@ import com.chanpreet.visualizeds.builder.BSTBuilder;
 import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
+import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
@@ -157,6 +159,22 @@ public class BSTDeletionActivity extends VisualizerActivity {
 
     @Override
     public void generateInputUI() {
+        {
+            ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
+            binding1.textView.setText("Generate BST");
+            binding1.editText.setVisibility(View.GONE);
+            binding1.button.setText("Generate");
+            binding1.button.setOnClickListener(v -> {
+                root = null;
+                this.onCreate();
+            });
+
+            ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+            binding2.textView.setText("Generating new BST will erase previous visualization.");
+
+            binding.inputLinearLayout.addView(binding2.getRoot());
+            binding.inputLinearLayout.addView(binding1.getRoot());
+        }
         //Creating UI
         ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
         binding2.textView.setText("Enter element to be deleted");
