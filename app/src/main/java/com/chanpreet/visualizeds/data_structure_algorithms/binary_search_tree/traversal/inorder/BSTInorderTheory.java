@@ -1,17 +1,19 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.traversal.inorder;
 
+import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 
 public class BSTInorderTheory extends AlgorithmTheory {
     public BSTInorderTheory() {
-        super.theory = "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data. But in hierarchical data structures such as tree, there are multiple ways to traverse the data. Here we will discuss another way to traverse the tree data structure, i.e., inorder traversal.";
+        super.theory = TextBuilder.makeBulletList(
+                "Linear data structures such as stack, array, queue, etc., only have one way to traverse the data.",
+                "But in hierarchical data structures such as tree, there are multiple ways to traverse the data.",
+                "Here we will discuss another way to traverse the tree data structure, i.e., inorder traversal.");
 
-        super.algorithm =  "1) Visit all the nodes in the left subtree.\n" +
-                "\n" +
-                "2) Visit the root node.\n" +
-                "\n" +
-                "3) Visit all the nodes in the right subtree.";
-        super.code =   "class TreeNode\n" +
+        super.algorithm = TextBuilder.makeOrderedList("Visit all the nodes in the left subtree.",
+                "Visit the root node.",
+                "Visit all the nodes in the right subtree.");
+        super.code = "class TreeNode\n" +
                 "{\n" +
                 "public:\n" +
                 "    int data;\n" +
