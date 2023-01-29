@@ -15,6 +15,13 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
+            android:name=".data_structure_algorithms.BIT.basics.BITBasicsActivity.BITBasicsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".data_structure_algorithms.path_finding.basics.dfs.PFDFSActivity"
             android:exported="false">
             <meta-data

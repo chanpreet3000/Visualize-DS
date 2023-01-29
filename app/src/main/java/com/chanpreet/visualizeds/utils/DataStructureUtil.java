@@ -7,6 +7,7 @@ import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
+import com.chanpreet.visualizeds.data_structure_algorithms.BIT.basics.BITBasicsActivity.BITBasicsActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.linear_search.ArrayLinearSearchActivity;
@@ -138,7 +139,14 @@ public class DataStructureUtil {
                                                     new DataStructureAlgorithm("Breath First Search", PFBFSActivity.class, new PFBFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
                                                     new DataStructureAlgorithm("Depth First Search", PFDFSActivity.class, new PFDFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
                                             )), Difficulty.EASY, R.drawable.ic_linear_search)
-                            )), Difficulty.EASY, R.drawable.ic_baseline_grid_on_24)
+                            )), Difficulty.EASY, R.drawable.ic_baseline_grid_on_24),
+                    new DataStructure("Binary Indexed Tree/Fenwick Tree",
+                            new ArrayList<>(Arrays.asList(
+                                    new DataStructureTopic("Basics",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Insertion/Range Query", BITBasicsActivity.class, new PFBFSTheory(), Difficulty.HARD, R.drawable.ic_linear_search)
+                                            )), Difficulty.HARD, R.drawable.ic_linear_search)
+                            )), Difficulty.HARD, R.drawable.ic_linear_search)
 
             ));
 
