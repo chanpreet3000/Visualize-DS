@@ -43,8 +43,10 @@ import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.in
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion.LLInsertionTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalTheory;
-import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFBFSActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.PFDFSActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.bfs.PFBFSActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.bfs.PFBFSTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.dfs.PFDFSActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.dfs.PFDFSTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_pop.QueuePushPopActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_pop.QueuePushPopTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.stack.basics.push_pop.StackPushPopActivity;
@@ -133,8 +135,8 @@ public class DataStructureUtil {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("BFS", PFBFSActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("DFS", PFDFSActivity.class, null, Difficulty.EASY, R.drawable.ic_linear_search)
+                                                    new DataStructureAlgorithm("Breath First Search", PFBFSActivity.class, new PFBFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Depth First Search", PFDFSActivity.class, new PFDFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
                                             )), Difficulty.EASY, R.drawable.ic_linear_search)
                             )), Difficulty.EASY, R.drawable.ic_baseline_grid_on_24)
 

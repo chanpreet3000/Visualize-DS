@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics;
+package com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.dfs;
 
 import android.os.Handler;
 import android.view.View;
