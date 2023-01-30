@@ -12,7 +12,6 @@ import com.chanpreet.visualizeds.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -44,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() != null) {
-            updateUI(firebaseAuth.getCurrentUser());
+            updateUI();
         }
 
 
@@ -92,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         loader = LoaderBuilder.build(this, "Please wait.");
         loader.show();
         firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> updateUI(authResult.getUser()))
+                .addOnSuccessListener(authResult -> updateUI())
                 .addOnFailureListener(e -> {
                     if (e instanceof FirebaseAuthInvalidUserException) {
                         Toast.makeText(this, "Account not registered.", Toast.LENGTH_SHORT).show();
@@ -105,9 +104,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void updateUI(FirebaseUser user) {
+    private void updateUI() {
         Intent intent = new Intent(this, DataStructureActivity.class);
-        intent.putExtra("data", user);
         startActivity(intent);
         finishAffinity();
     }

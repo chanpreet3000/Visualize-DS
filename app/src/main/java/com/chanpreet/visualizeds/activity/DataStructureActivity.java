@@ -1,25 +1,28 @@
 package com.chanpreet.visualizeds.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chanpreet.visualizeds.R;
-import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
+import com.chanpreet.visualizeds.builder.LoaderBuilder;
 import com.chanpreet.visualizeds.classes.DataStructure;
+import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.DataStructureUtil;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DataStructureActivity extends AppCompatActivity {
 
@@ -27,28 +30,64 @@ public class DataStructureActivity extends AppCompatActivity {
     private List<DataStructure> dataStructures;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        UpdateUI();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDataStructureBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        FirebaseUser user = (FirebaseUser) getIntent().getParcelableExtra("data");
+        dataStructures = DataStructureUtil.dataStructures;
+        initRecyclerView(dataStructures);
+
+        binding.dailyCoinsBtn.setOnClickListener(v -> {
+            grantDailyCoins();
+        });
+    }
+
+    private void grantDailyCoins() {
+        Dialog loader = LoaderBuilder.build(this, "Collecting Information");
+        loader.show();
         FirebaseFirestore
                 .getInstance()
                 .collection("USERS")
-                .document(user.getUid())
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     UserInfo userInfo = documentSnapshot.toObject(UserInfo.class);
                     assert userInfo != null;
-                    String name_text = "Hey, " + userInfo.getFullName();
-                    binding.nameTextView.setText(name_text);
-                    binding.emailTextView.setText(userInfo.getEmail());
-                }).addOnCompleteListener(task -> {
-                });
+                    long prevTime = userInfo.getLastDataCoinTime();
+                    long diffTime = System.currentTimeMillis() - prevTime;
 
-        dataStructures = DataStructureUtil.dataStructures;
-        initRecyclerView(dataStructures);
+                    diffTime = 1000 * 60 * 60 * 24 - diffTime;
+
+                    if (diffTime <= 0) {
+                        userInfo.setDataCoins(userInfo.getDataCoins() + 5);
+                        userInfo.setLastDataCoinTime(System.currentTimeMillis());
+
+                        Dialog loader2 = LoaderBuilder.build(this, "Crediting Coins...");
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("USERS")
+                                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .set(userInfo)
+                                .addOnCompleteListener(task -> {
+                                    loader2.hide();
+                                    UpdateUI();
+                                    Toast.makeText(this, "Received 5 coins", Toast.LENGTH_SHORT).show();
+                                });
+                    } else {
+                        long seconds = (long) (diffTime / 1000) % 60;
+                        long minutes = (long) ((diffTime / (1000 * 60)) % 60);
+                        long hours = (long) ((diffTime / (1000 * 60 * 60)) % 24);
+                        Toast.makeText(this,
+                                String.format(Locale.US, "Come back after %02dh %02dm %02ds.", hours, minutes, seconds), Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(this, "An error occurred " + e, Toast.LENGTH_LONG).show())
+                .addOnCompleteListener(task -> loader.hide());
     }
 
     private void initRecyclerView(List<DataStructure> list) {
@@ -76,5 +115,27 @@ public class DataStructureActivity extends AppCompatActivity {
             finishAffinity();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void UpdateUI() {
+
+        Dialog loader = LoaderBuilder.build(this, "Collecting Information");
+        loader.show();
+
+        FirebaseFirestore
+                .getInstance()
+                .collection("USERS")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    UserInfo userInfo = documentSnapshot.toObject(UserInfo.class);
+                    assert userInfo != null;
+                    String name_text = "Hey, " + userInfo.getFullName();
+                    binding.nameTextView.setText(name_text);
+                    binding.emailTextView.setText(userInfo.getEmail());
+                    binding.dataCoinsTextView.setText(String.valueOf(userInfo.getDataCoins()));
+                }).addOnFailureListener(e -> Toast.makeText(this, "An error occurred " + e, Toast.LENGTH_LONG).show())
+                .addOnCompleteListener(task -> loader.hide());
+
     }
 }

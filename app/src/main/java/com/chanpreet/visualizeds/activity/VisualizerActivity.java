@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,9 +35,20 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         binding.visualizeButton.setOnClickListener(v -> {
-            binding.viewPager.setCurrentItem(0);
-            hideKeyboard();
-            visualizeButtonClicked();
+            CoinManager.deductDataCoins(VisualizerActivity.this, 1, new CoinManager.CoinManagerInterface() {
+                @Override
+                public void OnSuccessListener(long newDataCoins) {
+                    binding.viewPager.setCurrentItem(0);
+                    hideKeyboard();
+                    visualizeButtonClicked();
+                }
+
+                @Override
+                public void OnFailureListener(String s) {
+                    Toast.makeText(VisualizerActivity.this, s, Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
 
         binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
