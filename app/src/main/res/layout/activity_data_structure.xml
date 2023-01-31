@@ -12,11 +12,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
             app:cardBackgroundColor="@color/oxford_blue"
             app:cardCornerRadius="24dp"
             app:cardUseCompatPadding="true">
@@ -26,6 +24,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/image_view"
                     android:layout_width="70dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="8dp"
@@ -38,22 +37,31 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginVertical="16dp"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical"
-                    android:paddingHorizontal="32dp"
-                    android:paddingVertical="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/image_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Profile"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/nameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/emailTextView"
@@ -62,25 +70,17 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="normal" />
+                        android:textSize="18sp" />
 
                     <TextView
+                        android:id="@+id/genderTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Choose what to"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:textColor="@color/white"
-                        android:textSize="34sp"
-                        android:textStyle="normal" />
+                        android:textSize="18sp" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Learn today"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -119,12 +119,13 @@
                     android:layout_height="wrap_content"
                     android:text="My Balance"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -178,6 +179,13 @@
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*Each Visualization requires 1 data coin."
+                    android:textColor="@color/blood_red"
+                    android:textSize="11sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

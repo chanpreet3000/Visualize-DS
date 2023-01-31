@@ -13,9 +13,13 @@ import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public abstract class VisualizerActivity extends AppCompatActivity {
@@ -31,24 +35,35 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
         fillHeaderInformation();
 
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         binding.visualizeButton.setOnClickListener(v -> {
-            CoinManager.deductDataCoins(VisualizerActivity.this, 1, new CoinManager.CoinManagerInterface() {
-                @Override
-                public void OnSuccessListener(long newDataCoins) {
-                    binding.viewPager.setCurrentItem(0);
-                    hideKeyboard();
-                    visualizeButtonClicked();
-                }
+            CoinManager.deductDataCoins(VisualizerActivity.this, 1,
+                    new CoinManager.CoinManagerInterface() {
+                        @Override
+                        public void OnSuccessListener(long newDataCoins) {
+                            binding.viewPager.setCurrentItem(0);
+                            hideKeyboard();
 
-                @Override
-                public void OnFailureListener(String s) {
-                    Toast.makeText(VisualizerActivity.this, s, Toast.LENGTH_SHORT).show();
-                }
-            });
+                            DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
 
+                            Map<String, Object> mapMap = new HashMap<>();
+                            Map<String, String> map = new HashMap<>();
+                            map.put("ALGO_NAME", dataStructureAlgorithm.getName());
+                            map.put("TIME", String.valueOf(System.currentTimeMillis()));
+                            mapMap.put(String.valueOf(System.currentTimeMillis()), map);
+                            FirebaseFirestore.getInstance()
+                                    .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .document("VISUALIZATIONS")
+                                    .update(mapMap);
+                            visualizeButtonClicked();
+                        }
+
+                        @Override
+                        public void OnFailureListener(String s) {
+                            Toast.makeText(VisualizerActivity.this, s, Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
         binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());

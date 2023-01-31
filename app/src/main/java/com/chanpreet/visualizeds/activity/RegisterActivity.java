@@ -109,10 +109,13 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(authResult -> {
                     Dialog loader2 = LoaderBuilder.build(this, "Storing Information!");
                     loader2.show();
+
                     UserInfo userInfo = new UserInfo(fullName, email, finalGender, finalAge);
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    db.collection("USERS")
-                            .document(Objects.requireNonNull(authResult.getUser()).getUid())
+
+                    FirebaseFirestore
+                            .getInstance()
+                            .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .document("USER_INFORMATION")
                             .set(userInfo)
                             .addOnCompleteListener(task -> {
                                 Toast.makeText(RegisterActivity.this, "Email successfully registered!", Toast.LENGTH_SHORT).show();
