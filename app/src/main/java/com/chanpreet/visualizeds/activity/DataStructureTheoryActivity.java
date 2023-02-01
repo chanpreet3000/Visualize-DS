@@ -22,11 +22,10 @@ import java.util.Objects;
 
 public class DataStructureTheoryActivity extends AppCompatActivity {
 
-    private ActivityDataStructureTheoryBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDataStructureTheoryBinding.inflate(getLayoutInflater());
+        com.chanpreet.visualizeds.databinding.ActivityDataStructureTheoryBinding binding = ActivityDataStructureTheoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

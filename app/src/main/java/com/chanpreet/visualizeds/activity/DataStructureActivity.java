@@ -27,36 +27,14 @@ public class DataStructureActivity extends AppCompatActivity {
     private List<DataStructure> dataStructures;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        UpdateUI();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDataStructureBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        UpdateUI();
 
         dataStructures = DataStructureUtil.dataStructures;
         initRecyclerView(dataStructures);
-
-        binding.dailyCoinsBtn.setOnClickListener(v -> grantDailyCoins());
-    }
-
-
-    private void grantDailyCoins() {
-        CoinManager.creditDailyDataCoins(DataStructureActivity.this, new CoinManager.CoinManagerInterface() {
-            @Override
-            public void OnSuccessListener(long newDataCoins) {
-                UpdateUI();
-            }
-
-            @Override
-            public void OnFailureListener(String s) {
-                Toast.makeText(DataStructureActivity.this, s, Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -101,8 +79,6 @@ public class DataStructureActivity extends AppCompatActivity {
                     binding.nameTextView.setText(name_text);
                     binding.emailTextView.setText(userInfo.getEmail());
                     binding.genderTextView.setText(userInfo.getGender() + ", " + userInfo.getAge());
-
-                    binding.dataCoinsTextView.setText(String.valueOf(userInfo.getDataCoins()));
                 }).addOnFailureListener(e -> Toast.makeText(this, "An error occurred " + e, Toast.LENGTH_LONG).show())
                 .addOnCompleteListener(task -> {
 
