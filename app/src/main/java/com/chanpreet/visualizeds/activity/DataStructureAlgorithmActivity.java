@@ -21,6 +21,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
     private ActivityDataStructureAlgorithmBinding binding;
     private DataStructureTopic dataStructureTopic;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

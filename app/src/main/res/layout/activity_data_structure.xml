@@ -206,5 +206,7 @@
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="8dp"
             tools:listitem="@layout/item_data_structure" />
+
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

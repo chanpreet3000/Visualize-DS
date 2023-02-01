@@ -44,6 +44,7 @@ public class DataStructureActivity extends AppCompatActivity {
         binding.dailyCoinsBtn.setOnClickListener(v -> grantDailyCoins());
     }
 
+
     private void grantDailyCoins() {
         CoinManager.creditDailyDataCoins(DataStructureActivity.this, new CoinManager.CoinManagerInterface() {
             @Override

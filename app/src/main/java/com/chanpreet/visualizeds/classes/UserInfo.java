@@ -15,7 +15,7 @@ public class UserInfo {
         this.email = email;
         this.gender = gender;
         this.age = age;
-        dataCoins = 5;
+        dataCoins = 10;
         this.lastDataCoinTime = System.currentTimeMillis();
     }
 
