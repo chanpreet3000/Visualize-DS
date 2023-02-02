@@ -42,10 +42,6 @@ public class LoginActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if (firebaseAuth.getCurrentUser() != null) {
-            updateUI();
-        }
-
 
         binding.loginBtn.setOnClickListener(v -> loginUser());
 
