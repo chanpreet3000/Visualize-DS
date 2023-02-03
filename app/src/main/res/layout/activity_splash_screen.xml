@@ -50,7 +50,7 @@
         android:layout_marginEnd="16dp"
         android:padding="8dp"
         android:text="Version : "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
