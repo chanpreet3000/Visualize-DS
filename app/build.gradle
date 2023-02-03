@@ -7,7 +7,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.visualizeds"
+        applicationId "com.chanpreet.visualizeds"
         minSdk 26
         targetSdk 33
         versionCode 1
