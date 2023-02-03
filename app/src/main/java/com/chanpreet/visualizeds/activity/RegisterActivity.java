@@ -2,6 +2,8 @@ package com.chanpreet.visualizeds.activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     public static final Pattern VALID_PASSWORD_REGEX =
-            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$", Pattern.CASE_INSENSITIVE);
+            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,20}$", Pattern.CASE_INSENSITIVE);
 
 
     @Override
@@ -43,6 +45,51 @@ public class RegisterActivity extends AppCompatActivity {
         binding.lessThanBtn.setChecked(true);
 
         binding.termsText.setMovementMethod(LinkMovementMethod.getInstance());
+
+        binding.passwordEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable password) {
+                Matcher matcher = VALID_PASSWORD_REGEX.matcher(password);
+                if (password.length() == 0 || !matcher.find()) {
+                    binding.passwordEditTextLayout.setError("A Password must be of 8 characters including at least one lower case, upper case, number and a special character(@, #, $, %, ^, &, +, =, !)");
+                } else {
+                    binding.passwordEditTextLayout.setError("");
+                }
+            }
+        });
+
+        binding
+                .confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable confirmPassword) {
+                        String password = binding.passwordEditText.getText().toString().trim();
+                        if (!password.equals(confirmPassword.toString())) {
+                            binding.confirmPasswordEditTextLayout.setError("Passwords do not match.");
+                        } else {
+                            binding.confirmPasswordEditTextLayout.setError("");
+                        }
+                    }
+                });
 
     }
 
@@ -87,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         matcher = VALID_PASSWORD_REGEX.matcher(password);
         if (password.isEmpty() || !matcher.find()) {
-            binding.passwordEditTextLayout.setError("A Password must be of 8 characters including at least one lower case, upper case, number and a special character");
+            binding.passwordEditTextLayout.setError("A Password must be of 8 characters including at least one lower case, upper case, number and a special character(@, #, $, %, ^, &, +, =, !)");
             return;
         } else {
             binding.passwordEditTextLayout.setError("");
