@@ -48,9 +48,9 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             map.put("TIME", String.valueOf(System.currentTimeMillis()));
             mapMap.put(String.valueOf(System.currentTimeMillis()), map);
             FirebaseFirestore.getInstance()
-                    .collection(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                    .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .document("VISUALIZATIONS")
-                    .update(mapMap);
+                    .set(mapMap);
 
 
             visualizeButtonClicked();

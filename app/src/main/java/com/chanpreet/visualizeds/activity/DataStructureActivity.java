@@ -1,6 +1,7 @@
 package com.chanpreet.visualizeds.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +62,10 @@ public class DataStructureActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, LoginActivity.class));
             finishAffinity();
+        } else if (item.getItemId() == R.id.about_us_menu) {
+            startActivity(new Intent(this, AboutUsActivity.class));
+        } else if (item.getItemId() == R.id.rate_us_menu) {
+            goToPlayStore();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -83,5 +88,15 @@ public class DataStructureActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
 
                 });
+    }
+
+    private void goToPlayStore() {
+        try {
+            Intent appStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName()));
+            appStoreIntent.setPackage("com.android.vending");
+            startActivity(appStoreIntent);
+        } catch (android.content.ActivityNotFoundException exception) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+        }
     }
 }

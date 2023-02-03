@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Terms and Conditions" />
-    <item android:title="About" />
+    <item
+        android:id="@+id/about_us_menu"
+        android:title="About Us" />
+
+    <item
+        android:id="@+id/rate_us_menu"
+        android:title="Rate Us" />
     <item
         android:id="@+id/sign_out_btn"
         android:title="Sign Out" />

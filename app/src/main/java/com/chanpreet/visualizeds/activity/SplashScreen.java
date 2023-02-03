@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class SplashScreen extends AppCompatActivity {
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
     private static final String VERSION_CODE_KEY = "version_code";
-    private AlertDialog updateDailog;
+    private AlertDialog updateDialog;
 
     @Override
     protected void onResume() {
@@ -86,12 +86,12 @@ public class SplashScreen extends AppCompatActivity {
             builder.setMessage("New Version Available.\n" + "Please Update App to v" + latestAppVersion);
             builder.setPositiveButton("Update", (dialog, which) -> {
                 goToPlayStore();
-                updateDailog.dismiss();
+                updateDialog.dismiss();
             });
             builder.setCancelable(false);
             builder.setNegativeButton("Cancel", (dialog, which) -> finish());
-            updateDailog = builder.create();
-            updateDailog.show();
+            updateDialog = builder.create();
+            updateDialog.show();
             return false;
         }
         return true;
