@@ -7,10 +7,17 @@
     android:fillViewport="true"
     tools:context="com.chanpreet.visualizeds.activity.DataStructureActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/banner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.ArrayBuilder;
-import com.chanpreet.visualizeds.utils.DataStructureUtil;
+import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +53,7 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
         //getting array and target
-        List<Integer> arr = DataStructureUtil.stringToArray(arrayEditText.getText().toString().trim());
+        List<Integer> arr = Util.stringToArray(arrayEditText.getText().toString().trim());
         int target;
         try {
             target = Integer.parseInt(targetEditText.getText().toString());

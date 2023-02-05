@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.databinding.ItemDataStructureBinding;
-import com.chanpreet.visualizeds.utils.DataStructureUtil;
+import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class DataStructureAdapter extends RecyclerView.Adapter<DataStructureAdap
         DataStructure data = list.get(position);
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
-        Integer color = DataStructureUtil.listOfColors.get(position % (DataStructureUtil.listOfColors.size()));
+        Integer color = Util.listOfColors.get(position % (Util.listOfColors.size()));
         holder.binding.cardView.setImageTintList(ColorStateList.valueOf(context.getColor(color)));
         if (data.getIcon() != null) {
             holder.binding.dataStructureIcon.setImageResource(data.getIcon());

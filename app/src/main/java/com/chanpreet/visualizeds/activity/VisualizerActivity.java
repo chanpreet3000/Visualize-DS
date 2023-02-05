@@ -12,8 +12,16 @@ import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
+import com.chanpreet.visualizeds.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.unity3d.ads.IUnityAdsInitializationListener;
+import com.unity3d.ads.IUnityAdsLoadListener;
+import com.unity3d.ads.IUnityAdsShowListener;
+import com.unity3d.ads.UnityAds;
+import com.unity3d.ads.UnityAdsShowOptions;
+import com.unity3d.services.banners.BannerView;
+import com.unity3d.services.banners.UnityBannerSize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +45,36 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         binding.visualizeButton.setOnClickListener(v -> {
+            UnityAds.load(Util.DS_VISUALIZE_INTERSTITIAL, new IUnityAdsLoadListener() {
+                @Override
+                public void onUnityAdsAdLoaded(String placementId) {
+                    UnityAds.show(VisualizerActivity.this, Util.DS_VISUALIZE_INTERSTITIAL, new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                        @Override
+                        public void onUnityAdsShowFailure(String s, UnityAds.UnityAdsShowError unityAdsShowError, String s1) {
+
+                        }
+
+                        @Override
+                        public void onUnityAdsShowStart(String s) {
+
+                        }
+
+                        @Override
+                        public void onUnityAdsShowClick(String s) {
+
+                        }
+
+                        @Override
+                        public void onUnityAdsShowComplete(String s, UnityAds.UnityAdsShowCompletionState unityAdsShowCompletionState) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                }
+            });
             binding.viewPager.setCurrentItem(0);
             hideKeyboard();
 
@@ -74,6 +112,20 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
         generateInputUI();
         this.onCreate();
+
+        UnityAds.initialize(getApplicationContext(), Util.UNITY_GAME_ID, Util.TEST_MODE, new IUnityAdsInitializationListener() {
+            @Override
+            public void onInitializationComplete() {
+                binding.bannerLayout.removeAllViews();
+                BannerView bannerView = new BannerView(VisualizerActivity.this, Util.DS_VISUALIZE_BANNER, new UnityBannerSize(320, 50));
+                bannerView.load();
+                binding.bannerLayout.addView(bannerView);
+            }
+
+            @Override
+            public void onInitializationFailed(UnityAds.UnityAdsInitializationError unityAdsInitializationError, String s) {
+            }
+        });
     }
 
     private void fillHeaderInformation() {

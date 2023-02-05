@@ -1,15 +1,20 @@
 package com.chanpreet.visualizeds.activity;
 
-import com.chanpreet.visualizeds.adapter.DataStructureTopicAdapter;
-import com.chanpreet.visualizeds.classes.DataStructure;
-import com.chanpreet.visualizeds.classes.DataStructureTopic;
-import com.chanpreet.visualizeds.databinding.ActivityDataStructureTopicBinding;
+import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
-import android.os.Bundle;
+import com.chanpreet.visualizeds.adapter.DataStructureTopicAdapter;
+import com.chanpreet.visualizeds.classes.DataStructure;
+import com.chanpreet.visualizeds.classes.DataStructureTopic;
+import com.chanpreet.visualizeds.databinding.ActivityDataStructureTopicBinding;
+import com.chanpreet.visualizeds.utils.Util;
+import com.unity3d.ads.IUnityAdsInitializationListener;
+import com.unity3d.ads.UnityAds;
+import com.unity3d.services.banners.BannerView;
+import com.unity3d.services.banners.UnityBannerSize;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +36,21 @@ public class DataStructureTopicActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         initRecyclerView(dataStructure.getDataStructureTopics());
+
+
+        UnityAds.initialize(getApplicationContext(), Util.UNITY_GAME_ID, Util.TEST_MODE, new IUnityAdsInitializationListener() {
+            @Override
+            public void onInitializationComplete() {
+                binding.bannerLayout.removeAllViews();
+                BannerView bannerView = new BannerView(DataStructureTopicActivity.this, Util.DS_TOPIC_BANNER, new UnityBannerSize(320, 50));
+                bannerView.load();
+                binding.bannerLayout.addView(bannerView);
+            }
+
+            @Override
+            public void onInitializationFailed(UnityAds.UnityAdsInitializationError unityAdsInitializationError, String s) {
+            }
+        });
     }
 
     private void initRecyclerView(List<DataStructureTopic> list) {
