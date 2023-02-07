@@ -3,7 +3,6 @@ package com.chanpreet.visualizeds.data_structure_algorithms.binary_search_tree.b
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
@@ -15,8 +14,10 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class BSTInsertionActivity extends VisualizerActivity {
@@ -25,8 +26,6 @@ public class BSTInsertionActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
-
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
             root = BSTNode.insertNode(root, rand);
@@ -42,17 +41,47 @@ public class BSTInsertionActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualize() {
-        //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-        //getting array and target
-        int target;
-        try {
-            target = Integer.parseInt(targetEditText.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-            return;
+    public void generateInputUI() {
+        {
+            ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
+            binding1.textView.setText("Generate BST");
+            binding1.editText.setVisibility(View.GONE);
+            binding1.button.setText("Generate");
+            binding1.button.setOnClickListener(v -> {
+                root = null;
+                this.onCreate();
+            });
+
+            ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+            binding2.textView.setText("Generating new BST will erase previous visualization.");
+
+            binding.inputLinearLayout.addView(binding2.getRoot());
+            binding.inputLinearLayout.addView(binding1.getRoot());
         }
+        //Creating UI
+        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Enter element to be inserted");
+        binding2.editText.setHint("Enter element to be inserted");
+        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        //adding UI
+        binding.inputLinearLayout.addView(binding2.getRoot());
+
+        //caching UI
+        targetEditText = binding2.editText;
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("INORDER", BSTNode.inOrder(root));
+        map.put("TARGET", stringToArray(targetEditText.getText().toString()));
+        return map;
+    }
+
+    @Override
+    public void visualize() {
+        int target = Integer.parseInt(targetEditText.getText().toString());
 
         BSTNode temp = root;
         List<StepCard> stepCardList = new ArrayList<>();
@@ -106,38 +135,5 @@ public class BSTInsertionActivity extends VisualizerActivity {
         stepCardList.add(stepCard);
 
         adapter.setStepCardList(stepCardList);
-    }
-
-    @Override
-    public void generateInputUI() {
-        {
-            ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
-            binding1.textView.setText("Generate BST");
-            binding1.editText.setVisibility(View.GONE);
-            binding1.button.setText("Generate");
-            binding1.button.setOnClickListener(v -> {
-                root = null;
-                this.onCreate();
-            });
-
-            ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
-            binding2.textView.setText("Generating new BST will erase previous visualization.");
-
-            binding.inputLinearLayout.addView(binding2.getRoot());
-            binding.inputLinearLayout.addView(binding1.getRoot());
-        }
-        //Creating UI
-        ItemVisualizeInputCardBinding binding2 = ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding2.textView.setText("Enter element to be inserted");
-        binding2.editText.setHint("Enter element to be inserted");
-        binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
-
-        //adding UI
-        binding.inputLinearLayout.addView(binding2.getRoot());
-
-        //caching UI
-        targetEditText = binding2.editText;
-
-
     }
 }
