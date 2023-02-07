@@ -1,27 +1,30 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search;
 
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.chanpreet.visualizeds.activity.VisualizerActivity;
+import com.chanpreet.visualizeds.builder.ArrayBuilder;
 import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
-import com.chanpreet.visualizeds.activity.VisualizerActivity;
-import com.chanpreet.visualizeds.builder.ArrayBuilder;
-import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class ArrayBinarySearchActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
     private EditText targetEditText;
+
+    @Override
+    public void onCreate() {
+
+    }
 
     @Override
     public void generateInputUI() {
@@ -43,24 +46,24 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
         binding.inputLinearLayout.addView(binding1.getRoot());
         binding.inputLinearLayout.addView(binding2.getRoot());
 
-        //caching UI
         arrayEditText = binding1.editText;
         targetEditText = binding2.editText;
     }
 
     @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("ARRAY", stringToArray(arrayEditText.getText().toString()));
+        map.put("TARGET", stringToArray(targetEditText.getText().toString()));
+        return map;
+    }
+
+    @Override
     public void visualize() {
-        //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-        //getting array and target
-        List<Integer> arr = Util.stringToArray(arrayEditText.getText().toString().trim());
         int target;
-        try {
-            target = Integer.parseInt(targetEditText.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+        List<Integer> arr = stringToArray(arrayEditText.getText().toString().trim());
+        target = Integer.parseInt(targetEditText.getText().toString());
+
 
         int start = 0, end = arr.size() - 1;
         int steps = 0;
@@ -108,6 +111,4 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
         }
         adapter.setStepCardList(stepCardList);
     }
-
-
 }

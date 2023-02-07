@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -95,13 +97,15 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     }
 
     private void visualizeBtnClicked() {
-        if (this.preVisualizeCondition()) {
-            this.preVisualize();
+        try {
             this.visualize();
+            this.postVisualize();
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void preVisualize() {
+    public void postVisualize() {
         //
         Map<String, Object> map = getVisualizationInformation();
         StringBuilder information = new StringBuilder();
@@ -122,8 +126,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public abstract void generateInputUI();
 
     public abstract Map<String, Object> getVisualizationInformation();
-
-    public abstract boolean preVisualizeCondition();
 
     public abstract void visualize();
 
@@ -153,5 +155,30 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    @NonNull
+    public List<Integer> stringToArray(@NonNull String s) {
+        StringBuilder c = new StringBuilder();
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ') {
+                try {
+                    int number = Integer.parseInt(c.toString());
+                    arr.add(number);
+                    c = new StringBuilder();
+                } catch (Exception ignored) {
+                }
+
+            } else {
+                c.append(s.charAt(i));
+            }
+            if (i == s.length() - 1) {
+                int number = Integer.parseInt(c.toString());
+                arr.add(number);
+                c = new StringBuilder();
+            }
+        }
+        return arr;
     }
 }

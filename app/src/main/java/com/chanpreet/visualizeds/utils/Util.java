@@ -149,33 +149,4 @@ public class Util {
                             )), Difficulty.HARD, R.drawable.ic_linear_search)
 
             ));
-
-
-    @NonNull
-    public static List<Integer> stringToArray(@NonNull String s) {
-        StringBuilder c = new StringBuilder();
-        List<Integer> arr = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ' ') {
-                try {
-                    int number = Integer.parseInt(c.toString());
-                    arr.add(number);
-                    c = new StringBuilder();
-                } catch (Exception ignored) {
-                }
-
-            } else {
-                c.append(s.charAt(i));
-            }
-            if (i == s.length() - 1) {
-                try {
-                    int number = Integer.parseInt(c.toString());
-                    arr.add(number);
-                    c = new StringBuilder();
-                } catch (Exception ignored) {
-                }
-            }
-        }
-        return arr;
-    }
 }
