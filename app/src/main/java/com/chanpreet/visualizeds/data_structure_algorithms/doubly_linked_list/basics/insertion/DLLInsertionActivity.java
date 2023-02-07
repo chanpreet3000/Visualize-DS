@@ -64,7 +64,7 @@ public class DLLInsertionActivity extends VisualizerActivity {
     @Override
     public Map<String, Object> getVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
-        map.put("DOUBLY LINKED LIST", DoublyLinkedListNode.getDLL(head));
+        map.put("DOUBLY LINKED LIST", DoublyLinkedListNode.getList(head));
         map.put("TARGET", targetEditText.getText().toString());
         return map;
     }

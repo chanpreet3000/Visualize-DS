@@ -13,7 +13,7 @@ public class DoublyLinkedListNode {
         this.prev = null;
     }
 
-    public static List<Integer> getDLL(DoublyLinkedListNode head) {
+    public static List<Integer> getList(DoublyLinkedListNode head) {
         DoublyLinkedListNode temp = head;
         List<Integer> arr = new ArrayList<>();
         while (temp != null) {
