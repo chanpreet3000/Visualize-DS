@@ -15,8 +15,10 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard3Binding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 public class PFBFSActivity extends VisualizerActivity implements GridItemOnClickListener {
@@ -40,7 +42,6 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
 
     @Override
     public void onCreate() {
-        super.onCreate();
         initializeGrid();
     }
 
@@ -70,6 +71,11 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
         binding.inputLinearLayout.addView(binding1.getRoot());
         binding.inputLinearLayout.addView(binding2.getRoot());
         binding.inputLinearLayout.addView(binding4.getRoot());
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        return new HashMap<>();
     }
 
     private void initializeGrid() {
