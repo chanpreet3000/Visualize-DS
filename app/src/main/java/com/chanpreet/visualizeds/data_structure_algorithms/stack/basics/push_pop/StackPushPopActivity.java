@@ -13,7 +13,9 @@ import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Stack;
 
 public class StackPushPopActivity extends VisualizerActivity {
@@ -22,7 +24,6 @@ public class StackPushPopActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         binding.visualizeButton.setVisibility(View.GONE);
     }
 
@@ -57,6 +58,15 @@ public class StackPushPopActivity extends VisualizerActivity {
 
         binding1.button.setOnClickListener(v -> pushButtonClicked());
         binding2.button.setOnClickListener(v -> popButtonClicked());
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("STACK", st.toString());
+        map.put("PUSH", pushEditText.getText().toString());
+        map.put("POP", (pushEditText.getText().toString().equals("")) ? "YES" : "NO");
+        return map;
     }
 
     private void pushButtonClicked() {

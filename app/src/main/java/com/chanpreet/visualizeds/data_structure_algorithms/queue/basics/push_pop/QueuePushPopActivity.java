@@ -13,8 +13,10 @@ import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Queue;
 
 public class QueuePushPopActivity extends VisualizerActivity {
@@ -23,7 +25,6 @@ public class QueuePushPopActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         binding.visualizeButton.setVisibility(View.GONE);
     }
 
@@ -58,6 +59,15 @@ public class QueuePushPopActivity extends VisualizerActivity {
 
         binding1.button.setOnClickListener(v -> pushButtonClicked());
         binding2.button.setOnClickListener(v -> popButtonClicked());
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("QUEUE", queue.toString());
+        map.put("PUSH", pushEditText.getText().toString());
+        map.put("POP", (pushEditText.getText().toString().equals("")) ? "YES" : "NO");
+        return map;
     }
 
     private void pushButtonClicked() {
