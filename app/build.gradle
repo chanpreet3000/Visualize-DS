@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation files("C:/Users/chanp/Desktop/unity-ads.aar")
     implementation 'com.google.firebase:firebase-config:21.2.1'
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'androidx.appcompat:appcompat:1.6.0'

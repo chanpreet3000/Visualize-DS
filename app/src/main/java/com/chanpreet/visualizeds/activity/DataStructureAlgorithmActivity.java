@@ -8,15 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chanpreet.visualizeds.R;
-import com.chanpreet.visualizeds.databinding.ActivityDataStructureAlgorithmBinding;
 import com.chanpreet.visualizeds.adapter.DataStructureAlgorithmAdapter;
-import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
-import com.chanpreet.visualizeds.utils.Util;
-import com.unity3d.ads.IUnityAdsInitializationListener;
-import com.unity3d.ads.UnityAds;
-import com.unity3d.services.banners.BannerView;
-import com.unity3d.services.banners.UnityBannerSize;
+import com.chanpreet.visualizeds.classes.DataStructureTopic;
+import com.chanpreet.visualizeds.databinding.ActivityDataStructureAlgorithmBinding;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,19 +36,6 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        UnityAds.initialize(getApplicationContext(), Util.UNITY_GAME_ID, Util.TEST_MODE, new IUnityAdsInitializationListener() {
-            @Override
-            public void onInitializationComplete() {
-                binding.bannerLayout.removeAllViews();
-                BannerView bannerView = new BannerView(DataStructureAlgorithmActivity.this, Util.DS_ALGORITHM_BANNER, new UnityBannerSize(320, 50));
-                bannerView.load();
-                binding.bannerLayout.addView(bannerView);
-            }
-
-            @Override
-            public void onInitializationFailed(UnityAds.UnityAdsInitializationError unityAdsInitializationError, String s) {
-            }
-        });
     }
 
     private void initRecyclerView(List<DataStructureAlgorithm> list) {

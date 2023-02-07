@@ -59,16 +59,6 @@ import java.util.List;
 
 public class Util {
 
-    public static final String UNITY_GAME_ID = "5150123";
-    public static final Boolean TEST_MODE = true;
-    public static final String DS_BANNER = "DS_BANNER";
-    public static final String DS_TOPIC_BANNER = "DS_TOPIC_BANNER";
-    public static final String DS_ALGORITHM_BANNER = "DS_ALGORITHM_BANNER";
-    public static final String DS_THEORY_BANNER = "DS_THEORY_BANNER";
-    public static final String DS_VISUALIZE_BANNER = "DS_VISUALIZE_BANNER";
-    public static final String DS_VISUALIZE_INTERSTITIAL = "DS_VISUALIZE_INTERSTITIAL";
-
-
     public static List<Integer> listOfColors = new ArrayList<>(Arrays.asList(
             R.color.color_1,
             R.color.color_2,

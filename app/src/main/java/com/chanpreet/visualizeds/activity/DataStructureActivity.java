@@ -19,11 +19,6 @@ import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.unity3d.ads.IUnityAdsInitializationListener;
-import com.unity3d.ads.UnityAds;
-import com.unity3d.services.banners.BannerView;
-import com.unity3d.services.banners.UnityBannerSize;
-import com.unity3d.services.banners.api.Banner;
 
 import java.util.List;
 
@@ -42,20 +37,6 @@ public class DataStructureActivity extends AppCompatActivity {
 
         dataStructures = Util.dataStructures;
         initRecyclerView(dataStructures);
-
-        UnityAds.initialize(getApplicationContext(), Util.UNITY_GAME_ID, Util.TEST_MODE, new IUnityAdsInitializationListener() {
-            @Override
-            public void onInitializationComplete() {
-                binding.bannerLayout.removeAllViews();
-                BannerView bannerView = new BannerView(DataStructureActivity.this, Util.DS_BANNER, new UnityBannerSize(320, 50));
-                bannerView.load();
-                binding.bannerLayout.addView(bannerView);
-            }
-
-            @Override
-            public void onInitializationFailed(UnityAds.UnityAdsInitializationError unityAdsInitializationError, String s) {
-            }
-        });
     }
 
     private void initRecyclerView(List<DataStructure> list) {

@@ -14,11 +14,6 @@ import com.chanpreet.visualizeds.adapter.TheoryCardAdapter;
 import com.chanpreet.visualizeds.classes.AlgorithmTheory;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureTheoryBinding;
-import com.chanpreet.visualizeds.utils.Util;
-import com.unity3d.ads.IUnityAdsInitializationListener;
-import com.unity3d.ads.UnityAds;
-import com.unity3d.services.banners.BannerView;
-import com.unity3d.services.banners.UnityBannerSize;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,22 +52,6 @@ public class DataStructureTheoryActivity extends AppCompatActivity {
             finish();
         });
 
-
-        //ADS
-
-        UnityAds.initialize(getApplicationContext(), Util.UNITY_GAME_ID, Util.TEST_MODE, new IUnityAdsInitializationListener() {
-            @Override
-            public void onInitializationComplete() {
-                binding.bannerLayout.removeAllViews();
-                BannerView bannerView = new BannerView(DataStructureTheoryActivity.this, Util.DS_THEORY_BANNER, new UnityBannerSize(320, 50));
-                bannerView.load();
-                binding.bannerLayout.addView(bannerView);
-            }
-
-            @Override
-            public void onInitializationFailed(UnityAds.UnityAdsInitializationError unityAdsInitializationError, String s) {
-            }
-        });
     }
 
     private void initViewPager(ActivityDataStructureTheoryBinding binding, DataStructureAlgorithm dataStructureAlgorithm) {
