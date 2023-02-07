@@ -10,8 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chanpreet.visualizeds.R;
-import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.builder.LoaderBuilder;
+import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.databinding.ActivityRegisterBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -161,11 +161,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                     FirebaseFirestore
                             .getInstance()
-                            .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .collection(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                             .document("USER_INFORMATION")
                             .set(userInfo)
+                            .addOnSuccessListener(unused -> Toast.makeText(RegisterActivity.this, "Email successfully registered!", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(RegisterActivity.this, "Failed to create email " + e, Toast.LENGTH_SHORT).show())
                             .addOnCompleteListener(task -> {
-                                Toast.makeText(RegisterActivity.this, "Email successfully registered!", Toast.LENGTH_SHORT).show();
                                 loader2.hide();
                                 finish();
                             });

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -37,7 +38,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        com.chanpreet.visualizeds.databinding.ActivitySplashScreenBinding binding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
+        ActivitySplashScreenBinding binding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -59,19 +60,7 @@ public class SplashScreen extends AppCompatActivity {
                     if (task1.isSuccessful()) {
                         final int latestAppVersion = (int) mFirebaseRemoteConfig.getDouble(VERSION_CODE_KEY);
                         if (checkForUpdate(latestAppVersion)) {
-                            try {
-                                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                                    Intent intent = new Intent(this, DataStructureActivity.class);
-                                    startActivity(intent);
-                                    finishAffinity();
-                                } else {
-                                    throw new Exception();
-                                }
-                            } catch (Exception e) {
-                                Intent intent = new Intent(this, LoginActivity.class);
-                                startActivity(intent);
-                                finishAffinity();
-                            }
+                            startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                         }
                     }
                 });

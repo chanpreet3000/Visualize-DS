@@ -8,10 +8,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chanpreet.visualizeds.builder.LoaderBuilder;
+import com.chanpreet.visualizeds.classes.DataManager;
+import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.databinding.ActivityLoginBinding;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -42,12 +47,24 @@ public class LoginActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         firebaseAuth = FirebaseAuth.getInstance();
 
-
         binding.loginBtn.setOnClickListener(v -> loginUser());
 
         binding.signUpBtn.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
 
         binding.forgotPasswordText.setOnClickListener(v -> forgotPassword());
+
+        autoLogin();
+    }
+
+    private void autoLogin() {
+        try {
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                successLogin(FirebaseAuth.getInstance().getCurrentUser());
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception ignored) {
+        }
     }
 
     private void forgotPassword() {
@@ -86,8 +103,9 @@ public class LoginActivity extends AppCompatActivity {
 
         loader = LoaderBuilder.build(this, "Please wait.");
         loader.show();
+
         firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> updateUI())
+                .addOnSuccessListener(authResult -> postLogin(Objects.requireNonNull(authResult.getUser())))
                 .addOnFailureListener(e -> {
                     if (e instanceof FirebaseAuthInvalidUserException) {
                         Toast.makeText(this, "Account not registered.", Toast.LENGTH_SHORT).show();
@@ -98,6 +116,37 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }).addOnCompleteListener(task -> loader.hide());
 
+    }
+
+    private void postLogin(FirebaseUser user) {
+        if (user.isEmailVerified()) {
+            successLogin(user);
+        } else {
+            Snackbar snackbar = Snackbar.make(binding.getRoot(), "Email id not verified.", Snackbar.LENGTH_LONG)
+                    .setAction("SEND EMAIL", v -> user.sendEmailVerification()
+                            .addOnSuccessListener(unused -> Toast.makeText(LoginActivity.this, "Link sent successfully", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(LoginActivity.this, "Failed!" + e, Toast.LENGTH_SHORT).show()));
+            snackbar.show();
+        }
+    }
+
+    private void successLogin(FirebaseUser user) {
+        Dialog loader2 = LoaderBuilder.build(LoginActivity.this, "Fetching Data");
+        loader2.show();
+        FirebaseFirestore
+                .getInstance()
+                .collection(user.getUid())
+                .document("USER_INFORMATION")
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    UserInfo userInfo = documentSnapshot.toObject(UserInfo.class);
+                    DataManager.getInstance().setUserInfo(userInfo);
+
+                    //Updating UI to Main Activity
+                    updateUI();
+                })
+                .addOnFailureListener(e -> Toast.makeText(LoginActivity.this, "Error collecting information " + e, Toast.LENGTH_SHORT).show())
+                .addOnCompleteListener(task -> loader2.hide());
     }
 
     private void updateUI() {

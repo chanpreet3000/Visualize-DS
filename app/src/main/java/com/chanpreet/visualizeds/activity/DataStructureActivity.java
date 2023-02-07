@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
+import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -72,22 +71,11 @@ public class DataStructureActivity extends AppCompatActivity {
 
     public void UpdateUI() {
 
-        FirebaseFirestore
-                .getInstance()
-                .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .document("USER_INFORMATION")
-                .get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    UserInfo userInfo = documentSnapshot.toObject(UserInfo.class);
-                    assert userInfo != null;
-                    String name_text = "Hey, " + userInfo.getFullName();
-                    binding.nameTextView.setText(name_text);
-                    binding.emailTextView.setText(userInfo.getEmail());
-                    binding.genderTextView.setText(userInfo.getGender() + ", " + userInfo.getAge());
-                }).addOnFailureListener(e -> Toast.makeText(this, "An error occurred " + e, Toast.LENGTH_LONG).show())
-                .addOnCompleteListener(task -> {
-
-                });
+        UserInfo userInfo = DataManager.getInstance().getUserInfo();
+        String name_text = "Hey, " + userInfo.getFullName();
+        binding.nameTextView.setText(name_text);
+        binding.emailTextView.setText(userInfo.getEmail());
+        binding.genderTextView.setText(userInfo.getGender() + ", " + userInfo.getAge());
     }
 
     private void goToPlayStore() {
