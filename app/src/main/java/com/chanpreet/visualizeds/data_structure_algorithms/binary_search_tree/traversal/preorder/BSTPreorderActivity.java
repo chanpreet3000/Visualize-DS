@@ -12,8 +12,10 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class BSTPreorderActivity extends VisualizerActivity {
@@ -23,7 +25,6 @@ public class BSTPreorderActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         steps = 0;
         for (int i = 0; i < 5; i++) {
             int rand = new Random().nextInt(200) - 100;
@@ -36,6 +37,44 @@ public class BSTPreorderActivity extends VisualizerActivity {
         stepCard.setData(BSTBuilder.build(getApplicationContext(), root, -300));
         stepCardList.add(stepCard);
 
+        adapter.setStepCardList(stepCardList);
+    }
+
+
+    @Override
+    public void generateInputUI() {
+        ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
+        binding1.textView.setText("Generate BST");
+        binding1.editText.setVisibility(View.GONE);
+        binding1.button.setText("Generate");
+        binding1.button.setOnClickListener(v -> {
+            root = null;
+            this.onCreate();
+        });
+
+        ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
+        binding2.textView.setText("Generating new BST will erase previous visualization.");
+
+        binding.inputLinearLayout.addView(binding2.getRoot());
+        binding.inputLinearLayout.addView(binding1.getRoot());
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("INORDER", BSTNode.inOrder(root));
+        return map;
+    }
+
+    @Override
+    public void visualize() {
+        steps = 0;
+        //clear all views of the linear Layout
+        binding.holderLinearLayout.setVisibility(View.VISIBLE);
+
+        List<Integer> arr = new ArrayList<>();
+        List<StepCard> stepCardList = new ArrayList<>();
+        helper(stepCardList, arr, root, root);
         adapter.setStepCardList(stepCardList);
     }
 
@@ -114,35 +153,5 @@ public class BSTPreorderActivity extends VisualizerActivity {
                     String.format(Locale.US, "Preorder Traversal : %s", arr)));
             stepCardList.add(stepCard);
         }
-    }
-
-    @Override
-    public void visualize() {
-        steps = 0;
-        //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-
-        List<Integer> arr = new ArrayList<>();
-        List<StepCard> stepCardList = new ArrayList<>();
-        helper(stepCardList, arr, root, root);
-        adapter.setStepCardList(stepCardList);
-    }
-
-    @Override
-    public void generateInputUI() {
-        ItemVisualizeInputCard2Binding binding1 = ItemVisualizeInputCard2Binding.inflate(getLayoutInflater());
-        binding1.textView.setText("Generate BST");
-        binding1.editText.setVisibility(View.GONE);
-        binding1.button.setText("Generate");
-        binding1.button.setOnClickListener(v -> {
-            root = null;
-            this.onCreate();
-        });
-
-        ItemErrorAlertCardBinding binding2 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
-        binding2.textView.setText("Generating new BST will erase previous visualization.");
-
-        binding.inputLinearLayout.addView(binding2.getRoot());
-        binding.inputLinearLayout.addView(binding1.getRoot());
     }
 }
