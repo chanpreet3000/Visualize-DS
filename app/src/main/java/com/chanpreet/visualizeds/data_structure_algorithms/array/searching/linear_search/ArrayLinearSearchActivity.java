@@ -1,25 +1,28 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.searching.linear_search;
 
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.chanpreet.visualizeds.activity.VisualizerActivity;
+import com.chanpreet.visualizeds.builder.ArrayBuilder;
 import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
-import com.chanpreet.visualizeds.activity.VisualizerActivity;
-import com.chanpreet.visualizeds.builder.ArrayBuilder;
-import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class ArrayLinearSearchActivity extends VisualizerActivity {
     private EditText arrayEditText;
     private EditText targetEditText;
+
+    @Override
+    public void onCreate() {
+
+    }
 
     @Override
     public void generateInputUI() {
@@ -44,18 +47,18 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualize() {
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("ARRAY", stringToArray(arrayEditText.getText().toString()));
+        map.put("TARGET", stringToArray(targetEditText.getText().toString()));
+        return map;
+    }
 
+    @Override
+    public void visualize() {
         //getting array and target
-        List<Integer> arr = Util.stringToArray(arrayEditText.getText().toString().trim());
-        int target;
-        try {
-            target = Integer.parseInt(targetEditText.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+        List<Integer> arr = stringToArray(arrayEditText.getText().toString().trim());
+        int target = Integer.parseInt(targetEditText.getText().toString());
         List<StepCard> stepCardList = new ArrayList<>();
 
         boolean canContinue = true;
@@ -71,7 +74,7 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
                 stepCard.setDescription(
                         TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d", i),
                                 String.format(Locale.US, "%d == %d", arr.get(i), target),
-                                String.format(Locale.US, "%d found at index %d",target, i)));
+                                String.format(Locale.US, "%d found at index %d", target, i)));
             } else {
                 map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                 stepCard.setDescription(
