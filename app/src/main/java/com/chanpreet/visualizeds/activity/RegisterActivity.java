@@ -157,8 +157,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Dialog loader2 = LoaderBuilder.build(this, "Storing Information!");
                     loader2.show();
 
-                    UserInfo userInfo = new UserInfo(fullName, email, finalGender, finalAge);
+                    UserInfo userInfo = new UserInfo();
+                    userInfo.setFullName(fullName);
+                    userInfo.setEmail(email);
+                    userInfo.setGender(gender);
+                    userInfo.setAge(finalAge);
 
+                    
                     FirebaseFirestore
                             .getInstance()
                             .collection(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())

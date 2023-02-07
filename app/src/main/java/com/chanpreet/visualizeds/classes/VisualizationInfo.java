@@ -1,13 +1,31 @@
 package com.chanpreet.visualizeds.classes;
 
-public class VisualizationInfo {
-    private final Long time;
-    private final String name;
-    private final String information;
+import java.io.Serializable;
+import java.util.Map;
 
-    public VisualizationInfo(Long time, String name, String information) {
+public class VisualizationInfo implements Serializable {
+    private Long time;
+    private String name;
+    private Map<String, Object> information;
+
+    public VisualizationInfo() {
+    }
+
+    public VisualizationInfo(Long time, String name, Map<String, Object> information) {
         this.time = time;
         this.name = name;
         this.information = information;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Object> getInformation() {
+        return information;
     }
 }

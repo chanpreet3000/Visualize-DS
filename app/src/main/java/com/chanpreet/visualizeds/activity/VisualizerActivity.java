@@ -12,8 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
+import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.StepCard;
+import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 
@@ -107,13 +109,14 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     public void postVisualize() {
         //
-        Map<String, Object> map = getVisualizationInformation();
-        StringBuilder information = new StringBuilder();
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            information.append(entry.getKey()).append("\t :\t").append(entry.getValue().toString()).append("\n");
-        }
-        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), information.toString());
+        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), getVisualizationInformation());
 
+        //
+        UserInfo currentUserInfo = DataManager.getInstance().getUserInfo();
+        List<VisualizationInfo> arr = currentUserInfo.getVisualizationInfoList();
+        arr.add(visualizationInfo);
+        currentUserInfo.setVisualizationInfoList(arr);
+        DataManager.getInstance().updateUser(getApplicationContext(), currentUserInfo);
         //
         this.visualize();
         //
@@ -159,17 +162,14 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     @NonNull
     public List<Integer> stringToArray(@NonNull String s) {
+        s = s.trim();
         StringBuilder c = new StringBuilder();
         List<Integer> arr = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == ' ') {
-                try {
-                    int number = Integer.parseInt(c.toString());
-                    arr.add(number);
-                    c = new StringBuilder();
-                } catch (Exception ignored) {
-                }
-
+                int number = Integer.parseInt(c.toString());
+                arr.add(number);
+                c = new StringBuilder();
             } else {
                 c.append(s.charAt(i));
             }

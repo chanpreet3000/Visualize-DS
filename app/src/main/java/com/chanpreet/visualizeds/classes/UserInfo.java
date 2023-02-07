@@ -1,33 +1,54 @@
 package com.chanpreet.visualizeds.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInfo {
-    private final String fullName, email, gender, age;
+    private String fullName, email, gender, age;
+    private List<VisualizationInfo> visualizationInfoList;
 
     public UserInfo() {
         fullName = email = gender = age = "INVALID DATA";
-    }
-
-    public UserInfo(String fullName, String email, String gender, String age) {
-        this.fullName = fullName;
-        this.email = email;
-        this.gender = gender;
-        this.age = age;
+        visualizationInfoList = new ArrayList<>();
     }
 
     public String getFullName() {
         return fullName;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGender() {
         return gender;
     }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getAge() {
         return age;
     }
 
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public List<VisualizationInfo> getVisualizationInfoList() {
+        return visualizationInfoList;
+    }
+
+    public void setVisualizationInfoList(List<VisualizationInfo> visualizationInfoList) {
+        this.visualizationInfoList = visualizationInfoList;
+    }
 }
