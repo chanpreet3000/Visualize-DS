@@ -14,17 +14,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class DLLDeletionActivity extends VisualizerActivity {
 
-    private EditText arrayEditText;
+    private EditText targetEditText;
     private DoublyLinkedListNode head = null;
 
     @Override
     public void onCreate() {
-        super.onCreate();
-
         Random random = new Random();
         DoublyLinkedListNode temp = head;
         for (int i = 0; i < 5; i++) {
@@ -59,7 +58,15 @@ public class DLLDeletionActivity extends VisualizerActivity {
         binding.inputLinearLayout.addView(binding1.getRoot());
 
         //caching UI
-        arrayEditText = binding1.editText;
+        targetEditText = binding1.editText;
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("DOUBLY LINKED LIST", DoublyLinkedListNode.getDLL(head));
+        map.put("TARGET", targetEditText.getText().toString());
+        return map;
     }
 
     @Override
@@ -68,7 +75,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
         //getting array and target
         int target;
         try {
-            target = Integer.parseInt(arrayEditText.getText().toString());
+            target = Integer.parseInt(targetEditText.getText().toString());
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             return;
