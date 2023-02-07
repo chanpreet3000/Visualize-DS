@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class LLTraversalActivity extends VisualizerActivity {
@@ -19,8 +20,6 @@ public class LLTraversalActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
-
         Random random = new Random();
         LinkedListNode temp = head;
         for (int i = 0; i < 5; i++) {
@@ -53,6 +52,13 @@ public class LLTraversalActivity extends VisualizerActivity {
         binding.inputLinearLayout.addView(binding2.getRoot());
 
         //caching UI
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("LINKED LIST", LinkedListNode.getList(head));
+        return map;
     }
 
     @Override
