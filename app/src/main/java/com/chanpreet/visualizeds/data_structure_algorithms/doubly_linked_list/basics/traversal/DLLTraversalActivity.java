@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class DLLTraversalActivity extends VisualizerActivity {
@@ -19,8 +20,6 @@ public class DLLTraversalActivity extends VisualizerActivity {
 
     @Override
     public void onCreate() {
-        super.onCreate();
-
         Random random = new Random();
         DoublyLinkedListNode temp = head;
         for (int i = 0; i < 5; i++) {
@@ -52,6 +51,13 @@ public class DLLTraversalActivity extends VisualizerActivity {
         //adding UI
         binding.inputLinearLayout.addView(binding2.getRoot());
 
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("DOUBLY LINKED LIST", DoublyLinkedListNode.getDLL(head));
+        return map;
     }
 
     @Override
