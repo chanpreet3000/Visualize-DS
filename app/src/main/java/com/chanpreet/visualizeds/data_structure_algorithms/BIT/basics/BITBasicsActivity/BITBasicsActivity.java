@@ -17,12 +17,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class BITBasicsActivity extends VisualizerActivity {
 
     private EditText insertEditText, rangeEditText;
     private final int N = 9;
     List<Integer> arr = new ArrayList<>();
+
+    @Override
+    public void onCreate() {
+        for (int i = 0; i < N; i++) {
+            arr.add(0);
+        }
+
+        List<StepCard> stepCardList = new ArrayList<>();
+        StepCard stepCard = new StepCard();
+        stepCard.setTitle("Initial Binary Indexed Tree");
+        stepCard.setData(BITBuilder.build(this, arr, new HashMap<>()));
+        stepCardList.add(stepCard);
+        adapter.setStepCardList(stepCardList);
+    }
 
     @Override
     public void generateInputUI() {
@@ -66,19 +81,13 @@ public class BITBasicsActivity extends VisualizerActivity {
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        for (int i = 0; i < N; i++) {
-            arr.add(0);
-        }
-
-        List<StepCard> stepCardList = new ArrayList<>();
-        StepCard stepCard = new StepCard();
-        stepCard.setTitle("Initial Binary Indexed Tree");
-        stepCard.setData(BITBuilder.build(this, arr, new HashMap<>()));
-        stepCardList.add(stepCard);
-        adapter.setStepCardList(stepCardList);
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("INSERT", insertEditText.getText().toString());
+        map.put("RANGE", rangeEditText.getText().toString());
+        return map;
     }
+
 
     String intToBinary(int n) {
         StringBuilder s = new StringBuilder();
