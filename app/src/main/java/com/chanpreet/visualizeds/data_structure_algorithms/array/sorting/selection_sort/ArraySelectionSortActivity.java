@@ -1,31 +1,54 @@
 package com.chanpreet.visualizeds.data_structure_algorithms.array.sorting.selection_sort;
 
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
 
-import com.chanpreet.visualizeds.builder.TextBuilder;
-import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.ArrayBuilder;
-import com.chanpreet.visualizeds.utils.Util;
+import com.chanpreet.visualizeds.builder.TextBuilder;
+import com.chanpreet.visualizeds.classes.StepCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class ArraySelectionSortActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
 
     @Override
-    public void visualize() {
-        //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
+    public void onCreate() {
 
+    }
+
+    @Override
+    public void generateInputUI() {
+        //Creating UI
+        com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding binding1 = com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
+        binding1.textView.setText("Enter your array.");
+        binding1.editText.setHint("Enter numbers here (with spaces)");
+        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
+
+        //adding UI
+        binding.inputLinearLayout.addView(binding1.getRoot());
+
+        //caching UI
+        arrayEditText = binding1.editText;
+    }
+
+    @Override
+    public Map<String, Object> getVisualizationInformation() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("ARRAY", stringToArray(arrayEditText.getText().toString()));
+        return map;
+    }
+
+    @Override
+    public void visualize() {
         //getting array and target
-        List<Integer> arr = Util.stringToArray(arrayEditText.getText().toString().trim());
+        List<Integer> arr = stringToArray(arrayEditText.getText().toString().trim());
 
         List<StepCard> stepCardList = new ArrayList<>();
         //Selection Sort
@@ -89,20 +112,5 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
         stepCardList.add(stepCard);
         //Adapter
         adapter.setStepCardList(stepCardList);
-    }
-
-    @Override
-    public void generateInputUI() {
-        //Creating UI
-        com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding binding1 = com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding.inflate(getLayoutInflater());
-        binding1.textView.setText("Enter your array.");
-        binding1.editText.setHint("Enter numbers here (with spaces)");
-        binding1.editText.setInputType(InputType.TYPE_CLASS_PHONE);
-
-        //adding UI
-        binding.inputLinearLayout.addView(binding1.getRoot());
-
-        //caching UI
-        arrayEditText = binding1.editText;
     }
 }
