@@ -20,6 +20,7 @@ import com.chanpreet.visualizeds.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DataStructureActivity extends AppCompatActivity {
 
@@ -70,12 +71,10 @@ public class DataStructureActivity extends AppCompatActivity {
     }
 
     public void UpdateUI() {
-
         UserInfo userInfo = DataManager.getInstance().getUserInfo();
-        String name_text = "Hey, " + userInfo.getFullName();
-        binding.nameTextView.setText(name_text);
+        binding.nameTextView.setText(userInfo.getFullName());
         binding.emailTextView.setText(userInfo.getEmail());
-        binding.genderTextView.setText(userInfo.getGender() + ", " + userInfo.getAge());
+        binding.genderTextView.setText(String.format(Locale.US, "%s, %s", userInfo.getGender(), userInfo.getAge()));
     }
 
     private void goToPlayStore() {
