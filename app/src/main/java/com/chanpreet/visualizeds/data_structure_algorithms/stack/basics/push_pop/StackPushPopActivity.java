@@ -98,7 +98,7 @@ public class StackPushPopActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
 
     }
 }

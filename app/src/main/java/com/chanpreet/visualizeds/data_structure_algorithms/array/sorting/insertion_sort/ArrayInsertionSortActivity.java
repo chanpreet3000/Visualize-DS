@@ -35,7 +35,7 @@ public class ArrayInsertionSortActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 

@@ -7,16 +7,15 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.StepCard;
+import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -25,6 +24,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     public ActivityVisualizerBinding binding;
     public StepCardAdapter adapter;
+    private DataStructureAlgorithm dataStructureAlgorithm;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,33 +32,13 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         binding = ActivityVisualizerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //
+        //getting Information from Intent.
+        dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fillHeaderInformation();
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        binding.visualizeButton.setOnClickListener(v -> {
-            binding.viewPager.setCurrentItem(0);
-            hideKeyboard();
-
-            DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
-
-            Map<String, Object> mapMap = new HashMap<>();
-            Map<String, String> map = new HashMap<>();
-            map.put("ALGO_NAME", dataStructureAlgorithm.getName());
-            map.put("TIME", String.valueOf(System.currentTimeMillis()));
-            mapMap.put(String.valueOf(System.currentTimeMillis()), map);
-            FirebaseFirestore.getInstance()
-                    .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .document("VISUALIZATIONS")
-                    .set(mapMap);
-
-
-            visualizeButtonClicked();
-        });
-
-        binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
-        binding.rightStepBtn.setOnClickListener(v -> visualizeNextStep());
-
+        //
         adapter = new StepCardAdapter(getApplicationContext());
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setOffscreenPageLimit(4);
@@ -71,14 +51,30 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         list.add(initialStepCard);
         adapter.setStepCardList(list);
 
-        generateInputUI();
+        //
+        binding.visualizeButton.setOnClickListener(v -> this.visualizeBtnClicked());
+        binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
+        binding.rightStepBtn.setOnClickListener(v -> visualizeNextStep());
+        binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                binding.leftStepBtn.setEnabled(true);
+                binding.rightStepBtn.setEnabled(true);
+                if (position == 0) {
+                    binding.leftStepBtn.setEnabled(false);
+                }
+                if (position == adapter.getItemCount() - 1) {
+                    binding.rightStepBtn.setEnabled(false);
+                }
+            }
+        });
+
+        this.generateInputUI();
         this.onCreate();
     }
 
-    private void fillHeaderInformation() {
-        //getting Information from Intent.
-        DataStructureAlgorithm dataStructureAlgorithm = (DataStructureAlgorithm) getIntent().getSerializableExtra("data");
 
+    private void fillHeaderInformation() {
         //Filling the header Information.
         binding.titleTextView.setText(dataStructureAlgorithm.getName());
         binding.difficultyTextView.setText(dataStructureAlgorithm.getDifficulty().toString());
@@ -98,9 +94,47 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         });
     }
 
+    private void visualizeBtnClicked() {
+        if (this.preVisualizeCondition()) {
+            this.preVisualize();
+            this.visualize();
+        }
+    }
+
+    public void preVisualize() {
+        //
+        Map<String, Object> map = getVisualizationInformation();
+        StringBuilder information = new StringBuilder();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            information.append(entry.getKey()).append("\t :\t").append(entry.getValue().toString()).append("\n");
+        }
+        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), information.toString());
+
+        //
+        this.visualize();
+        //
+        binding.viewPager.setCurrentItem(0);
+        hideKeyboard();
+    }
+
+    public abstract void onCreate();
+
     public abstract void generateInputUI();
 
-    public abstract void visualizeButtonClicked();
+    public abstract Map<String, Object> getVisualizationInformation();
+
+    public abstract boolean preVisualizeCondition();
+
+    public abstract void visualize();
+
+    public void hideKeyboard() {
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 
     public void visualizeNextStep() {
         int curr = binding.viewPager.getCurrentItem();
@@ -113,18 +147,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         int curr = binding.viewPager.getCurrentItem();
         int next = Math.max(0, curr - 1);
         binding.viewPager.setCurrentItem(next);
-    }
-
-    public void onCreate() {
-    }
-
-    public void hideKeyboard() {
-        // Check if no view has focus:
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 
     @Override

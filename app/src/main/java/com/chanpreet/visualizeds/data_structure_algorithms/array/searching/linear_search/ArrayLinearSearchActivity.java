@@ -44,7 +44,7 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
 
         //getting array and target

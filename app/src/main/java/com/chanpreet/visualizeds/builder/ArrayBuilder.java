@@ -3,7 +3,6 @@ package com.chanpreet.visualizeds.builder;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class ArrayBuilder {
     public static final int COLOR_DEFAULT = R.color.white;
-    public static final int COLOR_TARGET_MATCHED = R.color.green;
+    public static final int COLOR_TARGET_MATCHED = R.color.oxford_blue;
     public static final int COLOR_TARGET_NOT_MATCHED = R.color.dark_red;
 
     @NonNull

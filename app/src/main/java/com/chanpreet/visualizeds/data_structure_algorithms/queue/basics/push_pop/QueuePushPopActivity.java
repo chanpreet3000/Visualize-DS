@@ -102,7 +102,7 @@ public class QueuePushPopActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
 
     }
 

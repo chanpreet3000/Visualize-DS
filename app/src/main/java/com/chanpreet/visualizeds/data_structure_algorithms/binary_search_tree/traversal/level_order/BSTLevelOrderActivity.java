@@ -41,7 +41,7 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
         steps = 0;
         //clear all views of the linear Layout
         binding.holderLinearLayout.setVisibility(View.VISIBLE);

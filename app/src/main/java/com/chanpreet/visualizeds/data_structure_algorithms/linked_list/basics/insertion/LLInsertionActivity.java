@@ -63,7 +63,7 @@ public class LLInsertionActivity extends VisualizerActivity {
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
         int steps = 0;
         //getting array and target
         int target;

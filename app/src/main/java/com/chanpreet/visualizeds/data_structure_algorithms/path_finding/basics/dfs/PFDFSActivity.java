@@ -120,7 +120,7 @@ public class PFDFSActivity extends VisualizerActivity implements GridItemOnClick
     }
 
     @Override
-    public void visualizeButtonClicked() {
+    public void visualize() {
         binding.visualizeButton.setEnabled(false);
         setView(false);
         canAddObstacle = false;
