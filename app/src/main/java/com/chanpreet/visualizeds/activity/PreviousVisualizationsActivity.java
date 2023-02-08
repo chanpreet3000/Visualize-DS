@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityPreviousVisualizationsBinding;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,11 +28,12 @@ public class PreviousVisualizationsActivity extends AppCompatActivity {
 
         List<VisualizationInfo> visualizationInfoList = DataManager.getInstance().getUserInfo().getVisualizationInfoList();
 
+        Collections.reverse(visualizationInfoList);
         initRecyclerView(visualizationInfoList);
     }
 
     private void initRecyclerView(List<VisualizationInfo> list) {
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, true));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         PreviousVisualizationsAdapter adapter = new PreviousVisualizationsAdapter(getApplicationContext(), list);
         binding.recyclerView.setAdapter(adapter);
     }

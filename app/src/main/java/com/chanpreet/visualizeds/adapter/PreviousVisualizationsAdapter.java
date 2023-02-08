@@ -47,7 +47,7 @@ public class PreviousVisualizationsAdapter extends RecyclerView.Adapter<Previous
         Integer color = Util.listOfColors.get(position % (Util.listOfColors.size()));
         holder.binding.cardView.setCardBackgroundColor(ColorStateList.valueOf(context.getColor(color)));
 
-        holder.binding.indexTextView.setText(String.valueOf(getItemCount() - position));
+        holder.binding.indexTextView.setText(String.valueOf(position + 1));
         holder.binding.dayTextView.setText(day);
         holder.binding.timeTextView.setText(dateTime);
         holder.binding.nameTextView.setText(data.getName());
