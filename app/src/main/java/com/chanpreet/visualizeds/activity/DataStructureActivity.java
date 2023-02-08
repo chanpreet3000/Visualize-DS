@@ -66,6 +66,8 @@ public class DataStructureActivity extends AppCompatActivity {
             startActivity(new Intent(this, AboutUsActivity.class));
         } else if (item.getItemId() == R.id.rate_us_menu) {
             goToPlayStore();
+        } else if (item.getItemId() == R.id.previous_visualization_menu) {
+            startActivity(new Intent(DataStructureActivity.this, PreviousVisualizationsActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
