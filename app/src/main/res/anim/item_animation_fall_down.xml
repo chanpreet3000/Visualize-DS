@@ -6,10 +6,10 @@
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toYDelta="0" />
 
-    <alpha
-        android:fromAlpha="0"
-        android:interpolator="@android:anim/decelerate_interpolator"
-        android:toAlpha="1" />
+    <!--    <alpha-->
+    <!--        android:fromAlpha="0.5"-->
+    <!--        android:interpolator="@android:anim/decelerate_interpolator"-->
+    <!--        android:toAlpha="1" />-->
 
     <scale
         android:fromXScale="105%"
