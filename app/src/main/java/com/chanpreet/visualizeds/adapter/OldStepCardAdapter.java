@@ -9,19 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemNoDataErrorBinding;
-import com.chanpreet.visualizeds.databinding.ItemStepCardNewBinding;
+import com.chanpreet.visualizeds.databinding.ItemStepCardBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCardViewHolder> {
+public class OldStepCardAdapter extends RecyclerView.Adapter<OldStepCardAdapter.StepCardViewHolder> {
 
     private final Context context;
     private List<StepCard> stepCardList;
 
-    public StepCardAdapter(Context context) {
+    public OldStepCardAdapter(Context context) {
         this.context = context;
         stepCardList = new ArrayList<>();
+
     }
 
     public void addStepCard(StepCard stepCard) {
@@ -40,7 +41,7 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     @NonNull
     @Override
     public StepCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemStepCardNewBinding binding = ItemStepCardNewBinding.inflate(LayoutInflater.from(context), parent, false);
+        ItemStepCardBinding binding = ItemStepCardBinding.inflate(LayoutInflater.from(context), parent, false);
         return new StepCardViewHolder(binding);
     }
 
@@ -65,9 +66,9 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     }
 
     public static class StepCardViewHolder extends RecyclerView.ViewHolder {
-        public ItemStepCardNewBinding binding;
+        public ItemStepCardBinding binding;
 
-        public StepCardViewHolder(@NonNull ItemStepCardNewBinding binding) {
+        public StepCardViewHolder(@NonNull ItemStepCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

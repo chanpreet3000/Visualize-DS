@@ -2,9 +2,13 @@ package com.chanpreet.visualizeds.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -120,6 +124,8 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         //
         this.visualize();
         //
+        //Requesting focus
+        scrollToView(binding.scrollView, binding.viewPager);
         binding.viewPager.setCurrentItem(0);
         hideKeyboard();
     }
@@ -180,5 +186,23 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             }
         }
         return arr;
+    }
+
+    private void scrollToView(final ScrollView scrollViewParent, final View view) {
+        // Get deepChild Offset
+        Point childOffset = new Point();
+        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
+        // Scroll to child.
+        scrollViewParent.smoothScrollTo(0, childOffset.y);
+    }
+
+    private void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
+        ViewGroup parentGroup = (ViewGroup) parent;
+        accumulatedOffset.x += child.getLeft();
+        accumulatedOffset.y += child.getTop();
+        if (parentGroup.equals(mainParent)) {
+            return;
+        }
+        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
     }
 }
