@@ -14,6 +14,7 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -96,15 +97,15 @@ public class BSTInsertionActivity extends VisualizerActivity {
             stepCard.setData(BSTBuilder.build(getApplicationContext(), root, temp.data));
 
             //Description
-            String description;
+            List<String> description;
             if (target == temp.data) {
-                description = TextBuilder.makeBulletList(String.format(Locale.US, "%d == %d", target, temp.data),
+                description = Arrays.asList(String.format(Locale.US, "%d == %d", target, temp.data),
                         "The element to be inserted is already present in the Binary Search Tree.");
             } else if (target < temp.data) {
-                description = TextBuilder.makeBulletList(String.format(Locale.US, "%d < %d", target, temp.data),
+                description = Arrays.asList(String.format(Locale.US, "%d < %d", target, temp.data),
                         "Therefore we move to the left subtree.");
             } else {
-                description = TextBuilder.makeBulletList(String.format(Locale.US, "%d > %d", target, temp.data),
+                description = Arrays.asList(String.format(Locale.US, "%d > %d", target, temp.data),
                         "Therefore we move to the right subtree.");
             }
             stepCard.setDescription(description);
@@ -121,7 +122,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
             if (temp == null) {
                 StepCard stepCard1 = new StepCard();
                 stepCard1.setTitle(String.format(Locale.US, "Step %d", ++steps));
-                stepCard1.setDescription(TextBuilder.makeBulletList("We reached a null node so we will insert the node here."));
+                stepCard1.setDescription(Arrays.asList("We reached a null node so we will insert the node here."));
                 //Adding view to the holder of the Step Card
                 stepCardList.add(stepCard1);
             }
@@ -130,7 +131,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
         root = BSTNode.insertNode(root, target);
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Binary Search Tree After Insertion");
-        stepCard.setDescription(TextBuilder.makeBulletList("This is the Binary Search Tree after Insertion."));
+        stepCard.setDescription(Arrays.asList("This is the Binary Search Tree after Insertion."));
         stepCard.setData(BSTBuilder.build(getApplicationContext(), root, target));
         stepCardList.add(stepCard);
 

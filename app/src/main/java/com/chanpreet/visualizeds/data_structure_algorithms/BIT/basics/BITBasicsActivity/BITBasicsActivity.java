@@ -14,6 +14,7 @@ import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -121,7 +122,7 @@ public class BITBasicsActivity extends VisualizerActivity {
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(i, BITBuilder.COLOR_TARGET_MATCHED);
             stepCard.setData(BITBuilder.build(this, arr, map));
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     String.format(Locale.US, "Index : %d", i),
                     String.format(Locale.US, "Increasing the element by %d", 1),
                     String.format(Locale.US, "Binary of %d is %s", i, intToBinary(i)),
@@ -134,7 +135,7 @@ public class BITBasicsActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BITBuilder.build(this, arr, new HashMap<>()));
-        stepCard.setDescription(TextBuilder.makeBulletList(
+        stepCard.setDescription(Arrays.asList(
                 String.format(Locale.US, "Index : %d", i),
                 String.format(Locale.US, "Current index >= size of BIT array (%d)", N)));
         stepCardList.add(stepCard);
@@ -167,7 +168,7 @@ public class BITBasicsActivity extends VisualizerActivity {
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(i, BITBuilder.COLOR_TARGET_MATCHED);
             stepCard.setData(BITBuilder.build(this, arr, map));
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     String.format(Locale.US, "Index : %d", i),
                     String.format(Locale.US, "Index %d represents the number of occurrences of numbers ranged between [%d, %d] which is %d", i, (i - (i & (-i)) + 1), i, arr.get(i)),
                     String.format(Locale.US, "Increasing the answer by %d", arr.get(i)),
@@ -180,7 +181,7 @@ public class BITBasicsActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BITBuilder.build(this, arr, new HashMap<>()));
-        stepCard.setDescription(TextBuilder.makeBulletList(
+        stepCard.setDescription(Arrays.asList(
                 String.format(Locale.US, "Index : %d", i),
                 "Invalid index in case in of BIT.",
                 String.format(Locale.US, "Total number of elements in range [1, %d] is %d", target, ans)));

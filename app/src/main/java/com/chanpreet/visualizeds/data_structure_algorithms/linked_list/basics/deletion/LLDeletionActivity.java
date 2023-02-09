@@ -12,6 +12,7 @@ import com.chanpreet.visualizeds.classes.data_structure_containers.LinkedListNod
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -41,7 +42,6 @@ public class LLDeletionActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Linked List!");
-        stepCard.setDescription("");
         stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
@@ -92,7 +92,7 @@ public class LLDeletionActivity extends VisualizerActivity {
             HashMap<LinkedListNode, Integer> map = new HashMap<>();
             if (temp.data == target) {
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList("Found the element to be deleted!",
+                        Arrays.asList("Found the element to be deleted!",
                                 "If the element is the head of the linked list head is set to the next of the head.",
                                 "If not the previous node's next ptr is set to the next ptr of the target node."));
                 map.put(temp, LinkedListBuilder.COLOR_TARGET_MATCHED);
@@ -105,7 +105,7 @@ public class LLDeletionActivity extends VisualizerActivity {
                 found = true;
             } else {
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList(String.format(Locale.US, "%d ≠ %d", temp.data, target),
+                        Arrays.asList(String.format(Locale.US, "%d ≠ %d", temp.data, target),
                                 "Now, move to the next node."));
                 map.put(temp, LinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
                 stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
@@ -119,10 +119,10 @@ public class LLDeletionActivity extends VisualizerActivity {
         HashMap<LinkedListNode, Integer> map = new HashMap<>();
         if (found) {
             stepCard.setDescription(
-                    TextBuilder.makeBulletList(String.format(Locale.US, "Linked List after deleting %d", target)));
+                    Arrays.asList(String.format(Locale.US, "Linked List after deleting %d", target)));
             stepCard.setData(LinkedListBuilder.build(getApplicationContext(), head, map));
         } else {
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d was not found in the linked list.", target)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d was not found in the linked list.", target)));
         }
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);

@@ -9,6 +9,7 @@ import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -57,7 +58,7 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
             int pos = i;
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     String.format(Locale.US, "Assuming %d to be the smallest element", arr.get(i)),
                     String.format(Locale.US, "Smallest no index = %d", pos)));
             HashMap<Integer, Integer> map = new HashMap<>();
@@ -70,7 +71,7 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
                 stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
                 if (arr.get(j) < arr.get(pos)) {
-                    stepCard.setDescription(TextBuilder.makeBulletList(
+                    stepCard.setDescription(Arrays.asList(
                             String.format(Locale.US, "Index = %d, Smallest no index = %d", j, pos),
                             String.format(Locale.US, "%d is smaller than %d", arr.get(j), arr.get(pos)),
                             String.format(Locale.US, "Now, smallest value is %d", arr.get(j))));
@@ -79,7 +80,7 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
                     map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
                     pos = j;
                 } else {
-                    stepCard.setDescription(TextBuilder.makeBulletList(
+                    stepCard.setDescription(Arrays.asList(
                             String.format(Locale.US, "Index = %d, Smallest no index = %d", j, pos),
                             String.format(Locale.US, "%d is not smaller than %d", arr.get(j), arr.get(pos)),
                             String.format(Locale.US, "Therefore, smallest value is still %d", arr.get(pos))));
@@ -97,7 +98,7 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
             map.clear();
             stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Swapping %d and %d at position %d & %d", arr.get(i), arr.get(pos), i, pos)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Swapping %d and %d at position %d & %d", arr.get(i), arr.get(pos), i, pos)));
             map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
             map.put(pos, ArrayBuilder.COLOR_TARGET_MATCHED);
             stepCard.setData(ArrayBuilder.build(this, arr, map));
@@ -107,7 +108,7 @@ public class ArraySelectionSortActivity extends VisualizerActivity {
         HashMap<Integer, Integer> map = new HashMap<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription("Array is now sorted!");
+        stepCard.setDescription(Arrays.asList("Array is now sorted!"));
         stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
         stepCardList.add(stepCard);
         //Adapter

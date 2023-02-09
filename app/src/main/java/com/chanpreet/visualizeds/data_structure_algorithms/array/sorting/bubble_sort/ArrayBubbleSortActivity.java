@@ -10,6 +10,7 @@ import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -61,14 +62,14 @@ public class ArrayBubbleSortActivity extends VisualizerActivity {
                 StepCard stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
 
-                String description;
+                List<String> description;
                 HashMap<Integer, Integer> map = new HashMap<>();
                 if (arr.get(j) > arr.get(j + 1)) {
                     map.put(j, ArrayBuilder.COLOR_TARGET_MATCHED);
                     map.put(j + 1, ArrayBuilder.COLOR_TARGET_MATCHED);
                     stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
 
-                    description = TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d & %d", j, j + 1),
+                    description = Arrays.asList(String.format(Locale.US, "Index = %d & %d", j, j + 1),
                             String.format(Locale.US, "%d > %d.", arr.get(j), arr.get(j + 1)),
                             String.format(Locale.US, "Therefore swapping %d & %d.", arr.get(j), arr.get(j + 1)));
 
@@ -80,7 +81,7 @@ public class ArrayBubbleSortActivity extends VisualizerActivity {
                     map.put(j + 1, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                     stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
 
-                    description = TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d & %d", j, j + 1),
+                    description = Arrays.asList(String.format(Locale.US, "Index = %d & %d", j, j + 1),
                             String.format(Locale.US, "%d < %d.", arr.get(j), arr.get(j + 1)),
                             "Therefore no swapping necessary");
                 }
@@ -92,7 +93,7 @@ public class ArrayBubbleSortActivity extends VisualizerActivity {
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(arr.size() - i - 1, ArrayBuilder.COLOR_TARGET_MATCHED);
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d is now sorted to its actual position", arr.get(arr.size() - i - 1)),
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d is now sorted to its actual position", arr.get(arr.size() - i - 1)),
                     String.format(Locale.US, "Now we traverse from index 0 to %d", arr.size() - i - 2)));
             stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
             stepCardList.add(stepCard);

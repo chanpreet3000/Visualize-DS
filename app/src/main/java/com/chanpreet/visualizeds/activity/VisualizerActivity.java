@@ -24,6 +24,7 @@ import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -54,7 +55,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         binding.holderLinearLayout.setVisibility(View.VISIBLE);
         StepCard initialStepCard = new StepCard();
         initialStepCard.setTitle("No data Available!");
-        initialStepCard.setDescription("Please enter some data!");
+        initialStepCard.setDescription(Arrays.asList("Please enter some data!"));
         List<StepCard> list = new ArrayList<>();
         list.add(initialStepCard);
         adapter.setStepCardList(list);

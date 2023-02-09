@@ -10,6 +10,7 @@ import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -72,13 +73,13 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
                 canContinue = false;
                 map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d", i),
+                        Arrays.asList(String.format(Locale.US, "Index = %d", i),
                                 String.format(Locale.US, "%d == %d", arr.get(i), target),
                                 String.format(Locale.US, "%d found at index %d", target, i)));
             } else {
                 map.put(i, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d", i),
+                        Arrays.asList(String.format(Locale.US, "Index = %d", i),
                                 String.format(Locale.US, "%d ≠ %d", arr.get(i), target),
                                 "Therefore, we move to the next index"));
             }
@@ -89,7 +90,7 @@ public class ArrayLinearSearchActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle("Element not found");
             stepCard.setDescription(
-                    TextBuilder.makeBulletList(String.format(Locale.US, "Index = %d > the size of the array", arr.size()),
+                    Arrays.asList(String.format(Locale.US, "Index = %d > the size of the array", arr.size()),
                             String.format(Locale.US, "Therefore, %d was not present in the array.", target)));
             stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, new HashMap<>()));
             stepCardList.add(stepCard);

@@ -14,6 +14,7 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -100,13 +101,13 @@ public class BSTDeletionActivity extends VisualizerActivity {
 
             //Description
             if (target == temp.data) {
-                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d == %d", target, temp.data),
+                stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d == %d", target, temp.data),
                         "The element to be deleted is found."));
             } else if (target < temp.data) {
-                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d < %d", target, temp.data),
+                stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d < %d", target, temp.data),
                         "Therefore we move to the left subtree."));
             } else {
-                stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d > %d", target, temp.data),
+                stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d > %d", target, temp.data),
                         "Therefore we move to the right subtree."));
             }
             stepCardList.add(stepCard);
@@ -125,7 +126,7 @@ public class BSTDeletionActivity extends VisualizerActivity {
         if (!found) {
             //Final Step Card
             stepCard.setTitle("Binary Search Tree After Deletion.");
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     String.format(Locale.US, "The Binary Search Tree does not contain %d.", target),
                     "Therefore, No need for deletion."));
             //Generating Tree for Step Card
@@ -133,16 +134,16 @@ public class BSTDeletionActivity extends VisualizerActivity {
         } else {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             if (temp.left == null && temp.right == null) {
-                stepCard.setDescription(TextBuilder.makeBulletList("There exists no left and right subtree.",
+                stepCard.setDescription(Arrays.asList("There exists no left and right subtree.",
                         "Therefore the node can be directly deleted."));
             } else if (temp.left != null && temp.right == null) {
-                stepCard.setDescription(TextBuilder.makeBulletList("There exists no right subtree.",
+                stepCard.setDescription(Arrays.asList("There exists no right subtree.",
                         "Therefore the node can be directly deleted and the left subtree can be directly attached to the node."));
             } else if (temp.left == null) {
-                stepCard.setDescription(TextBuilder.makeBulletList("There exists no left subtree.",
+                stepCard.setDescription(Arrays.asList("There exists no left subtree.",
                         "Therefore the node can be directly deleted and the right subtree can be directly attached to the node."));
             } else {
-                stepCard.setDescription(TextBuilder.makeBulletList("There exists both left and right subtree.",
+                stepCard.setDescription(Arrays.asList("There exists both left and right subtree.",
                         "Therefore the node cannot be directly deleted.",
                         "Targeted node will be replaced by the Inorder Successor or Predecessor of the targeted node and the Inorder Successor or Predecessor will be deleted."));
             }
@@ -153,7 +154,7 @@ public class BSTDeletionActivity extends VisualizerActivity {
             //printing final tree.
             stepCard = new StepCard();
             stepCard.setTitle("Binary Search Tree After Deletion.");
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "This is the final Binary Search Tree after deleting %d.", target)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "This is the final Binary Search Tree after deleting %d.", target)));
             //Generating Tree for Step Card
             //Adding view to the holder of the Step Card
         }

@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.builder.DoublyLinkedListBuilder;
 import com.chanpreet.visualizeds.classes.data_structure_containers.DoublyLinkedListNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +41,6 @@ public class DLLInsertionActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Doubly Linked List!");
-        stepCard.setDescription("");
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
@@ -87,7 +87,7 @@ public class DLLInsertionActivity extends VisualizerActivity {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
 
-            stepCard.setDescription(TextBuilder.makeBulletList("The Next Pointer is not NULL",
+            stepCard.setDescription(Arrays.asList("The Next Pointer is not NULL",
                     "Therefore we move to the next node."));
             map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
 
@@ -104,7 +104,7 @@ public class DLLInsertionActivity extends VisualizerActivity {
         map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
         stepCard.setDescription(
-                TextBuilder.makeBulletList("The next Pointer is a NULL Node",
+                Arrays.asList("The next Pointer is a NULL Node",
                         "Therefore the new node will be mapped to the next pointer of this node."));
         stepCardList.add(stepCard);
         //

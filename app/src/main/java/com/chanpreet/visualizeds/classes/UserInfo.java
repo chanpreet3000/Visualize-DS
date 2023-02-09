@@ -1,9 +1,10 @@
 package com.chanpreet.visualizeds.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfo {
+public class UserInfo implements Serializable {
     private String fullName, email, gender, age;
     private List<VisualizationInfo> visualizationInfoList;
 

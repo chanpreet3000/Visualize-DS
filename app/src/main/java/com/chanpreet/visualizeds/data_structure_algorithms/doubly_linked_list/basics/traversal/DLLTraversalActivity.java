@@ -8,6 +8,7 @@ import com.chanpreet.visualizeds.classes.data_structure_containers.DoublyLinkedL
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -36,7 +37,6 @@ public class DLLTraversalActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Doubly Linked List!");
-        stepCard.setDescription("");
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
@@ -77,7 +77,7 @@ public class DLLTraversalActivity extends VisualizerActivity {
             HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
             map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
             stepCard.setDescription(
-                    TextBuilder.makeBulletList(String.format(Locale.US, "Current node is %d", temp.data),
+                    Arrays.asList(String.format(Locale.US, "Current node is %d", temp.data),
                             "Array List = " + arr,
                             "Now, we move to the next node."));
             stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
@@ -87,7 +87,7 @@ public class DLLTraversalActivity extends VisualizerActivity {
         }
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Doubly Linked List Traversed");
-        stepCard.setDescription(TextBuilder.makeBulletList("We reached a NULL Node",
+        stepCard.setDescription(Arrays.asList("We reached a NULL Node",
                 "That means this is the end of Doubly Linked List",
                 "Array List = " + arr));
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));

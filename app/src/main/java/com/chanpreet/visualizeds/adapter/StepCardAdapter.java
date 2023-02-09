@@ -1,6 +1,7 @@
 package com.chanpreet.visualizeds.adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemNoDataErrorBinding;
-import com.chanpreet.visualizeds.databinding.ItemStepCardNewBinding;
+import com.chanpreet.visualizeds.databinding.ItemStepCardBinding;
+import com.chanpreet.visualizeds.databinding.ItemStepCardDescriptionBinding;
+import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +43,26 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     @NonNull
     @Override
     public StepCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemStepCardNewBinding binding = ItemStepCardNewBinding.inflate(LayoutInflater.from(context), parent, false);
+        ItemStepCardBinding binding = ItemStepCardBinding.inflate(LayoutInflater.from(context), parent, false);
         return new StepCardViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull StepCardViewHolder holder, int position) {
         holder.binding.titleTextView.setText(stepCardList.get(position).getTitle());
-        holder.binding.descriptionTextView.setText(stepCardList.get(position).getDescription());
+        holder.binding.descriptionLinearLayout.removeAllViews();
+
+        for (int i = 0; i < stepCardList.get(position).getDescription().size(); i++) {
+            String description = stepCardList.get(position).getDescription().get(i);
+            ItemStepCardDescriptionBinding binding2 = ItemStepCardDescriptionBinding.inflate(LayoutInflater.from(context));
+
+            binding2.textView.setText(description);
+            Integer color = Util.listOfColors.get((i + 1) % (Util.listOfColors.size()));
+            binding2.cardView.setCardBackgroundColor(ColorStateList.valueOf(context.getColor(color)));
+
+            holder.binding.descriptionLinearLayout.addView(binding2.getRoot());
+        }
+
         holder.binding.dataNodeHolder.removeAllViews();
         if (stepCardList.get(position).getData() != null) {
             if (stepCardList.get(position).getData().getParent() != null) {
@@ -65,9 +80,9 @@ public class StepCardAdapter extends RecyclerView.Adapter<StepCardAdapter.StepCa
     }
 
     public static class StepCardViewHolder extends RecyclerView.ViewHolder {
-        public ItemStepCardNewBinding binding;
+        public ItemStepCardBinding binding;
 
-        public StepCardViewHolder(@NonNull ItemStepCardNewBinding binding) {
+        public StepCardViewHolder(@NonNull ItemStepCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

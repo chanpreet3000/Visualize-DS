@@ -13,6 +13,7 @@ import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -85,7 +86,7 @@ public class QueuePushPopActivity extends VisualizerActivity {
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("PUSH Operation");
-        stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Pushing %d into the queue.", target)));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Pushing %d into the queue.", target)));
         stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.PUSH_OPERATION, target));
         adapter.addStepCard(stepCard);
         binding.viewPager.setCurrentItem(adapter.getItemCount() - 1, true);
@@ -100,10 +101,10 @@ public class QueuePushPopActivity extends VisualizerActivity {
 
         if (queue.isEmpty()) {
             stepCard.setTitle("Queue is Empty!");
-            stepCard.setDescription(TextBuilder.makeBulletList("No element to pop from the queue."));
+            stepCard.setDescription(Arrays.asList("No element to pop from the queue."));
         } else {
             stepCard.setTitle("POP Operation");
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Removing %d from the queue", queue.peek())));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Removing %d from the queue", queue.peek())));
             stepCard.setData(QueueBuilder.build(getApplicationContext(), queue, QueueBuilder.POP_OPERATION, -1));
             queue.remove();
         }

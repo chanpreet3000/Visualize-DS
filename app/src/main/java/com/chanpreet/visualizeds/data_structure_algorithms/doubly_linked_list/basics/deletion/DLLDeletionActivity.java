@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.DoublyLinkedListNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +41,6 @@ public class DLLDeletionActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Doubly Linked List!");
-        stepCard.setDescription("");
         stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, new HashMap<>()));
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);
@@ -91,7 +91,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
             HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
             if (temp.data == target) {
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList("Found the element to be deleted!",
+                        Arrays.asList("Found the element to be deleted!",
                                 "If the element is the head of the linked list head is set to the next of the head.",
                                 "If not the previous node's next ptr is set to the next ptr of the target node."));
                 map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_MATCHED);
@@ -104,7 +104,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
                 found = true;
             } else {
                 stepCard.setDescription(
-                        TextBuilder.makeBulletList(String.format(Locale.US, "%d ≠ %d", temp.data, target),
+                        Arrays.asList(String.format(Locale.US, "%d ≠ %d", temp.data, target),
                                 "Now, move to the next node."));
                 map.put(temp, DoublyLinkedListBuilder.COLOR_TARGET_NOT_MATCHED);
                 stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
@@ -118,10 +118,10 @@ public class DLLDeletionActivity extends VisualizerActivity {
         HashMap<DoublyLinkedListNode, Integer> map = new HashMap<>();
         if (found) {
             stepCard.setDescription(
-                    TextBuilder.makeBulletList(String.format(Locale.US, "Doubly Linked List after deleting %d", target)));
+                    Arrays.asList(String.format(Locale.US, "Doubly Linked List after deleting %d", target)));
             stepCard.setData(DoublyLinkedListBuilder.build(getApplicationContext(), head, map));
         } else {
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "%d was not found in the Doubly Linked List.", target)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "%d was not found in the Doubly Linked List.", target)));
         }
         stepCardList.add(stepCard);
         adapter.setStepCardList(stepCardList);

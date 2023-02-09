@@ -15,6 +15,7 @@ import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard3Binding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,14 +85,14 @@ public class PFDFSActivity extends VisualizerActivity implements GridItemOnClick
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("Initial Grid");
-        stepCard.setDescription(
+        stepCard.setDescription(Arrays.asList(
                 "EMPTY CELL \t: ⬜" +
                         "\n" +
                         "START CELL \t: \uD83D\uDFE9" +
                         "\n" +
                         "END CELL   \t\t\t: \uD83D\uDFE5" +
                         "\n" +
-                        "BLOCK CELL \t: ⬛");
+                        "BLOCK CELL \t: ⬛"));
         stepCard.setData(obj.getView());
         stepCardList.add(stepCard);
 

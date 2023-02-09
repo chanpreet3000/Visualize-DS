@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -77,18 +78,18 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
 
             HashMap<Integer, Integer> map = new HashMap<>();
-            String description;
+            List<String> description;
             if (arr.get(mid) == target) {
                 canContinue = false;
                 map.put(mid, ArrayBuilder.COLOR_TARGET_MATCHED);
-                description = TextBuilder.makeBulletList(
+                description = Arrays.asList(
                         String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
                         String.format(Locale.US, "arr[%d] == %d", mid, target),
                         String.format(Locale.US, "Element found at index %d", mid));
             } else {
                 map.put(mid, ArrayBuilder.COLOR_TARGET_NOT_MATCHED);
                 if (arr.get(mid) > target) {
-                    description = TextBuilder.makeBulletList(
+                    description = Arrays.asList(
                             String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
                             String.format(Locale.US, "arr[%d] > %d", mid, target),
                             "Target is smaller than element at the middle position.",
@@ -96,7 +97,7 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
                             String.format(Locale.US, "end = %d", end));
                     end = mid - 1;
                 } else {
-                    description = TextBuilder.makeBulletList(
+                    description = Arrays.asList(
                             String.format(Locale.US, "start = %d, end = %d, mid = %d", start, end, mid),
                             String.format(Locale.US, "arr[%d] < %d", mid, target),
                             "Target is greater than element at the middle position.",

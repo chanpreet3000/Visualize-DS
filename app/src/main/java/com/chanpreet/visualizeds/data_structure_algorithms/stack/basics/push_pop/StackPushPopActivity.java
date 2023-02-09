@@ -13,6 +13,7 @@ import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -84,7 +85,7 @@ public class StackPushPopActivity extends VisualizerActivity {
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("PUSH Operation");
-        stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Pushing %d into the Stack.", target)));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Pushing %d into the Stack.", target)));
         stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.PUSH_OPERATION));
 
         adapter.addStepCard(stepCard);
@@ -96,10 +97,10 @@ public class StackPushPopActivity extends VisualizerActivity {
         StepCard stepCard = new StepCard();
         if (st.empty()) {
             stepCard.setTitle("Stack is Empty!");
-            stepCard.setDescription(TextBuilder.makeBulletList("No element to pop from the stack."));
+            stepCard.setDescription(Arrays.asList("No element to pop from the stack."));
         } else {
             stepCard.setTitle("POP Operation");
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Removing %d from the stack", st.peek())));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Removing %d from the stack", st.peek())));
             stepCard.setData(StackBuilder.build(getApplicationContext(), st, StackBuilder.POP_OPERATION));
             st.pop();
         }

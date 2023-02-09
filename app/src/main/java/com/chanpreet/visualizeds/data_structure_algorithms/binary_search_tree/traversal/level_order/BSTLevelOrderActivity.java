@@ -4,13 +4,13 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
-import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,11 +70,8 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
     public void visualize() {
         steps = 0;
         //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-
 
         List<StepCard> stepCardList = new ArrayList<>();
-
 
         Queue<BSTNode> queue = new LinkedList<>();
         queue.add(root);
@@ -83,7 +80,7 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BSTBuilder.build(this, root, root.data));
         stepCard.setDescription(
-                TextBuilder.makeBulletList(
+                Arrays.asList(
                         "Adding the root to the queue.",
                         "Queue : " + queue));
         stepCardList.add(stepCard);
@@ -96,37 +93,32 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
                 assert front != null;
                 levelOrderList.add(front.data);
 
-                String description = TextBuilder.makeBulletList(
-                        String.format(Locale.US, "Front Element from queue : %d", front.data));
-                description += "\n\n";
-                //
+                List<String> description = new ArrayList<>();
+                description.add(String.format(Locale.US, "Front Element from queue : %d", front.data));
                 if (front.left == null) {
-                    description += TextBuilder.makeBulletList(
+                    description.addAll(Arrays.asList(
                             "Left node is NULL",
-                            "Therefore, left node will not be added to the queue");
+                            "Therefore, left node will not be added to the queue"));
                 } else {
                     queue.add(front.left);
-                    description += TextBuilder.makeBulletList(
+                    description.addAll(Arrays.asList(
                             "Left node is NOT NULL",
-                            String.format(Locale.US, "Therefore, left node (%d) will be added to the queue", front.left.data));
+                            String.format(Locale.US, "Therefore, left node (%d) will be added to the queue", front.left.data)));
                 }
-                description += "\n\n";
-
                 if (front.right == null) {
-                    description += TextBuilder.makeBulletList(
+                    description.addAll(Arrays.asList(
                             "Right node is NULL",
-                            "Therefore, right node will not be added to the queue");
+                            "Therefore, right node will not be added to the queue"));
                 } else {
                     queue.add(front.right);
-                    description += TextBuilder.makeBulletList(
+                    description.addAll(Arrays.asList(
                             "Right node is NOT NULL",
-                            String.format(Locale.US, "Therefore, right node (%d) will be added to the queue", front.right.data));
+                            String.format(Locale.US, "Therefore, right node (%d) will be added to the queue", front.right.data)));
                 }
 
-                description += "\n\n";
-                description += TextBuilder.makeBulletList(
+                description.addAll(Arrays.asList(
                         String.format(Locale.US, "Queue : %s", queue),
-                        String.format(Locale.US, "Level Order Traversal : %s", levelOrderList));
+                        String.format(Locale.US, "Level Order Traversal : %s", levelOrderList)));
 
                 //
                 stepCard = new StepCard();
@@ -141,7 +133,7 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
         stepCard.setData(BSTBuilder.build(this, root, -999));
         stepCard.setDescription(
-                TextBuilder.makeBulletList(
+                Arrays.asList(
                         String.format(Locale.US, "Queue : %s", queue),
                         "Queue is Empty.",
                         "Therefore we traversed the Binary Search Tree.",

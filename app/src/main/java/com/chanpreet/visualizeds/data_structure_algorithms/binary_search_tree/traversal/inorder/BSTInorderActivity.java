@@ -11,6 +11,7 @@ import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCard2Binding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -82,7 +83,7 @@ public class BSTInorderActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             //Description
-            stepCard.setDescription(TextBuilder.makeBulletList("We reach a null node.",
+            stepCard.setDescription(Arrays.asList("We reach a null node.",
                     "Therefore we move back to the parent node"));
             stepCardList.add(stepCard);
             return;
@@ -95,7 +96,7 @@ public class BSTInorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     "Left Subtree Traversed  : ❌",
                     "Node Traversed          : ❌",
                     "Right Subtree Traversed : ❌",
@@ -117,7 +118,7 @@ public class BSTInorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     "Left Subtree Traversed  : ✅",
                     "Node Traversed          : ✅",
                     "Right Subtree Traversed : ❌",
@@ -137,7 +138,7 @@ public class BSTInorderActivity extends VisualizerActivity {
             //Adding view to the holder of the Step Card
             stepCard.setData(BSTBuilder.build(getApplicationContext(), finalRoot, root.data));
             //Description
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     "Left Subtree Traversed  : ✅",
                     "Node Traversed          : ✅",
                     "Right Subtree Traversed : ✅",

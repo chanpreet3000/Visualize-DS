@@ -12,6 +12,7 @@ import com.chanpreet.visualizeds.builder.LinkedListBuilder;
 import com.chanpreet.visualizeds.classes.data_structure_containers.LinkedListNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -86,7 +87,7 @@ public class LLInsertionActivity extends VisualizerActivity {
             StepCard stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             stepCard.setDescription(
-                    TextBuilder.makeBulletList(
+                    Arrays.asList(
                             "The Next Address is not NULL.",
                             "So this is not the last node in the Linked List",
                             "We move to the next node"));
@@ -100,7 +101,7 @@ public class LLInsertionActivity extends VisualizerActivity {
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription(TextBuilder.makeBulletList(
+        stepCard.setDescription(Arrays.asList(
                 "The Next Address is NULL.",
                 "So this is the last node in the Linked List",
                 "We insert the node to the next pointer"));

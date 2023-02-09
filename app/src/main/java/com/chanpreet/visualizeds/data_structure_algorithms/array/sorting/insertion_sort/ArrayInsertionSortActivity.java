@@ -10,6 +10,7 @@ import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemVisualizeInputCardBinding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -63,7 +64,7 @@ public class ArrayInsertionSortActivity extends VisualizerActivity {
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(i - 1, ArrayBuilder.COLOR_TARGET_MATCHED);
             stepCard.setData(ArrayBuilder.build(this, arr, map));
-            stepCard.setDescription(TextBuilder.makeBulletList(String.format(Locale.US, "Assuming the elements before and equal to index %d is sorted!", i - 1)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Assuming the elements before and equal to index %d is sorted!", i - 1)));
             stepCardList.add(stepCard);
 
             int temp = arr.get(i);
@@ -73,7 +74,7 @@ public class ArrayInsertionSortActivity extends VisualizerActivity {
                 //Building step card
                 stepCard = new StepCard();
                 stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-                stepCard.setDescription(TextBuilder.makeBulletList(
+                stepCard.setDescription(Arrays.asList(
                         String.format(Locale.US, "Index = %d", j),
                         String.format(Locale.US, "%d < %d", arr.get(j + 1), arr.get(j)),
                         String.format(Locale.US, "Therefore, swapping %d & %d", arr.get(j + 1), arr.get(j))));
@@ -94,7 +95,7 @@ public class ArrayInsertionSortActivity extends VisualizerActivity {
             map.put(j + 1, ArrayBuilder.COLOR_TARGET_MATCHED);
             stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription(TextBuilder.makeBulletList(
+            stepCard.setDescription(Arrays.asList(
                     String.format(Locale.US, "%d is now at the sorted place.", arr.get(j + 1))));
             stepCard.setData(ArrayBuilder.build(getApplicationContext(), arr, map));
             stepCardList.add(stepCard);
