@@ -1,11 +1,13 @@
 package com.chanpreet.visualizeds.activity;
 
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.adapter.PreviousVisualizationsAdapter;
 import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.VisualizationInfo;
@@ -36,6 +38,7 @@ public class PreviousVisualizationsActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         PreviousVisualizationsAdapter adapter = new PreviousVisualizationsAdapter(getApplicationContext(), list);
         binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_fall_down));
     }
 
     @Override

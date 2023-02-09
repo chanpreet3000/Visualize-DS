@@ -2,6 +2,7 @@ package com.chanpreet.visualizeds.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,7 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
     private ActivityDataStructureAlgorithmBinding binding;
     private DataStructureTopic dataStructureTopic;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +61,13 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
             intent.putExtra("data", dataStructureTopic.dataStructureAlgorithms().get(position));
             startActivity(intent);
         });
+        binding.recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_fall_down));
 
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        super.onBackPressed();
         return super.onSupportNavigateUp();
     }
 }

@@ -2,10 +2,12 @@ package com.chanpreet.visualizeds.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.adapter.DataStructureTopicAdapter;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
@@ -43,11 +45,12 @@ public class DataStructureTopicActivity extends AppCompatActivity {
             intent.putExtra("data", dataStructure.getDataStructureTopics().get(position));
             startActivity(intent);
         });
+        binding.recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_fall_down));
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        super.onBackPressed();
         return super.onSupportNavigateUp();
     }
 }

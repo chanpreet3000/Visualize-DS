@@ -14,21 +14,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="16dp"
-            android:text="My Profile"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/my_profile_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/oxford_blue"
-            app:cardCornerRadius="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
             app:cardUseCompatPadding="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,40 +50,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-
                     <TextView
-                        android:id="@+id/nameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="4dp"
-                        android:layout_marginTop="16dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="Name here"
+                        android:layout_marginHorizontal="8dp"
+                        android:text="My Profile"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/emailTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="4dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="email"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/genderTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="4dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="age and gender here"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -113,7 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:layoutAnimation="@anim/layout_animation_fall_down"
             android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_data_structure" />
 

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
-import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.DataStructure;
-import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.Util;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
-import java.util.Locale;
 
 public class DataStructureActivity extends AppCompatActivity {
 
@@ -33,10 +31,11 @@ public class DataStructureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDataStructureBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        UpdateUI();
 
         dataStructures = Util.dataStructures;
         initRecyclerView(dataStructures);
+
+        binding.myProfileCardView.setOnClickListener(v -> startActivity(new Intent(DataStructureActivity.this, MyProfileActivity.class)));
     }
 
     private void initRecyclerView(List<DataStructure> list) {
@@ -48,6 +47,7 @@ public class DataStructureActivity extends AppCompatActivity {
             intent.putExtra("data", dataStructures.get(position));
             startActivity(intent);
         });
+        binding.recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getApplicationContext(), R.anim.layout_animation_fall_down));
     }
 
     @Override
@@ -72,12 +72,6 @@ public class DataStructureActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void UpdateUI() {
-        UserInfo userInfo = DataManager.getInstance().getUserInfo();
-        binding.nameTextView.setText(userInfo.getFullName());
-        binding.emailTextView.setText(userInfo.getEmail());
-        binding.genderTextView.setText(String.format(Locale.US, "%s, %s", userInfo.getGender(), userInfo.getAge()));
-    }
 
     private void goToPlayStore() {
         try {
