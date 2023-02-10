@@ -10,7 +10,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
 
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class DataManager {
     private static volatile DataManager INSTANCE = null;
@@ -47,11 +50,15 @@ public class DataManager {
                 .collection(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .document("USER_INFORMATION")
                 .set(userInfo)
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .addOnFailureListener(e -> Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_SHORT).show());
+    }
+
+    public Set<String> getVisualizationSet() {
+        Set<String> set = new HashSet<>();
+        for (VisualizationInfo info :
+                userInfo.getVisualizationInfoList()) {
+            set.add(info.getName());
+        }
+        return set;
     }
 }

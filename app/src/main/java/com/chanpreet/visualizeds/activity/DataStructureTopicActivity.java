@@ -22,6 +22,12 @@ public class DataStructureTopicActivity extends AppCompatActivity {
     private DataStructure dataStructure;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        initRecyclerView(dataStructure.getDataStructureTopics());
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDataStructureTopicBinding.inflate(getLayoutInflater());
@@ -31,9 +37,6 @@ public class DataStructureTopicActivity extends AppCompatActivity {
         binding.headingTextView.setText(String.format("%s Topics", dataStructure.getName()));
         Objects.requireNonNull(getSupportActionBar()).setTitle("Topics");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        initRecyclerView(dataStructure.getDataStructureTopics());
-
     }
 
     private void initRecyclerView(List<DataStructureTopic> list) {

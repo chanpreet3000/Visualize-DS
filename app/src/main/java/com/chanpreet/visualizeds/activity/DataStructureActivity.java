@@ -25,6 +25,11 @@ public class DataStructureActivity extends AppCompatActivity {
     private ActivityDataStructureBinding binding;
     private List<DataStructure> dataStructures;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initRecyclerView(dataStructures);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,6 @@ public class DataStructureActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         dataStructures = Util.dataStructures;
-        initRecyclerView(dataStructures);
 
         binding.myProfileCardView.setOnClickListener(v -> startActivity(new Intent(DataStructureActivity.this, MyProfileActivity.class)));
     }

@@ -14,39 +14,57 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/backgroundCardView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:background="@color/oxford_blue"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/backgroundCardView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_array_24" />
+                android:src="@drawable/ic_array_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:background="@color/white"
                 android:backgroundTint="#99000000"
                 android:backgroundTintMode="multiply"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingVertical="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:layout_gravity="center"
                     app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="8dp"
                     app:cardUseCompatPadding="true">
@@ -55,6 +73,7 @@
                         android:id="@+id/iconCardView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:layout_margin="1dp"
                         app:cardBackgroundColor="@color/oxford_blue"
                         app:cardCornerRadius="8dp">
@@ -63,6 +82,7 @@
                             android:id="@+id/iconImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
                             android:padding="8dp"
                             android:src="@drawable/ic_arrow_upward_24"
                             app:tint="@color/white" />
@@ -71,19 +91,32 @@
 
                 <TextView
                     android:id="@+id/titleTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:gravity="center"
                     android:text="Title"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/difficultyTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Difficulty"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
             android:gravity="center"
@@ -92,28 +125,24 @@
             <Button
                 android:id="@+id/theoryBtn"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
                 android:text="Theory"
                 android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/difficultyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="16dp"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="Difficulty"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="normal" />
+            <ImageView
+                android:id="@+id/completed_image_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_check_24" />
 
             <Button
                 android:id="@+id/visualizeBtn"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
                 android:text="Visualize"
                 android:textSize="13sp" />
         </LinearLayout>

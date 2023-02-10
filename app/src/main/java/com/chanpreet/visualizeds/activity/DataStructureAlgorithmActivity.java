@@ -22,6 +22,11 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
     private ActivityDataStructureAlgorithmBinding binding;
     private DataStructureTopic dataStructureTopic;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initRecyclerView(dataStructureTopic.dataStructureAlgorithms());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +36,9 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
 
         dataStructureTopic = (DataStructureTopic) getIntent().getSerializableExtra("data");
 
-        initRecyclerView(dataStructureTopic.dataStructureAlgorithms());
         Objects.requireNonNull(getSupportActionBar()).setTitle("Algorithms");
-        binding.headingTextView.setText(String.format("%s Algorithms", dataStructureTopic.getName()));
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        binding.headingTextView.setText(String.format("%s Algorithms", dataStructureTopic.getName()));
     }
 
     private void initRecyclerView(List<DataStructureAlgorithm> list) {

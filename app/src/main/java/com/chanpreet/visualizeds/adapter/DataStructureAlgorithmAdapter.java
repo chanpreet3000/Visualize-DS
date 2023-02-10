@@ -7,22 +7,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chanpreet.visualizeds.R;
+import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.databinding.ItemDataStructureAlgorithmBinding;
 import com.chanpreet.visualizeds.utils.Util;
 
 import java.util.List;
+import java.util.Set;
 
 public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStructureAlgorithmAdapter.DSItemViewHolder> {
 
     private final Context context;
-    private final List<DataStructureAlgorithm> list;
+    private final List<DataStructureAlgorithm> dataStructureAlgorithmList;
     private onClickListener theoryListener;
     private onClickListener visualizeListener;
 
-    public DataStructureAlgorithmAdapter(Context context, List<DataStructureAlgorithm> list) {
+    public DataStructureAlgorithmAdapter(Context context, List<DataStructureAlgorithm> dataStructureAlgorithmList) {
         this.context = context;
-        this.list = list;
+        this.dataStructureAlgorithmList = dataStructureAlgorithmList;
     }
 
     @NonNull
@@ -34,7 +37,8 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
 
     @Override
     public void onBindViewHolder(@NonNull DSItemViewHolder holder, int position) {
-        DataStructureAlgorithm data = list.get(position);
+
+        DataStructureAlgorithm data = dataStructureAlgorithmList.get(position);
 
         holder.binding.titleTextView.setText(data.getName());
         holder.binding.difficultyTextView.setText(data.getDifficulty().toString());
@@ -46,11 +50,22 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
 
         holder.binding.iconCardView.setCardBackgroundColor(context.getColor(color));
         holder.binding.iconImageView.setImageResource(data.getIcon());
+
+        Set<String> set = DataManager.getInstance().getVisualizationSet();
+        if (dataStructureAlgorithmList.get(position).getVisualizeClass() != null) {
+            if (set.contains(dataStructureAlgorithmList.get(position).getName())) {
+                holder.binding.completedImageView.setImageResource(R.drawable.ic_baseline_check_24);
+            } else {
+                holder.binding.completedImageView.setImageResource(R.drawable.ic_sharp_close_24);
+            }
+        } else {
+            holder.binding.completedImageView.setImageDrawable(null);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return dataStructureAlgorithmList.size();
     }
 
     public void setTheoryOnClickListener(onClickListener listener) {
@@ -67,9 +82,6 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
         public DSItemViewHolder(@NonNull ItemDataStructureAlgorithmBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            //Animation
-//            binding.getRoot().setAnimation(AnimationUtils.loadAnimation(context, R.anim.left_slide_in_fade_in));
-
             //OnClick Listener for the item View
             binding.theoryBtn.setOnClickListener(v -> {
                 if (theoryListener == null) return;
