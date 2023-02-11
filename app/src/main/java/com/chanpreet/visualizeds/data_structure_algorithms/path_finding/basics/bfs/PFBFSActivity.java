@@ -75,7 +75,7 @@ public class PFBFSActivity extends VisualizerActivity implements GridItemOnClick
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         return new HashMap<>();
     }
 

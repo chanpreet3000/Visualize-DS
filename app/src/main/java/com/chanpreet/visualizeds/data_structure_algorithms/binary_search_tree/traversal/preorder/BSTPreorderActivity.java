@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BSTBuilder;
-import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.data_structure_containers.BSTNode;
 import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
@@ -61,7 +60,7 @@ public class BSTPreorderActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("INORDER", BSTNode.inOrder(root));
         return map;
@@ -71,8 +70,6 @@ public class BSTPreorderActivity extends VisualizerActivity {
     public void visualize() {
         steps = 0;
         //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-
         List<Integer> arr = new ArrayList<>();
         List<StepCard> stepCardList = new ArrayList<>();
         helper(stepCardList, arr, root, root);

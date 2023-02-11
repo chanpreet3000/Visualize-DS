@@ -62,7 +62,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("DOUBLY LINKED LIST", DoublyLinkedListNode.getList(head));
         map.put("TARGET", targetEditText.getText().toString());

@@ -73,7 +73,7 @@ public class BSTInsertionActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("INORDER", BSTNode.inOrder(root));
         map.put("TARGET", stringToArray(targetEditText.getText().toString()));

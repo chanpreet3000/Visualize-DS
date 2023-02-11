@@ -41,7 +41,7 @@ public class ArrayBubbleSortActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("ARRAY", stringToArray(arrayEditText.getText().toString()));
         return map;

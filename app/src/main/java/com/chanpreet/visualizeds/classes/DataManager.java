@@ -3,15 +3,10 @@ package com.chanpreet.visualizeds.classes;
 import android.content.Context;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -54,6 +49,7 @@ public class DataManager {
     }
 
     public Set<String> getVisualizationSet() {
+        if (userInfo == null) return new HashSet<>();
         Set<String> set = new HashSet<>();
         for (VisualizationInfo info :
                 userInfo.getVisualizationInfoList()) {

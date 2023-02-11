@@ -60,7 +60,7 @@ public class BSTLevelOrderActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("INORDER", BSTNode.inOrder(root));
         return map;

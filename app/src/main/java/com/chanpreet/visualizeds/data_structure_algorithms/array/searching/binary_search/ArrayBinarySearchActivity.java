@@ -52,7 +52,7 @@ public class ArrayBinarySearchActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("ARRAY", stringToArray(arrayEditText.getText().toString()));
         map.put("TARGET", stringToArray(targetEditText.getText().toString()));

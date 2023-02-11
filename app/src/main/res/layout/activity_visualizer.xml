@@ -126,7 +126,6 @@
                 android:textSize="14sp" />
 
             <LinearLayout
-                android:id="@+id/holderLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">

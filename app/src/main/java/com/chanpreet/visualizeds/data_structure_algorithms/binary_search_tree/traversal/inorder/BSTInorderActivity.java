@@ -59,7 +59,7 @@ public class BSTInorderActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("INORDER", BSTNode.inOrder(root));
         return map;
@@ -68,9 +68,6 @@ public class BSTInorderActivity extends VisualizerActivity {
     @Override
     public void visualize() {
         steps = 0;
-        //clear all views of the linear Layout
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
-
         List<Integer> arr = new ArrayList<>();
         List<StepCard> stepCardList = new ArrayList<>();
         helper(stepCardList, arr, root, root);

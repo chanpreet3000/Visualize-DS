@@ -82,7 +82,7 @@ public class BITBasicsActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("INSERT", insertEditText.getText().toString());
         map.put("RANGE", rangeEditText.getText().toString());

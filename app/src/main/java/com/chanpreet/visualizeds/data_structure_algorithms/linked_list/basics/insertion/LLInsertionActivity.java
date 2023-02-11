@@ -63,7 +63,7 @@ public class LLInsertionActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("LINKED LIST", LinkedListNode.getList(head));
         map.put("TARGET", targetEditText.getText().toString());

@@ -55,7 +55,7 @@ public class LLTraversalActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("LINKED LIST", LinkedListNode.getList(head));
         return map;

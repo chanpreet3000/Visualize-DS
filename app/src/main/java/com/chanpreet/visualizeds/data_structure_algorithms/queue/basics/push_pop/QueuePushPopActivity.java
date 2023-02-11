@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.QueueBuilder;
-import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
@@ -58,12 +57,12 @@ public class QueuePushPopActivity extends VisualizerActivity {
         //caching UI
         pushEditText = binding1.editText;
 
-        binding1.button.setOnClickListener(v -> pushButtonClicked());
+        binding1.button.setOnClickListener(v -> this.pushButtonClicked());
         binding2.button.setOnClickListener(v -> popButtonClicked());
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("QUEUE", queue.toString());
         map.put("PUSH", pushEditText.getText().toString());

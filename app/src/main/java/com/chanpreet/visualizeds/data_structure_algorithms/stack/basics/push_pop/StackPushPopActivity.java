@@ -62,7 +62,7 @@ public class StackPushPopActivity extends VisualizerActivity {
     }
 
     @Override
-    public Map<String, Object> getVisualizationInformation() {
+    public Map<String, Object> getDefaultVisualizationInformation() {
         Map<String, Object> map = new HashMap<>();
         map.put("STACK", st.toString());
         map.put("PUSH", pushEditText.getText().toString());

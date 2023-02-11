@@ -24,7 +24,7 @@ import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -34,6 +34,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public ActivityVisualizerBinding binding;
     public StepCardAdapter adapter;
     private DataStructureAlgorithm dataStructureAlgorithm;
+    private Map<String, Object> visualizationInformation = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,10 +53,8 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setOffscreenPageLimit(4);
 
-        binding.holderLinearLayout.setVisibility(View.VISIBLE);
         StepCard initialStepCard = new StepCard();
         initialStepCard.setTitle("No data Available!");
-        initialStepCard.setDescription(Arrays.asList("Please enter some data!"));
         List<StepCard> list = new ArrayList<>();
         list.add(initialStepCard);
         adapter.setStepCardList(list);
@@ -105,6 +104,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     private void visualizeBtnClicked() {
         try {
+            this.visualizationInformation = this.getDefaultVisualizationInformation();
             this.visualize();
             this.postVisualize();
         } catch (Exception e) {
@@ -114,7 +114,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     public void postVisualize() {
         //
-        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), getVisualizationInformation());
+        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), this.visualizationInformation);
 
         //
         UserInfo currentUserInfo = DataManager.getInstance().getUserInfo();
@@ -122,8 +122,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         arr.add(visualizationInfo);
         currentUserInfo.setVisualizationInfoList(arr);
         DataManager.getInstance().updateUser(getApplicationContext(), currentUserInfo);
-        //
-        this.visualize();
         //
         //Requesting focus
         scrollToView(binding.scrollView, binding.viewPager);
@@ -135,7 +133,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
 
     public abstract void generateInputUI();
 
-    public abstract Map<String, Object> getVisualizationInformation();
+    public abstract Map<String, Object> getDefaultVisualizationInformation();
 
     public abstract void visualize();
 
@@ -146,6 +144,10 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    public void setVisualizationInformation(Map<String, Object> visualizationInformation) {
+        this.visualizationInformation = visualizationInformation;
     }
 
     public void visualizeNextStep() {
