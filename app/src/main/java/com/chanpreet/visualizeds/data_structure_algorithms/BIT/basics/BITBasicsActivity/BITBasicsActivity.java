@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.BITBuilder;
-import com.chanpreet.visualizeds.builder.TextBuilder;
 import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.databinding.ItemErrorAlertCardBinding;
 import com.chanpreet.visualizeds.databinding.ItemSuccessAlertCardBinding;
@@ -52,7 +51,6 @@ public class BITBasicsActivity extends VisualizerActivity {
         binding2.editText.setHint("Enter a number <= " + (N - 1));
         binding2.editText.setInputType(InputType.TYPE_CLASS_PHONE);
         binding2.button.setText("Insert");
-        binding2.button.setOnClickListener(v -> insertBIT());
 
 
         ItemSuccessAlertCardBinding binding3 = ItemSuccessAlertCardBinding.inflate(getLayoutInflater());
@@ -63,7 +61,6 @@ public class BITBasicsActivity extends VisualizerActivity {
         binding4.editText.setHint("Enter a number <= " + (N - 1));
         binding4.editText.setInputType(InputType.TYPE_CLASS_PHONE);
         binding4.button.setText("Range Query");
-        binding4.button.setOnClickListener(v -> rangeBIT());
 
 
         ItemErrorAlertCardBinding binding5 = ItemErrorAlertCardBinding.inflate(getLayoutInflater());
@@ -75,6 +72,36 @@ public class BITBasicsActivity extends VisualizerActivity {
         binding.inputLinearLayout.addView(binding2.getRoot());
         binding.inputLinearLayout.addView(binding3.getRoot());
         binding.inputLinearLayout.addView(binding4.getRoot());
+
+
+        binding2.button.setOnClickListener(v -> visualizeBtnClicked(new OnVisualization() {
+            @Override
+            public void visualization() {
+                insertBIT();
+            }
+
+            @Override
+            public Map<String, Object> visualizationInfo() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("BIT", arr);
+                map.put("INSERT", insertEditText.getText().toString());
+                return map;
+            }
+        }));
+        binding4.button.setOnClickListener(v -> visualizeBtnClicked(new OnVisualization() {
+            @Override
+            public void visualization() {
+                rangeBIT();
+            }
+
+            @Override
+            public Map<String, Object> visualizationInfo() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("BIT", arr);
+                map.put("RANGE", rangeEditText.getText().toString());
+                return map;
+            }
+        }));
 
         //caching UI
         insertEditText = binding2.editText;

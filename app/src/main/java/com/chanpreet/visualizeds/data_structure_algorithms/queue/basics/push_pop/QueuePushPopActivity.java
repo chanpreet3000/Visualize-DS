@@ -3,7 +3,6 @@ package com.chanpreet.visualizeds.data_structure_algorithms.queue.basics.push_po
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.chanpreet.visualizeds.activity.VisualizerActivity;
 import com.chanpreet.visualizeds.builder.QueueBuilder;
@@ -57,8 +56,34 @@ public class QueuePushPopActivity extends VisualizerActivity {
         //caching UI
         pushEditText = binding1.editText;
 
-        binding1.button.setOnClickListener(v -> this.pushButtonClicked());
-        binding2.button.setOnClickListener(v -> popButtonClicked());
+        binding1.button.setOnClickListener(v -> visualizeBtnClicked(new OnVisualization() {
+            @Override
+            public void visualization() {
+                pushButtonClicked();
+            }
+
+            @Override
+            public Map<String, Object> visualizationInfo() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("QUEUE", queue.toString());
+                map.put("PUSH", pushEditText.getText().toString());
+                return map;
+            }
+        }));
+        binding2.button.setOnClickListener(v -> visualizeBtnClicked(new OnVisualization() {
+            @Override
+            public void visualization() {
+                popButtonClicked();
+            }
+
+            @Override
+            public Map<String, Object> visualizationInfo() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("QUEUE", queue.toString());
+                map.put("POP", (queue.isEmpty()) ? "QUEUE EMPTY" : queue.peek());
+                return map;
+            }
+        }));
     }
 
     @Override
@@ -71,17 +96,8 @@ public class QueuePushPopActivity extends VisualizerActivity {
     }
 
     private void pushButtonClicked() {
-        super.hideKeyboard();
-
         //getting array and target
-        int target;
-        try {
-            target = Integer.parseInt(pushEditText.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
+        int target = Integer.parseInt(pushEditText.getText().toString());
 
         StepCard stepCard = new StepCard();
         stepCard.setTitle("PUSH Operation");

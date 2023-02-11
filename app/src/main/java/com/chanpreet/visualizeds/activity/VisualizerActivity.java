@@ -24,7 +24,6 @@ import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -34,7 +33,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public ActivityVisualizerBinding binding;
     public StepCardAdapter adapter;
     private DataStructureAlgorithm dataStructureAlgorithm;
-    private Map<String, Object> visualizationInformation = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +58,17 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         adapter.setStepCardList(list);
 
         //
-        binding.visualizeButton.setOnClickListener(v -> this.visualizeBtnClicked());
+        binding.visualizeButton.setOnClickListener(v -> this.visualizeBtnClicked(new OnVisualization() {
+            @Override
+            public void visualization() {
+                visualize();
+            }
+
+            @Override
+            public Map<String, Object> visualizationInfo() {
+                return getDefaultVisualizationInformation();
+            }
+        }));
         binding.leftStepBtn.setOnClickListener(v -> visualizePreviousStep());
         binding.rightStepBtn.setOnClickListener(v -> visualizeNextStep());
         binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -102,19 +110,19 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         });
     }
 
-    private void visualizeBtnClicked() {
+    public void visualizeBtnClicked(OnVisualization onVisualization) {
         try {
-            this.visualizationInformation = this.getDefaultVisualizationInformation();
-            this.visualize();
-            this.postVisualize();
+            Map<String, Object> visualizationInfo = onVisualization.visualizationInfo();
+            onVisualization.visualization();
+            this.postVisualize(visualizationInfo);
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void postVisualize() {
+    private void postVisualize(Map<String, Object> visualizationInformation) {
         //
-        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), this.visualizationInformation);
+        VisualizationInfo visualizationInfo = new VisualizationInfo(System.currentTimeMillis(), dataStructureAlgorithm.getName(), visualizationInformation);
 
         //
         UserInfo currentUserInfo = DataManager.getInstance().getUserInfo();
@@ -146,18 +154,14 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         }
     }
 
-    public void setVisualizationInformation(Map<String, Object> visualizationInformation) {
-        this.visualizationInformation = visualizationInformation;
-    }
-
-    public void visualizeNextStep() {
+    private void visualizeNextStep() {
         int curr = binding.viewPager.getCurrentItem();
         int n = Objects.requireNonNull(binding.viewPager.getAdapter()).getItemCount();
         int next = Math.min(n - 1, curr + 1);
         binding.viewPager.setCurrentItem(next);
     }
 
-    public void visualizePreviousStep() {
+    private void visualizePreviousStep() {
         int curr = binding.viewPager.getCurrentItem();
         int next = Math.max(0, curr - 1);
         binding.viewPager.setCurrentItem(next);
@@ -207,5 +211,11 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             return;
         }
         getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
+    }
+
+    public interface OnVisualization {
+        void visualization();
+
+        Map<String, Object> visualizationInfo();
     }
 }

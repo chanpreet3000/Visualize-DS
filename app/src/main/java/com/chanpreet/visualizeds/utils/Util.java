@@ -112,7 +112,7 @@ public class Util {
                             new ArrayList<>(Arrays.asList(
                                     new DataStructureTopic("Queue Basics",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Stack PUSH/POP Operations", QueuePushPopActivity.class, new QueuePushPopTheory(), Difficulty.EASY, R.drawable.ic_add)
+                                                    new DataStructureAlgorithm("Queue PUSH/POP Operations", QueuePushPopActivity.class, new QueuePushPopTheory(), Difficulty.EASY, R.drawable.ic_add)
                                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
                     new DataStructure("Binary Search Tree",

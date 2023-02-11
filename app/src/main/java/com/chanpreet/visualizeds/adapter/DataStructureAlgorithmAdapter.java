@@ -61,6 +61,15 @@ public class DataStructureAlgorithmAdapter extends RecyclerView.Adapter<DataStru
         } else {
             holder.binding.completedImageView.setImageDrawable(null);
         }
+
+        holder.binding.visualizeBtn.setEnabled(true);
+        holder.binding.theoryBtn.setEnabled(true);
+        if (data.getVisualizeClass() == null) {
+            holder.binding.visualizeBtn.setEnabled(false);
+        }
+        if (data.getAlgorithmTheory() == null) {
+            holder.binding.theoryBtn.setEnabled(false);
+        }
     }
 
     @Override
