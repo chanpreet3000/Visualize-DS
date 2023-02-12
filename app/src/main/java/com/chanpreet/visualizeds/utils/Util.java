@@ -6,6 +6,9 @@ import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
 import com.chanpreet.visualizeds.data_structure_algorithms.BIT.basics.BITBasicsActivity.BITBasicsActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.max.ArrayMaxActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.min.ArrayMinActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.reverse.ArrayReverseActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.linear_search.ArrayLinearSearchActivity;
@@ -81,7 +84,13 @@ public class Util {
                                                     new DataStructureAlgorithm("Array Insertion Sort", ArrayInsertionSortActivity.class, new ArrayInsertionSortTheory(), Difficulty.EASY, R.drawable.ic_insertion_sort),
                                                     new DataStructureAlgorithm("Array Merge Sort", null, new ArrayMergeSortTheory(), Difficulty.MEDIUM, R.drawable.ic_merge_sort),
                                                     new DataStructureAlgorithm("Array Quick Sort", null, new ArrayQuickSortTheory(), Difficulty.MEDIUM, R.drawable.ic_merge_sort)
-                                            )), Difficulty.EASY, R.drawable.ic_sorting)
+                                            )), Difficulty.EASY, R.drawable.ic_sorting),
+                                    new DataStructureTopic("Array Operations",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("Array Max Value", ArrayMaxActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24),
+                                                    new DataStructureAlgorithm("Array Min Value", ArrayMinActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24),
+                                                    new DataStructureAlgorithm("Array Reverse", ArrayReverseActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24)
+                                            )), Difficulty.BASIC, R.drawable.ic_sorting)
                             )), Difficulty.EASY, R.drawable.ic_array_24),
                     new DataStructure("Linked List",
                             new ArrayList<>(Arrays.asList(
@@ -135,7 +144,7 @@ public class Util {
                                     new DataStructureTopic("Path Finding Basics",
                                             new ArrayList<>(Arrays.asList(
                                                     new DataStructureAlgorithm("Path Finding BFS", PFBFSActivity.class, new PFBFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
-                                                    new DataStructureAlgorithm("Path Finding BFS", PFDFSActivity.class, new PFDFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
+                                                    new DataStructureAlgorithm("Path Finding DFS", PFDFSActivity.class, new PFDFSTheory(), Difficulty.EASY, R.drawable.ic_linear_search)
                                             )), Difficulty.EASY, R.drawable.ic_linear_search)
                             )), Difficulty.EASY, R.drawable.ic_baseline_grid_on_24),
                     new DataStructure("Binary Indexed Tree/Fenwick Tree",

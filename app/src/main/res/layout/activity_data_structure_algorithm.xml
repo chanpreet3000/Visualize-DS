@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipChildren="false"
     tools:context="com.chanpreet.visualizeds.activity.DataStructureAlgorithmActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
         android:orientation="vertical">
 
         <TextView
@@ -26,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            android:clipChildren="false"
             android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_data_structure_algorithm" />
     </LinearLayout>
