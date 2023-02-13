@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,10 @@ import com.chanpreet.visualizeds.adapter.DataStructureAdapter;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureBinding;
 import com.chanpreet.visualizeds.utils.Util;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -40,6 +45,18 @@ public class DataStructureActivity extends AppCompatActivity {
         dataStructures = Util.dataStructures;
 
         binding.myProfileCardView.setOnClickListener(v -> startActivity(new Intent(DataStructureActivity.this, MyProfileActivity.class)));
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+        binding.adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError adError) {
+                Toast.makeText(DataStructureActivity.this, adError.toString(), Toast.LENGTH_SHORT).show();
+                // Code to be executed when an ad request fails.
+            }
+        });
     }
 
     private void initRecyclerView(List<DataStructure> list) {

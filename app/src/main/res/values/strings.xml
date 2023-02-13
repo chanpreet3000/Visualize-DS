@@ -4,5 +4,13 @@
     <string name="terms_policy">By signing up, you have agreed to our <a href="https://github.com/chanpreet3000/Visualize-DS/blob/master/terms%20and%20conditions">Terms &amp; condition</a> and <a href="https://github.com/chanpreet3000/Visualize-DS/blob/master/privacy%20policy">Privacy Policy</a></string>
     <string name="go_to_theory"><u>Go to theory</u> -></string>
     <string name="go_to_visualizer"><u>Go to visualizer</u> -></string>
+    <string name="banner_test_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_test_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="data_structure_banner_id">ca-app-pub-7543091336880685/7906540443</string>
+    <string name="data_structure_topic_banner_id">ca-app-pub-7543091336880685/9801257809</string>
+    <string name="data_structure_algorithm_banner_id">ca-app-pub-7543091336880685/1803617789</string>
+    <string name="visualize_interstitial_id">ca-app-pub-7543091336880685/8296604440</string>
+    <string name="app_id">ca-app-pub-7543091336880685~9019762825</string>
+
 
 </resources>

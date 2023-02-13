@@ -13,6 +13,8 @@ import com.chanpreet.visualizeds.adapter.DataStructureAlgorithmAdapter;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureAlgorithmBinding;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +41,11 @@ public class DataStructureAlgorithmActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Algorithms");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.headingTextView.setText(String.format("%s Algorithms", dataStructureTopic.getName()));
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
     }
 
     private void initRecyclerView(List<DataStructureAlgorithm> list) {
