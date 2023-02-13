@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.max;
+package com.chanpreet.visualizeds.data_structure_algorithms.array.operations.min;
 
 import android.text.InputType;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class ArrayMaxActivity extends VisualizerActivity {
+public class ArrayMinActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
 
@@ -55,10 +55,10 @@ public class ArrayMaxActivity extends VisualizerActivity {
         List<StepCard> stepCardList = new ArrayList<>();
         //Bubble Sort
         int steps = 0;
-        int MAX = Integer.MIN_VALUE;
+        int MIN = Integer.MAX_VALUE;
         StepCard stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Initially the MAX value is set to %d", MAX)));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Initially the MIN value is set to %d", MIN)));
         stepCard.setData(ArrayBuilder.build(this, arr, new HashMap<>()));
         stepCardList.add(stepCard);
 
@@ -69,16 +69,16 @@ public class ArrayMaxActivity extends VisualizerActivity {
             stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
             stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Index = %d", i),
-                    String.format(Locale.US, "MAX = max(%d, %d)", MAX, arr.get(i)),
-                    String.format(Locale.US, "MAX = %d", Math.max(MAX, arr.get(i)))));
+                    String.format(Locale.US, "MIN = min(%d, %d)", MIN, arr.get(i)),
+                    String.format(Locale.US, "MIN = %d", Math.min(MIN, arr.get(i)))));
             stepCard.setData(ArrayBuilder.build(this, arr, map));
             stepCardList.add(stepCard);
             //
-            MAX = Math.max(MAX, arr.get(i));
+            MIN = Math.min(MIN, arr.get(i));
         }
         stepCard = new StepCard();
         stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "MAX VALUE = %d", MAX)));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "MIN VALUE = %d", MIN)));
         stepCard.setData(ArrayBuilder.build(this, arr, new HashMap<>()));
         stepCardList.add(stepCard);
 

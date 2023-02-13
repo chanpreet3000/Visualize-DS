@@ -16,21 +16,49 @@
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
         <activity
-            android:name=".data_structure_algorithms.array.array_operations.reverse.ArrayReverseActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.operations.min.DLLMinActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.array.array_operations.min.ArrayMinActivity"
+            android:name=".data_structure_algorithms.doubly_linked_list.operations.max.DLLMaxActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".data_structure_algorithms.array.array_operations.max.ArrayMaxActivity"
+            android:name=".data_structure_algorithms.linked_list.operations.min.LLMinActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".data_structure_algorithms.linked_list.operations.max.LLMaxActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".data_structure_algorithms.array.operations.reverse.ArrayReverseActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".data_structure_algorithms.array.operations.min.ArrayMinActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".data_structure_algorithms.array.operations.max.ArrayMaxActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

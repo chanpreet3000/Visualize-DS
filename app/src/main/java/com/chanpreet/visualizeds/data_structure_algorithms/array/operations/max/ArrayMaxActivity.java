@@ -1,4 +1,4 @@
-package com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.reverse;
+package com.chanpreet.visualizeds.data_structure_algorithms.array.operations.max;
 
 import android.text.InputType;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class ArrayReverseActivity extends VisualizerActivity {
+public class ArrayMaxActivity extends VisualizerActivity {
 
     private EditText arrayEditText;
 
@@ -53,30 +53,31 @@ public class ArrayReverseActivity extends VisualizerActivity {
         List<Integer> arr = stringToArray(arrayEditText.getText().toString().trim());
 
         List<StepCard> stepCardList = new ArrayList<>();
-        //Bubble Sort
         int steps = 0;
+        int MAX = Integer.MIN_VALUE;
         StepCard stepCard = new StepCard();
+        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Initially the MAX value is set to %d", MAX)));
+        stepCard.setData(ArrayBuilder.build(this, arr, new HashMap<>()));
+        stepCardList.add(stepCard);
 
-        for (int i = 0; i <= arr.size() / 2; i++) {
+        for (int i = 0; i < arr.size(); i++) {
+
             HashMap<Integer, Integer> map = new HashMap<>();
             map.put(i, ArrayBuilder.COLOR_TARGET_MATCHED);
-            map.put(arr.size() - i - 1, ArrayBuilder.COLOR_TARGET_MATCHED);
             stepCard = new StepCard();
             stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
-            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Front Index = %d & Back Index = %d", i, arr.size() - i - 1),
-                    String.format(Locale.US, "swap arr[%d] & arr[%d]", i, arr.size() - i - 1),
-                    String.format(Locale.US, "New front index = %d, back index = %d", i + 1, arr.size() - i - 1 - 1)));
+            stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Index = %d", i),
+                    String.format(Locale.US, "MAX = max(%d, %d)", MAX, arr.get(i)),
+                    String.format(Locale.US, "MAX = %d", Math.max(MAX, arr.get(i)))));
             stepCard.setData(ArrayBuilder.build(this, arr, map));
             stepCardList.add(stepCard);
             //
-            int temp = arr.get(i);
-            arr.set(i, arr.get(arr.size() - i - 1));
-            arr.set(arr.size() - i - 1, temp);
+            MAX = Math.max(MAX, arr.get(i));
         }
         stepCard = new StepCard();
-        stepCard.setTitle("Final Reversed array");
-        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "Front Index(%d) > Back Index(%d)", (arr.size() + 1) / 2, arr.size() - ((arr.size() + 1) / 2) - 1),
-                "Array has been reversed!"));
+        stepCard.setTitle(String.format(Locale.US, "Step %d", ++steps));
+        stepCard.setDescription(Arrays.asList(String.format(Locale.US, "MAX VALUE = %d", MAX)));
         stepCard.setData(ArrayBuilder.build(this, arr, new HashMap<>()));
         stepCardList.add(stepCard);
 

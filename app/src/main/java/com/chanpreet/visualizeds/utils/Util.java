@@ -6,9 +6,9 @@ import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.classes.Difficulty;
 import com.chanpreet.visualizeds.data_structure_algorithms.BIT.basics.BITBasicsActivity.BITBasicsActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.max.ArrayMaxActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.min.ArrayMinActivity;
-import com.chanpreet.visualizeds.data_structure_algorithms.array.array_operations.reverse.ArrayReverseActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.operations.max.ArrayMaxActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.operations.min.ArrayMinActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.array.operations.reverse.ArrayReverseActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.binary_search.ArrayBinarySearchTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.array.searching.linear_search.ArrayLinearSearchActivity;
@@ -39,12 +39,16 @@ import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.ba
 import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.insertion.DLLInsertionTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.traversal.DLLTraversalActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.basics.traversal.DLLTraversalTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.operations.max.DLLMaxActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.doubly_linked_list.operations.min.DLLMinActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.deletion.LLDeletionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.deletion.LLDeletionTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion.LLInsertionActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.insertion.LLInsertionTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.basics.traversal.LLTraversalTheory;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.operations.max.LLMaxActivity;
+import com.chanpreet.visualizeds.data_structure_algorithms.linked_list.operations.min.LLMinActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.bfs.PFBFSActivity;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.bfs.PFBFSTheory;
 import com.chanpreet.visualizeds.data_structure_algorithms.path_finding.basics.dfs.PFDFSActivity;
@@ -87,9 +91,9 @@ public class Util {
                                             )), Difficulty.EASY, R.drawable.ic_sorting),
                                     new DataStructureTopic("Array Operations",
                                             new ArrayList<>(Arrays.asList(
-                                                    new DataStructureAlgorithm("Array Max Value", ArrayMaxActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24),
-                                                    new DataStructureAlgorithm("Array Min Value", ArrayMinActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24),
-                                                    new DataStructureAlgorithm("Array Reverse", ArrayReverseActivity.class, null, Difficulty.BASIC, R.drawable.ic_array_24)
+                                                    new DataStructureAlgorithm("Array Max Value", ArrayMaxActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Array Min Value", ArrayMinActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("Array Reverse", ArrayReverseActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search)
                                             )), Difficulty.BASIC, R.drawable.ic_sorting)
                             )), Difficulty.EASY, R.drawable.ic_array_24),
                     new DataStructure("Linked List",
@@ -99,7 +103,12 @@ public class Util {
                                                     new DataStructureAlgorithm("LL Insertion", LLInsertionActivity.class, new LLInsertionTheory(), Difficulty.EASY, R.drawable.ic_add),
                                                     new DataStructureAlgorithm("LL Traversal/Searching", LLTraversalActivity.class, new LLTraversalTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
                                                     new DataStructureAlgorithm("LL Deletion", LLDeletionActivity.class, new LLDeletionTheory(), Difficulty.EASY, R.drawable.ic_deletion)
-                                            )), Difficulty.EASY, R.drawable.ic_linked_list)
+                                            )), Difficulty.EASY, R.drawable.ic_linked_list),
+                                    new DataStructureTopic("Linked List Operations",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("LL Max Value", LLMaxActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("LL Min Value", LLMinActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search)
+                                            )), Difficulty.BASIC, R.drawable.ic_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_linked_list),
                     new DataStructure("Doubly Linked List",
                             new ArrayList<>(Arrays.asList(
@@ -108,7 +117,12 @@ public class Util {
                                                     new DataStructureAlgorithm("DLL Insertion", DLLInsertionActivity.class, new DLLInsertionTheory(), Difficulty.EASY, R.drawable.ic_add),
                                                     new DataStructureAlgorithm("DLL Traversal/Searching", DLLTraversalActivity.class, new DLLTraversalTheory(), Difficulty.EASY, R.drawable.ic_linear_search),
                                                     new DataStructureAlgorithm("DLL Deletion", DLLDeletionActivity.class, new DLLDeletionTheory(), Difficulty.EASY, R.drawable.ic_deletion)
-                                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list)
+                                            )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
+                                    new DataStructureTopic("Doubly Linked List Operations",
+                                            new ArrayList<>(Arrays.asList(
+                                                    new DataStructureAlgorithm("DLL Max Value", DLLMaxActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search),
+                                                    new DataStructureAlgorithm("DLL Min Value", DLLMinActivity.class, null, Difficulty.BASIC, R.drawable.ic_linear_search)
+                                            )), Difficulty.BASIC, R.drawable.ic_doubly_linked_list)
                             )), Difficulty.EASY, R.drawable.ic_doubly_linked_list),
                     new DataStructure("Stack",
                             new ArrayList<>(Arrays.asList(
