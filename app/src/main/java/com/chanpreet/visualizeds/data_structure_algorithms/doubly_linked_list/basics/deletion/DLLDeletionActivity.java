@@ -72,14 +72,7 @@ public class DLLDeletionActivity extends VisualizerActivity {
     @Override
     public void visualize() {
         int steps = 0;
-        //getting array and target
-        int target;
-        try {
-            target = Integer.parseInt(targetEditText.getText().toString());
-        } catch (Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+        int target = Integer.parseInt(targetEditText.getText().toString());
         boolean found = false;
         List<StepCard> stepCardList = new ArrayList<>();
         DoublyLinkedListNode temp = head;

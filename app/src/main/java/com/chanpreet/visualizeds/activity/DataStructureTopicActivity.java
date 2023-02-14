@@ -12,8 +12,6 @@ import com.chanpreet.visualizeds.adapter.DataStructureTopicAdapter;
 import com.chanpreet.visualizeds.classes.DataStructure;
 import com.chanpreet.visualizeds.classes.DataStructureTopic;
 import com.chanpreet.visualizeds.databinding.ActivityDataStructureTopicBinding;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,11 +37,6 @@ public class DataStructureTopicActivity extends AppCompatActivity {
         binding.headingTextView.setText(String.format("%s Topics", dataStructure.getName()));
         Objects.requireNonNull(getSupportActionBar()).setTitle("Topics");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adView.loadAd(adRequest);
     }
 
     private void initRecyclerView(List<DataStructureTopic> list) {

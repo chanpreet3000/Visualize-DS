@@ -17,10 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VisualizeDS"
         tools:targetApi="31">
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7543091336880685~9019762825" />
-
         <activity
             android:name=".data_structure_algorithms.doubly_linked_list.operations.min.DLLMinActivity"
             android:exported="false">

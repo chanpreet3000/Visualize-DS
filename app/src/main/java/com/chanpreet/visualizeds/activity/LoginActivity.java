@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void autoLogin() {
         try {
-            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            if (FirebaseAuth.getInstance().getCurrentUser() != null && FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                 successLogin(FirebaseAuth.getInstance().getCurrentUser());
             } else {
                 throw new Exception();

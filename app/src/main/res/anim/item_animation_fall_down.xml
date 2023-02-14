@@ -1,5 +1,5 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="600">
+    android:duration="400">
 
     <translate
         android:fromYDelta="50%"
@@ -7,7 +7,6 @@
         android:toYDelta="0" />
 
     <alpha
-        android:duration="150"
         android:fromAlpha="0"
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toAlpha="1" />

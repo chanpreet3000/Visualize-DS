@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.chanpreet.visualizeds.R;
 import com.chanpreet.visualizeds.adapter.StepCardAdapter;
 import com.chanpreet.visualizeds.classes.DataManager;
 import com.chanpreet.visualizeds.classes.DataStructureAlgorithm;
@@ -23,12 +22,6 @@ import com.chanpreet.visualizeds.classes.StepCard;
 import com.chanpreet.visualizeds.classes.UserInfo;
 import com.chanpreet.visualizeds.classes.VisualizationInfo;
 import com.chanpreet.visualizeds.databinding.ActivityVisualizerBinding;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +33,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
     public ActivityVisualizerBinding binding;
     public StepCardAdapter adapter;
     private DataStructureAlgorithm dataStructureAlgorithm;
-    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -97,43 +89,7 @@ public abstract class VisualizerActivity extends AppCompatActivity {
         this.generateInputUI();
         this.onCreate();
 
-
-        //Ads
-        initializeInterstitialAds();
     }
-
-    private void initializeInterstitialAds() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(this, getString(R.string.interstitial_test_id), adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                mInterstitialAd = null;
-                                initializeInterstitialAds();
-                            }
-
-                            @Override
-                            public void onAdFailedToShowFullScreenContent(AdError adError) {
-                                mInterstitialAd = null;
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        mInterstitialAd = null;
-                    }
-                });
-    }
-
 
     private void fillHeaderInformation() {
         //Filling the header Information.
@@ -160,9 +116,6 @@ public abstract class VisualizerActivity extends AppCompatActivity {
             Map<String, Object> visualizationInfo = onVisualization.visualizationInfo();
             onVisualization.visualization();
             this.postVisualize(visualizationInfo);
-            if (mInterstitialAd != null) {
-                mInterstitialAd.show(VisualizerActivity.this);
-            }
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
